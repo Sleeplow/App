@@ -8,9 +8,8 @@ function setLang(lang) {
   try { localStorage.setItem('budget-lang', lang); } catch (e) {}
 }
 
-// Make help sections collapsible: only the title shows until tapped.
+// Make content sections collapsible: only the title shows until tapped.
 function setupCollapsibleSections() {
-  if (!document.body.classList.contains('collapsible-sections')) return;
   document.querySelectorAll('.section').forEach(section => {
     if (!section.querySelector('h2')) return;
     section.classList.add('collapsed');

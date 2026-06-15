@@ -21,68 +21,249 @@
   <button onclick="setLang('en')">English</button>
 </div>
 
-<!--
-  ╔══════════════════════════════════════════════════════════════════╗
-  ║  GUIDE DE RÉDACTION (à supprimer une fois rempli)                 ║
-  ║  - Chaque fonctionnalité = un bloc <div class="section">.         ║
-  ║  - Texte explicatif : <p>…</p>                                    ║
-  ║  - Liste d'étapes numérotées : <ol><li>…</li></ol>               ║
-  ║  - Liste à puces (cochées) : <ul><li>…</li></ul>                 ║
-  ║  - Encadré d'astuce : <div class="highlight">…</div>             ║
-  ║  - Sous-titre dans une section : <h3>…</h3>                       ║
-  ║  Répliquer la même structure dans la version EN plus bas.         ║
-  ╚══════════════════════════════════════════════════════════════════╝
--->
-
 <!-- ═══════════════════════════════════════ FRANÇAIS ═══════════════════════ -->
 
 <div lang-section="fr">
 <div class="container">
 
+  <!-- ── Premiers pas ─────────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">🚀</span> Premiers pas</h2>
-    <p><!-- TODO : Décrire la connexion (Sign in with Apple) et la configuration initiale. --></p>
+    <p>Budget App utilise <strong>Sign in with Apple</strong> pour vous identifier de façon sécurisée et anonyme — aucun mot de passe à retenir.</p>
+    <ol>
+      <li>Ouvrez l'app et appuyez sur <strong>«&nbsp;Se connecter avec Apple&nbsp;»</strong>.</li>
+      <li>Authentifiez-vous avec Face ID, Touch ID ou votre code.</li>
+      <li>L'app lance un court tutoriel d'introduction. Vous pouvez l'ignorer en appuyant sur <strong>«&nbsp;Passer&nbsp;»</strong> en haut à droite, ou le revoir à tout moment depuis <strong>Paramètres › À propos › Revoir l'introduction</strong>.</li>
+      <li>Des catégories de départ sont créées automatiquement pour vous aider à démarrer.</li>
+    </ol>
+    <div class="highlight">Vos données se synchronisent automatiquement sur tous vos appareils Apple via iCloud — aucune configuration nécessaire.</div>
   </div>
 
+  <!-- ── Tableau de bord ───────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">💸</span> Dépenses &amp; revenus</h2>
-    <p><!-- TODO : Comment ajouter, modifier et supprimer une dépense ou un revenu (description, montant, fréquence, catégorie, compte). --></p>
+    <h2><span class="emoji">📊</span> Tableau de bord</h2>
+    <p>L'onglet <strong>Tableau de bord</strong> est votre vue d'ensemble financière. Il regroupe :</p>
+    <ul>
+      <li><strong>Solde total</strong> — somme des soldes de tous vos comptes.</li>
+      <li><strong>Revenus mensuels</strong> — total de vos revenus ramenés à un mois (toutes fréquences confondues).</li>
+      <li><strong>Dépenses mensuelles</strong> — idem pour vos dépenses.</li>
+      <li><strong>Flux net mensuel</strong> — différence revenus − dépenses.</li>
+    </ul>
+
+    <h3>Projection à 6 mois</h3>
+    <p>Le graphique montre l'évolution prévue de votre solde sur les 6 prochains mois en tenant compte de toutes vos transactions récurrentes.</p>
+
+    <h3>Top 5 dépenses</h3>
+    <p>Les cinq dépenses récurrentes dont l'impact mensuel est le plus élevé.</p>
+
+    <h3>Répartition par catégorie</h3>
+    <p>Visualisez la part de chaque catégorie dans vos dépenses. Si vous avez défini un budget mensuel par catégorie, une barre de progression indique votre niveau de consommation :</p>
+    <ul>
+      <li>🟢 <strong>Vert</strong> — moins de 80 % du budget utilisé.</li>
+      <li>🟠 <strong>Orange</strong> — entre 80 % et 99 %.</li>
+      <li>🔴 <strong>Rouge</strong> — budget atteint ou dépassé.</li>
+    </ul>
+
+    <h3>Résumé des comptes</h3>
+    <p>Aperçu rapide du solde de chacun de vos comptes.</p>
   </div>
 
+  <!-- ── Dépenses ──────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🏦</span> Comptes bancaires</h2>
-    <p><!-- TODO : Comment créer un compte, définir un solde, suivre l'évolution. --></p>
+    <h2><span class="emoji">💸</span> Dépenses</h2>
+    <p>L'onglet <strong>Dépenses</strong> liste l'ensemble de vos dépenses planifiées.</p>
+
+    <h3>Ajouter une dépense</h3>
+    <ol>
+      <li>Appuyez sur le bouton <strong>+</strong> en haut à droite.</li>
+      <li>Remplissez les champs :
+        <ul>
+          <li><strong>Description</strong> — nom de la dépense (ex. : Loyer, Netflix).</li>
+          <li><strong>Montant</strong> — utilisez un point ou une virgule comme séparateur décimal.</li>
+          <li><strong>Date</strong> — date de la première occurrence (ou date unique).</li>
+          <li><strong>Fréquence</strong> — voir tableau ci-dessous.</li>
+          <li><strong>Catégorie</strong> — classement pour les statistiques et les budgets.</li>
+          <li><strong>Compte</strong> — compte débité.</li>
+        </ul>
+      </li>
+      <li>Appuyez sur <strong>«&nbsp;Enregistrer&nbsp;»</strong>.</li>
+    </ol>
+
+    <h3>Fréquences disponibles</h3>
+    <ul>
+      <li><strong>Unique</strong> — transaction ponctuelle, une seule fois.</li>
+      <li><strong>Hebdo.</strong> — toutes les semaines.</li>
+      <li><strong>Aux 2 sem.</strong> — toutes les deux semaines.</li>
+      <li><strong>Mensuel</strong> — une fois par mois.</li>
+      <li><strong>Aux 2 mois</strong> — tous les deux mois.</li>
+      <li><strong>Trimestriel</strong> — tous les trois mois.</li>
+      <li><strong>Annuel</strong> — une fois par an.</li>
+    </ul>
+
+    <h3>Modifier une dépense</h3>
+    <p>Balayez la ligne vers la <strong>gauche</strong> et appuyez sur <strong>«&nbsp;Modifier&nbsp;»</strong> (bleu).</p>
+
+    <h3>Supprimer une dépense</h3>
+    <p>Balayez la ligne vers la <strong>droite</strong> et appuyez sur <strong>«&nbsp;Supprimer&nbsp;»</strong> (rouge). Une confirmation vous est demandée avant la suppression définitive.</p>
+
+    <h3>Rechercher, filtrer et trier</h3>
+    <ul>
+      <li><strong>Recherche</strong> — tapez un mot dans la barre de recherche pour filtrer par description.</li>
+      <li><strong>Filtres</strong> — icône filtre en haut : filtrez par catégorie, fréquence, compte, montant min/max et plage de dates.</li>
+      <li><strong>Tri</strong> — icône tri : choisissez l'ordre (date, montant, description, catégorie) et le sens (croissant/décroissant).</li>
+    </ul>
+    <div class="highlight">Le compteur dans la barre d'outils indique le nombre de dépenses affichées après filtrage.</div>
   </div>
 
+  <!-- ── Revenus ───────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🗂️</span> Catégories &amp; budgets mensuels</h2>
-    <p><!-- TODO : Comment créer des catégories et fixer un budget mensuel par catégorie. --></p>
+    <h2><span class="emoji">💰</span> Revenus</h2>
+    <p>L'onglet <strong>Revenus</strong> fonctionne de la même façon que l'onglet Dépenses.</p>
+    <ul>
+      <li>Appuyez sur <strong>+</strong> pour ajouter un revenu (salaire, loyer perçu, etc.).</li>
+      <li>Les champs sont identiques aux dépenses, <strong>sans champ Catégorie</strong>.</li>
+      <li>Balayez à gauche pour <strong>Modifier</strong>, à droite pour <strong>Supprimer</strong>.</li>
+      <li>Les mêmes options de recherche, filtres et tri sont disponibles.</li>
+    </ul>
+    <div class="highlight">Les revenus récurrents alimentent la projection à 6 mois et les calculs de flux mensuel du tableau de bord.</div>
   </div>
 
+  <!-- ── Transactions ──────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">⚡</span> Transactions rapides (Quick TX)</h2>
-    <p><!-- TODO : À quoi servent les Quick TX et comment les utiliser. --></p>
+    <h2><span class="emoji">⚡</span> Transactions</h2>
+    <p>L'onglet <strong>Transactions</strong> regroupe votre prévision de trésorerie et vos transactions rapides.</p>
+
+    <h3>Soldes des comptes</h3>
+    <p>En haut de l'écran, chaque compte affiche son solde actuel. Appuyez sur un montant pour le modifier directement au clavier.</p>
+
+    <h3>Horizon de prévision</h3>
+    <p>Ajustez la période affichée (de 7 à 365 jours) à l'aide du <strong>stepper</strong> ou du bouton <strong>«&nbsp;+1M&nbsp;»</strong> pour ajouter 30 jours. Les transactions à venir sont regroupées par jour avec le solde projeté en fin de journée.</p>
+
+    <h3>Couleurs des transactions</h3>
+    <ul>
+      <li>🟡 <strong>Jaune</strong> — transaction rapide (Quick TX).</li>
+      <li>🟢 <strong>Vert</strong> — revenu prévu.</li>
+      <li>🔴 <strong>Rouge</strong> — dépense prévue.</li>
+    </ul>
+
+    <h3>Auto Suivi</h3>
+    <p>Quand <strong>Auto Suivi</strong> est activé, l'app ajuste automatiquement les soldes de vos comptes en fonction des transactions récurrentes passées depuis votre dernière mise à jour manuelle.</p>
+
+    <h3>Transactions rapides (Quick TX)</h3>
+    <p>Les Quick TX servent à enregistrer rapidement une dépense ou un revenu ponctuel <strong>sans date planifiée</strong> — utile pour un achat imprévu en caisse.</p>
+    <ol>
+      <li>Appuyez sur le bouton <strong>«&nbsp;Quick TX&nbsp;»</strong> (éclair jaune).</li>
+      <li>Choisissez le type : <strong>Dépense</strong> ou <strong>Revenu</strong>.</li>
+      <li>Renseignez la description, le montant et le compte.</li>
+      <li>Appuyez sur <strong>«&nbsp;Ajouter&nbsp;»</strong>.</li>
+    </ol>
+    <p>La Quick TX apparaît immédiatement dans la liste avec un fond jaune et met à jour le solde du compte en temps réel. Balayez à gauche pour modifier, à droite pour supprimer.</p>
+    <div class="highlight">Les Quick TX sont automatiquement supprimées après leur date afin de ne pas alourdir votre historique.</div>
+
+    <h3>Accéder aux détails d'une transaction à venir</h3>
+    <p>Appuyez longuement (ou via le menu contextuel) sur une transaction à venir pour :</p>
+    <ul>
+      <li><strong>Modifier</strong> — ouvre le formulaire de la dépense ou du revenu.</li>
+      <li><strong>Voir dans Dépenses / Voir dans Revenus</strong> — navigue vers l'onglet correspondant et met en surbrillance la transaction.</li>
+    </ul>
+
+    <h3>Filtrer par compte</h3>
+    <p>Utilisez le sélecteur de compte pour n'afficher que les transactions d'un compte précis.</p>
   </div>
 
+  <!-- ── Paramètres ────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🔔</span> Notifications</h2>
-    <p><!-- TODO : Comment activer/désactiver les rappels de transactions récurrentes. --></p>
+    <h2><span class="emoji">⚙️</span> Paramètres</h2>
+
+    <h3>Catégories &amp; budgets mensuels</h3>
+    <p>Accédez à <strong>Paramètres › Catégories</strong> pour personnaliser vos catégories.</p>
+    <ul>
+      <li><strong>Ajouter</strong> — appuyez sur <strong>+</strong> et saisissez un nom.</li>
+      <li><strong>Modifier</strong> — appuyez sur une catégorie pour ouvrir son détail :
+        <ul>
+          <li>Changez le <strong>nom</strong> — toutes les dépenses associées sont automatiquement renommées.</li>
+          <li>Changez la <strong>couleur</strong> — 12 couleurs disponibles.</li>
+          <li>Définissez un <strong>budget mensuel</strong> — laissez vide pour ne pas fixer de limite.</li>
+        </ul>
+      </li>
+      <li><strong>Supprimer</strong> — balayez à droite (catégories système non supprimables).</li>
+      <li><strong>Réorganiser</strong> — appuyez sur «&nbsp;Modifier&nbsp;» puis faites glisser les lignes.</li>
+      <li>Les modifications sont sauvegardées automatiquement lorsque vous quittez le détail.</li>
+    </ul>
+
+    <h3>Comptes bancaires</h3>
+    <p>Accédez à <strong>Paramètres › Comptes</strong> pour gérer vos comptes.</p>
+    <ul>
+      <li><strong>Ajouter</strong> — appuyez sur <strong>+</strong> et donnez un nom au compte.</li>
+      <li><strong>Renommer</strong> — appuyez sur l'icône crayon. Le renommage met à jour toutes les transactions associées.</li>
+      <li><strong>Changer la couleur</strong> — appuyez sur le cercle coloré à gauche du nom.</li>
+      <li><strong>Réorganiser</strong> — appuyez sur «&nbsp;Modifier&nbsp;» puis faites glisser.</li>
+      <li><strong>Supprimer</strong> — balayez à droite.</li>
+    </ul>
+    <div class="highlight">Le solde d'un compte se modifie directement depuis l'onglet Transactions, pas depuis les Paramètres.</div>
+
+    <h3>Format de date</h3>
+    <p>Choisissez votre format d'affichage des dates dans <strong>Paramètres › Format de date</strong> :</p>
+    <ul>
+      <li>JJ-MM-AAAA (par défaut)</li>
+      <li>AAAA-MM-JJ</li>
+      <li>MM-JJ-AAAA</li>
+    </ul>
+
+    <h3>Notifications</h3>
+    <p>Activez les rappels depuis <strong>Paramètres › Notifications</strong>. Vous recevrez une notification à <strong>9h00</strong> pour chaque dépense ou revenu récurrent prévu dans les <strong>14 prochains jours</strong>.</p>
+    <p>Pour désactiver, basculez simplement l'interrupteur. Vous pouvez également gérer les permissions depuis <strong>Réglages iOS › Budget App › Notifications</strong>.</p>
+
+    <h3>Verrouillage Face ID / Touch ID</h3>
+    <p>Activez le verrou depuis <strong>Paramètres › Sécurité</strong>. À chaque ouverture, l'app demande votre Face ID, Touch ID ou le code de l'appareil avant d'afficher vos données.</p>
+    <p>Un écran de confidentialité masque automatiquement le contenu de l'app lorsque vous consultez le sélecteur d'applications.</p>
+
+    <h3>Import / Export CSV</h3>
+    <p>Accédez à <strong>Paramètres › Données › Import / Export CSV</strong>.</p>
+    <ul>
+      <li><strong>Exporter</strong> — génère un fichier .csv de vos dépenses ou revenus, prêt à ouvrir dans Excel ou Numbers.</li>
+      <li><strong>Importer</strong> — sélectionnez un fichier .csv pour ajouter des transactions en lot.</li>
+    </ul>
+    <p>Format attendu pour les dépenses :</p>
+    <p><code>Description, Montant, Date (ISO8601), Fréquence, Catégorie, Compte</code></p>
+    <p>Format attendu pour les revenus :</p>
+    <p><code>Description, Montant, Date (ISO8601), Fréquence, Compte</code></p>
+    <div class="highlight">Les fréquences valides dans le CSV sont : unique, hebdo, bihebdo, mensuel, bimensuel, trimestriel, annuel.</div>
+
+    <h3>Synchronisation iCloud</h3>
+    <p>La synchronisation est entièrement automatique. Dès que vous ajoutez ou modifiez une transaction sur un appareil, les changements se propagent sur tous vos appareils Apple connectés au même identifiant iCloud. Aucune action de votre part n'est requise.</p>
   </div>
 
+  <!-- ── FAQ ──────────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🔐</span> Verrouillage Face ID / Touch ID</h2>
-    <p><!-- TODO : Comment activer le verrouillage biométrique de l'application. --></p>
-  </div>
+    <h2><span class="emoji">❓</span> Questions fréquentes</h2>
 
-  <div class="section">
-    <h2><span class="emoji">📤</span> Import / Export CSV</h2>
-    <p><!-- TODO : Comment exporter ses données en CSV et importer un fichier. --></p>
-  </div>
+    <h3>Mes données sont-elles sauvegardées si je désinstalle l'app ?</h3>
+    <p>Oui — si iCloud est actif, vos données sont stockées dans votre espace iCloud et restaurées automatiquement lors de la réinstallation.</p>
 
-  <div class="section">
-    <h2><span class="emoji">❓</span> Questions fréquentes (FAQ)</h2>
-    <h3><!-- TODO : Question --></h3>
-    <p><!-- TODO : Réponse --></p>
+    <h3>Puis-je avoir plusieurs comptes bancaires ?</h3>
+    <p>Oui. Ajoutez autant de comptes que vous le souhaitez depuis <strong>Paramètres › Comptes</strong>. Chaque dépense et revenu est lié à un compte précis.</p>
+
+    <h3>Comment corriger le solde d'un compte ?</h3>
+    <p>Allez dans l'onglet <strong>Transactions</strong>, appuyez sur le montant du compte en haut de l'écran et saisissez le nouveau solde.</p>
+
+    <h3>Une dépense récurrente apparaît-elle plusieurs fois dans l'historique ?</h3>
+    <p>Dans l'onglet <strong>Dépenses</strong>, chaque entrée représente une règle récurrente (une seule ligne). Dans l'onglet <strong>Transactions</strong>, chaque occurrence future est listée séparément dans la prévision.</p>
+
+    <h3>Quelle est la différence entre une Quick TX et une dépense normale ?</h3>
+    <p>Une <strong>dépense normale</strong> est planifiée et récurrente — elle sert aux projections et au tableau de bord. Une <strong>Quick TX</strong> est un achat immédiat et ponctuel : elle met à jour le solde du compte instantanément sans affecter les projections futures.</p>
+
+    <h3>Qu'est-ce que l'Auto Suivi ?</h3>
+    <p>L'Auto Suivi détecte les transactions récurrentes dont la date est passée depuis votre dernière mise à jour manuelle, et ajuste les soldes de vos comptes en conséquence automatiquement.</p>
+
+    <h3>Comment revoir le tutoriel d'introduction ?</h3>
+    <p>Allez dans <strong>Paramètres › À propos › Revoir l'introduction</strong>.</p>
+
+    <h3>L'app fonctionne-t-elle sans connexion internet ?</h3>
+    <p>Oui. Toutes les fonctionnalités sont disponibles hors ligne. La synchronisation iCloud se fait dès que la connexion est rétablie.</p>
+
+    <h3>Comment supprimer mon compte ?</h3>
+    <p>Pour effacer toutes vos données, désactivez iCloud pour Budget App dans <strong>Réglages iOS › [Votre nom] › iCloud</strong>, puis désinstallez l'app. Contactez-nous si vous avez besoin d'aide.</p>
   </div>
 
   <p class="updated">Besoin d'aide supplémentaire ? <a href="contact.html">Contactez-nous</a></p>
@@ -94,50 +275,244 @@
 <div lang-section="en">
 <div class="container">
 
+  <!-- ── Getting Started ──────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">🚀</span> Getting Started</h2>
-    <p><!-- TODO: Describe sign-in (Sign in with Apple) and initial setup. --></p>
+    <p>Budget App uses <strong>Sign in with Apple</strong> to identify you securely and anonymously — no password to remember.</p>
+    <ol>
+      <li>Open the app and tap <strong>"Sign in with Apple"</strong>.</li>
+      <li>Authenticate with Face ID, Touch ID, or your passcode.</li>
+      <li>A short introduction tutorial will launch. You can skip it by tapping <strong>"Skip"</strong> in the top right, or replay it at any time from <strong>Settings › About › Replay Introduction</strong>.</li>
+      <li>Default categories are created automatically to help you get started.</li>
+    </ol>
+    <div class="highlight">Your data syncs automatically across all your Apple devices via iCloud — no configuration required.</div>
   </div>
 
+  <!-- ── Dashboard ────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">💸</span> Expenses &amp; Income</h2>
-    <p><!-- TODO: How to add, edit and delete an expense or income (description, amount, frequency, category, account). --></p>
+    <h2><span class="emoji">📊</span> Dashboard</h2>
+    <p>The <strong>Dashboard</strong> tab is your financial overview. It shows:</p>
+    <ul>
+      <li><strong>Total balance</strong> — sum of all your account balances.</li>
+      <li><strong>Monthly income</strong> — all your revenues normalized to a monthly amount.</li>
+      <li><strong>Monthly expenses</strong> — same, for your expenses.</li>
+      <li><strong>Monthly net flow</strong> — income minus expenses.</li>
+    </ul>
+
+    <h3>6-Month Projection</h3>
+    <p>The chart shows your predicted balance over the next 6 months, based on all your recurring transactions.</p>
+
+    <h3>Top 5 Expenses</h3>
+    <p>The five recurring expenses with the highest monthly impact.</p>
+
+    <h3>Category Breakdown</h3>
+    <p>A visual distribution of your spending by category. If you've set a monthly budget for a category, a progress bar shows your current usage level:</p>
+    <ul>
+      <li>🟢 <strong>Green</strong> — under 80% of budget used.</li>
+      <li>🟠 <strong>Orange</strong> — between 80% and 99%.</li>
+      <li>🔴 <strong>Red</strong> — budget reached or exceeded.</li>
+    </ul>
+
+    <h3>Account Summary</h3>
+    <p>A quick view of each account's current balance.</p>
   </div>
 
+  <!-- ── Expenses ──────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🏦</span> Bank Accounts</h2>
-    <p><!-- TODO: How to create an account, set a balance, track changes. --></p>
+    <h2><span class="emoji">💸</span> Expenses</h2>
+    <p>The <strong>Expenses</strong> tab lists all your planned expenses.</p>
+
+    <h3>Adding an Expense</h3>
+    <ol>
+      <li>Tap the <strong>+</strong> button in the top right.</li>
+      <li>Fill in the fields:
+        <ul>
+          <li><strong>Description</strong> — name of the expense (e.g. Rent, Netflix).</li>
+          <li><strong>Amount</strong> — use a period or comma as the decimal separator.</li>
+          <li><strong>Date</strong> — date of the first (or only) occurrence.</li>
+          <li><strong>Frequency</strong> — see table below.</li>
+          <li><strong>Category</strong> — used for statistics and budget tracking.</li>
+          <li><strong>Account</strong> — the account to debit.</li>
+        </ul>
+      </li>
+      <li>Tap <strong>"Save"</strong>.</li>
+    </ol>
+
+    <h3>Available Frequencies</h3>
+    <ul>
+      <li><strong>One-time</strong> — a single, non-recurring transaction.</li>
+      <li><strong>Weekly</strong> — every week.</li>
+      <li><strong>Bi-weekly</strong> — every two weeks.</li>
+      <li><strong>Monthly</strong> — once a month.</li>
+      <li><strong>Every 2 months</strong> — every two months.</li>
+      <li><strong>Quarterly</strong> — every three months.</li>
+      <li><strong>Annual</strong> — once a year.</li>
+    </ul>
+
+    <h3>Editing an Expense</h3>
+    <p>Swipe the row to the <strong>left</strong> and tap <strong>"Edit"</strong> (blue).</p>
+
+    <h3>Deleting an Expense</h3>
+    <p>Swipe the row to the <strong>right</strong> and tap <strong>"Delete"</strong> (red). A confirmation is required before permanent deletion.</p>
+
+    <h3>Search, Filter &amp; Sort</h3>
+    <ul>
+      <li><strong>Search</strong> — type in the search bar to filter by description.</li>
+      <li><strong>Filters</strong> — filter icon at the top: filter by category, frequency, account, min/max amount, and date range.</li>
+      <li><strong>Sort</strong> — sort icon: choose the order (date, amount, description, category) and direction (ascending/descending).</li>
+    </ul>
+    <div class="highlight">The counter in the toolbar shows how many expenses are currently displayed after filtering.</div>
   </div>
 
+  <!-- ── Income ────────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🗂️</span> Categories &amp; Monthly Budgets</h2>
-    <p><!-- TODO: How to create categories and set a monthly budget per category. --></p>
+    <h2><span class="emoji">💰</span> Income</h2>
+    <p>The <strong>Income</strong> tab works exactly like the Expenses tab.</p>
+    <ul>
+      <li>Tap <strong>+</strong> to add income (salary, rental income, etc.).</li>
+      <li>Fields are identical to expenses, <strong>without a Category field</strong>.</li>
+      <li>Swipe left to <strong>Edit</strong>, right to <strong>Delete</strong>.</li>
+      <li>The same search, filter, and sort options are available.</li>
+    </ul>
+    <div class="highlight">Recurring income feeds the 6-month projection and the monthly cash flow calculations on the dashboard.</div>
   </div>
 
+  <!-- ── Transactions ──────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">⚡</span> Quick Transactions (Quick TX)</h2>
-    <p><!-- TODO: What Quick TX are for and how to use them. --></p>
+    <h2><span class="emoji">⚡</span> Transactions</h2>
+    <p>The <strong>Transactions</strong> tab combines your cash flow forecast and quick transactions.</p>
+
+    <h3>Account Balances</h3>
+    <p>At the top of the screen, each account displays its current balance. Tap an amount to edit it directly with the keyboard.</p>
+
+    <h3>Forecast Horizon</h3>
+    <p>Adjust the displayed period (7 to 365 days) using the <strong>stepper</strong> or the <strong>"+1M"</strong> button to add 30 days. Upcoming transactions are grouped by day with a projected end-of-day balance.</p>
+
+    <h3>Transaction Colors</h3>
+    <ul>
+      <li>🟡 <strong>Yellow</strong> — quick transaction (Quick TX).</li>
+      <li>🟢 <strong>Green</strong> — upcoming income.</li>
+      <li>🔴 <strong>Red</strong> — upcoming expense.</li>
+    </ul>
+
+    <h3>Auto-Track</h3>
+    <p>When <strong>Auto-Track</strong> is enabled, the app automatically adjusts your account balances based on recurring transactions that have passed since your last manual update.</p>
+
+    <h3>Quick Transactions (Quick TX)</h3>
+    <p>Quick TX lets you instantly record an unplanned expense or income <strong>without a scheduled date</strong> — handy for an unexpected purchase.</p>
+    <ol>
+      <li>Tap the <strong>"Quick TX"</strong> button (yellow lightning bolt).</li>
+      <li>Choose the type: <strong>Expense</strong> or <strong>Income</strong>.</li>
+      <li>Enter the description, amount, and account.</li>
+      <li>Tap <strong>"Add"</strong>.</li>
+    </ol>
+    <p>The Quick TX appears immediately in the list with a yellow background and updates the account balance in real time. Swipe left to edit, right to delete.</p>
+    <div class="highlight">Quick transactions are automatically purged after their date to keep your data clean.</div>
+
+    <h3>Accessing an Upcoming Transaction's Details</h3>
+    <p>Long-press (or use the context menu) on an upcoming transaction to:</p>
+    <ul>
+      <li><strong>Edit</strong> — opens the expense or income form.</li>
+      <li><strong>View in Expenses / View in Income</strong> — navigates to the corresponding tab and highlights the transaction.</li>
+    </ul>
+
+    <h3>Filter by Account</h3>
+    <p>Use the account picker to show only transactions for a specific account.</p>
   </div>
 
+  <!-- ── Settings ──────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🔔</span> Notifications</h2>
-    <p><!-- TODO: How to enable/disable recurring-transaction reminders. --></p>
+    <h2><span class="emoji">⚙️</span> Settings</h2>
+
+    <h3>Categories &amp; Monthly Budgets</h3>
+    <p>Go to <strong>Settings › Categories</strong> to customize your categories.</p>
+    <ul>
+      <li><strong>Add</strong> — tap <strong>+</strong> and enter a name.</li>
+      <li><strong>Edit</strong> — tap a category to open its detail view:
+        <ul>
+          <li>Change the <strong>name</strong> — all linked expenses are automatically updated.</li>
+          <li>Change the <strong>color</strong> — 12 colors available.</li>
+          <li>Set a <strong>monthly budget</strong> — leave blank for no limit.</li>
+        </ul>
+      </li>
+      <li><strong>Delete</strong> — swipe right (system categories cannot be deleted).</li>
+      <li><strong>Reorder</strong> — tap "Edit" then drag rows into place.</li>
+      <li>Changes save automatically when you navigate back.</li>
+    </ul>
+
+    <h3>Bank Accounts</h3>
+    <p>Go to <strong>Settings › Accounts</strong> to manage your accounts.</p>
+    <ul>
+      <li><strong>Add</strong> — tap <strong>+</strong> and name the account.</li>
+      <li><strong>Rename</strong> — tap the pencil icon. The rename updates all associated transactions.</li>
+      <li><strong>Change color</strong> — tap the colored circle next to the name.</li>
+      <li><strong>Reorder</strong> — tap "Edit" then drag rows.</li>
+      <li><strong>Delete</strong> — swipe right.</li>
+    </ul>
+    <div class="highlight">An account's balance is edited directly in the Transactions tab, not in Settings.</div>
+
+    <h3>Date Format</h3>
+    <p>Choose your preferred date display format in <strong>Settings › Date Format</strong>:</p>
+    <ul>
+      <li>DD-MM-YYYY (default)</li>
+      <li>YYYY-MM-DD</li>
+      <li>MM-DD-YYYY</li>
+    </ul>
+
+    <h3>Notifications</h3>
+    <p>Enable reminders from <strong>Settings › Notifications</strong>. You will receive a notification at <strong>9:00 AM</strong> for each recurring expense or income due within the <strong>next 14 days</strong>.</p>
+    <p>To disable, simply toggle the switch off. You can also manage permissions from <strong>iOS Settings › Budget App › Notifications</strong>.</p>
+
+    <h3>Face ID / Touch ID Lock</h3>
+    <p>Enable the lock from <strong>Settings › Security</strong>. Each time the app opens, it will request your Face ID, Touch ID, or device passcode before displaying your data.</p>
+    <p>A privacy screen automatically hides your financial data when you view the app switcher.</p>
+
+    <h3>CSV Import / Export</h3>
+    <p>Go to <strong>Settings › Data › Import / Export CSV</strong>.</p>
+    <ul>
+      <li><strong>Export</strong> — generates a .csv file of your expenses or income, ready to open in Excel or Numbers.</li>
+      <li><strong>Import</strong> — select a .csv file to add transactions in bulk.</li>
+    </ul>
+    <p>Expected format for expenses:</p>
+    <p><code>Description, Amount, Date (ISO8601), Frequency, Category, Account</code></p>
+    <p>Expected format for income:</p>
+    <p><code>Description, Amount, Date (ISO8601), Frequency, Account</code></p>
+    <div class="highlight">Valid frequency values in CSV: unique, hebdo, bihebdo, mensuel, bimensuel, trimestriel, annuel.</div>
+
+    <h3>iCloud Sync</h3>
+    <p>Sync is fully automatic. Any transaction you add or edit on one device is propagated to all your Apple devices signed in with the same iCloud account. No action is required on your part.</p>
   </div>
 
+  <!-- ── FAQ ──────────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🔐</span> Face ID / Touch ID Lock</h2>
-    <p><!-- TODO: How to enable the app's biometric lock. --></p>
-  </div>
+    <h2><span class="emoji">❓</span> Frequently Asked Questions</h2>
 
-  <div class="section">
-    <h2><span class="emoji">📤</span> CSV Import / Export</h2>
-    <p><!-- TODO: How to export your data to CSV and import a file. --></p>
-  </div>
+    <h3>Is my data saved if I uninstall the app?</h3>
+    <p>Yes — if iCloud is active, your data is stored in your iCloud space and automatically restored when you reinstall the app.</p>
 
-  <div class="section">
-    <h2><span class="emoji">❓</span> Frequently Asked Questions (FAQ)</h2>
-    <h3><!-- TODO: Question --></h3>
-    <p><!-- TODO: Answer --></p>
+    <h3>Can I have multiple bank accounts?</h3>
+    <p>Yes. Add as many accounts as you like from <strong>Settings › Accounts</strong>. Every expense and income entry is linked to a specific account.</p>
+
+    <h3>How do I correct an account balance?</h3>
+    <p>Go to the <strong>Transactions</strong> tab, tap the account balance at the top of the screen, and type the correct amount.</p>
+
+    <h3>Does a recurring expense appear multiple times?</h3>
+    <p>In the <strong>Expenses</strong> tab, each entry represents one recurring rule (a single line). In the <strong>Transactions</strong> tab, each future occurrence is listed individually in the forecast.</p>
+
+    <h3>What's the difference between a Quick TX and a regular expense?</h3>
+    <p>A <strong>regular expense</strong> is planned and recurring — it drives your projections and dashboard. A <strong>Quick TX</strong> is an immediate, one-off purchase: it updates your account balance instantly without affecting future projections.</p>
+
+    <h3>What is Auto-Track?</h3>
+    <p>Auto-Track detects recurring transactions whose dates have passed since your last manual balance update, and adjusts your account balances accordingly — automatically.</p>
+
+    <h3>How do I replay the introduction?</h3>
+    <p>Go to <strong>Settings › About › Replay Introduction</strong>.</p>
+
+    <h3>Does the app work without an internet connection?</h3>
+    <p>Yes. All features work offline. iCloud sync resumes as soon as your connection is restored.</p>
+
+    <h3>How do I delete my account and data?</h3>
+    <p>To erase all your data, disable iCloud for Budget App in <strong>iOS Settings › [Your Name] › iCloud</strong>, then uninstall the app. Contact us if you need assistance.</p>
   </div>
 
   <p class="updated">Need more help? <a href="contact.html">Contact us</a></p>

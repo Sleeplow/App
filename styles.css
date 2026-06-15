@@ -168,9 +168,39 @@ header p {
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .section h2 .emoji { font-size: 22px; }
+
+/* Chevron indicator for collapsible sections */
+.section h2::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.section:not(.collapsed) h2::after {
+  transform: rotate(90deg);
+}
+
+/* Collapsed sections show only their title */
+.section.collapsed {
+  padding-bottom: 28px;
+}
+
+.section.collapsed h2 {
+  margin-bottom: 0;
+}
+
+.section.collapsed > :not(h2) {
+  display: none;
+}
 
 .section h3 {
   font-size: 16px;

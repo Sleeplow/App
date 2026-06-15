@@ -8,9 +8,30 @@ function setLang(lang) {
   try { localStorage.setItem('budget-lang', lang); } catch (e) {}
 }
 
+// Make help sections collapsible: only the title shows until tapped.
+function setupCollapsibleSections() {
+  if (!document.body.classList.contains('collapsible-sections')) return;
+  document.querySelectorAll('.section').forEach(section => {
+    if (!section.querySelector('h2')) return;
+    section.classList.add('collapsed');
+    const title = section.querySelector('h2');
+    title.setAttribute('role', 'button');
+    title.setAttribute('tabindex', '0');
+    const toggle = () => section.classList.toggle('collapsed');
+    title.addEventListener('click', toggle);
+    title.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+}
+
 // Restore the visitor's previously chosen language on load.
 document.addEventListener('DOMContentLoaded', () => {
   let lang = 'fr';
   try { lang = localStorage.getItem('budget-lang') || 'fr'; } catch (e) {}
   setLang(lang);
+  setupCollapsibleSections();
 });

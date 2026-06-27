@@ -1,3 +1,18 @@
+/* ───────────────────── Clickjacking guard (F6) ───────────────────────
+   GitHub Pages can't send X-Frame-Options or CSP frame-ancestors, so this is
+   a best-effort defense: if the page is loaded inside a cross-origin frame,
+   break out of it. Harmless when the page is not framed. */
+(function () {
+  try {
+    if (window.top && window.self !== window.top) {
+      window.top.location = window.self.location.href;
+    }
+  } catch (e) {
+    // Cross-origin parent blocked the navigation → hide content as a fallback.
+    document.documentElement.style.visibility = 'hidden';
+  }
+})();
+
 /* ───────────────────────── App registry ─────────────────────────
    One entry per app. To add an app:
      1. create its folder (e.g. budget/) with help/privacy/contact pages,
@@ -56,37 +71,64 @@ function t(value, lang) {
   return value && typeof value === 'object' ? value[lang] : value;
 }
 
+// Safe element builder. textContent never interprets HTML, so app/card data
+// cannot inject markup or scripts — this is the core of the F1 fix.
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text != null) node.textContent = text;
+  return node;
+}
+
+// Only allow safe href schemes (relative paths, https, mailto). Anything else
+// (e.g. a "javascript:" URI) is rejected so card data can never become a link
+// that executes code.
+function safeHref(href) {
+  return typeof href === 'string' && /^(?:\.?\/|https:\/\/|mailto:)/i.test(href)
+    ? href : null;
+}
+
 function buildCard(card) {
-  const tail = card.soon
-    ? `<span class="soon-badge">${card.soon}</span>`
-    : '<span class="menu-arrow">›</span>';
-  const inner =
-    `<span class="menu-icon">${card.icon}</span>` +
-    `<span class="menu-text"><h2>${card.title}</h2><p>${card.desc}</p></span>` +
-    tail;
-  return card.href
-    ? `<a class="menu-card" href="${card.href}">${inner}</a>`
-    : `<div class="menu-card soon">${inner}</div>`;
+  const href = safeHref(card.href);
+  const root = el(href ? 'a' : 'div', href ? 'menu-card' : 'menu-card soon');
+  if (href) root.setAttribute('href', href);
+
+  root.appendChild(el('span', 'menu-icon', card.icon));
+
+  const text = el('span', 'menu-text');
+  text.appendChild(el('h2', null, card.title));
+  text.appendChild(el('p', null, card.desc));
+  root.appendChild(text);
+
+  root.appendChild(card.soon
+    ? el('span', 'soon-badge', card.soon)
+    : el('span', 'menu-arrow', '›'));
+  return root;
 }
 
 function renderTrack(lang) {
   const track = document.getElementById('carousel-track');
-  track.innerHTML = APPS.map(app => {
-    const cards = app.cards[lang].map(buildCard).join('');
-    return `<div class="slide"><nav class="menu">${cards}</nav>` +
-           `<p class="updated">${app.footer[lang]}</p></div>`;
-  }).join('');
+  track.replaceChildren(...APPS.map(app => {
+    const slide = el('div', 'slide');
+    const menu = el('nav', 'menu');
+    app.cards[lang].forEach(card => menu.appendChild(buildCard(card)));
+    slide.appendChild(menu);
+    slide.appendChild(el('p', 'updated', app.footer[lang]));
+    return slide;
+  }));
 }
 
 function renderDots(lang) {
   const dots = document.getElementById('carousel-dots');
   if (APPS.length < 2) { dots.hidden = true; return; }
   dots.hidden = false;
-  dots.innerHTML = APPS.map((app, i) =>
-    `<button class="dot${i === current ? ' active' : ''}" type="button" ` +
-    `aria-label="${t(app.name, lang)}"></button>`).join('');
-  dots.querySelectorAll('.dot').forEach((dot, i) =>
-    dot.addEventListener('click', () => goTo(i)));
+  dots.replaceChildren(...APPS.map((app, i) => {
+    const dot = el('button', 'dot' + (i === current ? ' active' : ''));
+    dot.type = 'button';
+    dot.setAttribute('aria-label', t(app.name, lang));
+    dot.addEventListener('click', () => goTo(i));
+    return dot;
+  }));
 }
 
 // Update the header (icon/name/tagline) and theme to the current app.
@@ -160,15 +202,22 @@ function setupCarousel() {
 /* ─────────────────────── Language + content ─────────────────────── */
 
 function setLang(lang) {
-  document.querySelectorAll('[lang-section]').forEach(el => {
-    el.style.display = el.getAttribute('lang-section') === lang ? 'block' : 'none';
+  document.querySelectorAll('[lang-section]').forEach(sec => {
+    sec.style.display = sec.getAttribute('lang-section') === lang ? 'block' : 'none';
   });
-  document.querySelectorAll('.lang-switch button').forEach((btn, i) => {
-    btn.classList.toggle('active', (i === 0 && lang === 'fr') || (i === 1 && lang === 'en'));
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
   });
   try { localStorage.setItem('budget-lang', lang); } catch (e) {}
   // Carousel cards are language-specific, so re-render them in place.
   if (document.querySelector('.carousel')) renderCarousel(lang);
+}
+
+// Wire the FR/EN buttons (present on every page) via addEventListener instead
+// of inline onclick attributes, so a strict `script-src 'self'` CSP works (F3).
+function setupLangSwitch() {
+  document.querySelectorAll('.lang-switch button[data-lang]').forEach(btn =>
+    btn.addEventListener('click', () => setLang(btn.dataset.lang)));
 }
 
 // Make content sections collapsible: only the title shows until tapped.
@@ -197,9 +246,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (urlLang === 'fr' || urlLang === 'en') {
     lang = urlLang;
   } else {
-    try { lang = localStorage.getItem('budget-lang') || 'fr'; } catch (e) {}
+    // F4: validate the stored value against a whitelist before using it as a
+    // language key — a corrupted value would otherwise break the render.
+    try {
+      const stored = localStorage.getItem('budget-lang');
+      if (stored === 'fr' || stored === 'en') lang = stored;
+    } catch (e) {}
   }
   setupCarousel();
+  setupLangSwitch();
   setLang(lang);
   setupCollapsibleSections();
 });

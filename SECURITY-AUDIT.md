@@ -57,7 +57,7 @@ FR/EN fonctionnels, sonde d'injection rendue inerte) :
 | **F2** | ✅ Corrigé | Balise `<meta>` CSP ajoutée aux 4 pages (`default-src 'none'`, `script-src 'self'`, …). |
 | **F3** | ✅ Corrigé | `onclick` inline remplacés par `addEventListener` + `data-lang` → `script-src 'self'` strict possible. |
 | **F4** | ✅ Corrigé | Valeur `lang` de `localStorage` validée par liste blanche. |
-| **F5** | ⏳ Manuel | **Action requise hors code** : activer « Enforce HTTPS » dans GitHub Pages. |
+| **F5** | ✅ Confirmé | « Enforce HTTPS » **déjà activé** sur GitHub Pages (confirmé par le mainteneur, 2026-06-27) → HSTS + redirection HTTP→HTTPS assurés. |
 | **F6** | ⚠️ Atténué | Garde anti-clickjacking JS (best-effort) ajoutée ; `frame-ancestors`/`X-Frame-Options` restent impossibles sur GitHub Pages. |
 | **F7** | ✅ Partiel | `Referrer-Policy` posé via `<meta>` ; `Permissions-Policy` nécessite des en-têtes (hors GitHub Pages). |
 | **F8** | ➖ Sans objet | Aucun lien `target="_blank"` aujourd'hui — rien à corriger (préventif documenté). |
@@ -270,6 +270,10 @@ GitHub Pages sert aussi l'en-tête HSTS et `X-Content-Type-Options: nosniff`.
 **Recommandation.** Confirmer que « Enforce HTTPS » est activé. Vérifier aussi que
 l'enregistrement DNS de `app.sleeplow.ca` pointe bien vers GitHub Pages et que le
 certificat est émis.
+
+> **Statut (2026-06-27)** : ✅ Résolu. « Enforce HTTPS » est **déjà activé** sur
+> GitHub Pages (confirmé par le mainteneur). GitHub Pages applique donc HSTS et
+> redirige automatiquement le trafic HTTP vers HTTPS.
 
 ---
 

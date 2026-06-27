@@ -2,6 +2,8 @@
 <html lang="fr" data-app="budget">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact &amp; signaler un bug — Budget App</title>
   <link rel="stylesheet" href="../styles.css" />
@@ -10,8 +12,8 @@
 
 <header>
   <div class="lang-switch" role="group" aria-label="Langue / Language">
-    <button class="active" onclick="setLang('fr')">FR</button>
-    <button onclick="setLang('en')">EN</button>
+    <button class="active" type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
   </div>
   <span class="logo-icon" role="img" aria-label="Budget"></span>
   <h1>Contact &amp; support</h1>

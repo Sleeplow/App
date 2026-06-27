@@ -45,6 +45,23 @@ ligne de défense efficace et peu coûteuse.
 > **Sévérité** = impact potentiel · **Urgence** = à quelle vitesse traiter ·
 > **Effort** = coût de correction.
 
+### Statut de remédiation (mise à jour 2026-06-27)
+
+Les correctifs suivants ont été appliqués dans la même branche que ce rapport et
+**vérifiés dans un navigateur headless** (aucune violation CSP, carousel + switch
+FR/EN fonctionnels, sonde d'injection rendue inerte) :
+
+| # | Statut | Détail |
+|---|--------|--------|
+| **F1** | ✅ Corrigé | Rendu reconstruit avec l'API DOM (`createElement`/`textContent`) ; `innerHTML` supprimé ; schéma de `href` validé (rejet de `javascript:`). |
+| **F2** | ✅ Corrigé | Balise `<meta>` CSP ajoutée aux 4 pages (`default-src 'none'`, `script-src 'self'`, …). |
+| **F3** | ✅ Corrigé | `onclick` inline remplacés par `addEventListener` + `data-lang` → `script-src 'self'` strict possible. |
+| **F4** | ✅ Corrigé | Valeur `lang` de `localStorage` validée par liste blanche. |
+| **F5** | ⏳ Manuel | **Action requise hors code** : activer « Enforce HTTPS » dans GitHub Pages. |
+| **F6** | ⚠️ Atténué | Garde anti-clickjacking JS (best-effort) ajoutée ; `frame-ancestors`/`X-Frame-Options` restent impossibles sur GitHub Pages. |
+| **F7** | ✅ Partiel | `Referrer-Policy` posé via `<meta>` ; `Permissions-Policy` nécessite des en-têtes (hors GitHub Pages). |
+| **F8** | ➖ Sans objet | Aucun lien `target="_blank"` aujourd'hui — rien à corriger (préventif documenté). |
+
 ---
 
 ## 2. Constats détaillés

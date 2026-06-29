@@ -66,9 +66,12 @@ const APPS = [
 let current = 0;
 let currentLang = 'fr';
 
-// Resolve a string-or-{fr,en} value for the active language.
+// Resolve a string-or-{fr,en} value for the active language. Falls back to the
+// French value (then empty) if the requested language is missing, so a typo in
+// the APPS registry can never blank out or crash the page.
 function t(value, lang) {
-  return value && typeof value === 'object' ? value[lang] : value;
+  if (value && typeof value === 'object') return value[lang] ?? value.fr ?? '';
+  return value ?? '';
 }
 
 // Safe element builder. textContent never interprets HTML, so app/card data
@@ -111,9 +114,11 @@ function renderTrack(lang) {
   track.replaceChildren(...APPS.map(app => {
     const slide = el('div', 'slide');
     const menu = el('nav', 'menu');
-    app.cards[lang].forEach(card => menu.appendChild(buildCard(card)));
+    // Fall back to the French cards if a language key is missing on an app.
+    const cards = (app.cards && (app.cards[lang] || app.cards.fr)) || [];
+    cards.forEach(card => menu.appendChild(buildCard(card)));
     slide.appendChild(menu);
-    slide.appendChild(el('p', 'updated', app.footer[lang]));
+    slide.appendChild(el('p', 'updated', t(app.footer, lang)));
     return slide;
   }));
 }
@@ -146,7 +151,16 @@ function updateHeader(lang) {
 // Slide the track and refresh dots/arrow states for the current index.
 function updatePosition() {
   const track = document.getElementById('carousel-track');
-  if (track) track.style.transform = `translateX(-${current * 100}%)`;
+  if (track) {
+    track.style.transform = `translateX(-${current * 100}%)`;
+    // Keep off-screen slides out of the tab order and the accessibility tree:
+    // their links must not be focusable while hidden.
+    track.querySelectorAll('.slide').forEach((slide, i) => {
+      const active = i === current;
+      slide.inert = !active;
+      slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+  }
   document.querySelectorAll('.carousel-dots .dot').forEach((dot, i) =>
     dot.classList.toggle('active', i === current));
   const prev = document.querySelector('.carousel-arrow.prev');
@@ -202,13 +216,15 @@ function setupCarousel() {
 /* ─────────────────────── Language + content ─────────────────────── */
 
 function setLang(lang) {
+  // Keep <html lang> in sync so screen readers use the right pronunciation.
+  document.documentElement.lang = lang;
   document.querySelectorAll('[lang-section]').forEach(sec => {
     sec.style.display = sec.getAttribute('lang-section') === lang ? 'block' : 'none';
   });
   document.querySelectorAll('.lang-switch button').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
-  try { localStorage.setItem('budget-lang', lang); } catch (e) {}
+  try { localStorage.setItem('sleeplow-lang', lang); } catch (e) {}
   // Carousel cards are language-specific, so re-render them in place.
   if (document.querySelector('.carousel')) renderCarousel(lang);
 }
@@ -228,7 +244,11 @@ function setupCollapsibleSections() {
     const title = section.querySelector('h2');
     title.setAttribute('role', 'button');
     title.setAttribute('tabindex', '0');
-    const toggle = () => section.classList.toggle('collapsed');
+    title.setAttribute('aria-expanded', 'false');
+    const toggle = () => {
+      const collapsed = section.classList.toggle('collapsed');
+      title.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    };
     title.addEventListener('click', toggle);
     title.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -248,8 +268,10 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     // F4: validate the stored value against a whitelist before using it as a
     // language key — a corrupted value would otherwise break the render.
+    // Read the current key, falling back to the legacy 'budget-lang' key.
     try {
-      const stored = localStorage.getItem('budget-lang');
+      const stored = localStorage.getItem('sleeplow-lang') ||
+                     localStorage.getItem('budget-lang');
       if (stored === 'fr' || stored === 'en') lang = stored;
     } catch (e) {}
   }

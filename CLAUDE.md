@@ -28,6 +28,8 @@ Tout est piloté par les données — **3 étapes** :
    relatifs sont déjà en `../styles.css`, `../script.js`, back-link `../index.html`.
    **Conserver** le bloc `<meta http-equiv="Content-Security-Policy">` + le
    `<meta name="referrer">` du `<head>` (cf. § Sécurité — toute page doit l'avoir).
+   **Adapter** aussi `<meta name="description">` et les balises Open Graph
+   (`og:title`, `og:description`, `og:url`) au contenu de la page.
 
 2. **Ajouter le thème** dans `styles.css` : dupliquer un bloc `[data-app="..."]`
    (variante claire + variante sombre dans la `@media (prefers-color-scheme: dark)`)
@@ -51,7 +53,8 @@ dans `styles.css`, et `placeholder-logo.svg` si inutilisé.
   (racine), donc le même chemin fonctionne depuis n'importe quelle page.
 - **Langue** : switch FR/EN global dans le bandeau d'en-tête (`.lang-switch`),
   identique sur toutes les pages. `setLang()` mémorise le choix (`localStorage`
-  clé `budget-lang` + paramètre d'URL `?lang=fr|en`) et re-rend le carousel.
+  clé `sleeplow-lang`, ancienne clé `budget-lang` lue en repli) + paramètre d'URL
+  `?lang=fr|en`, met à jour `<html lang>`, et re-rend le carousel.
 - **Texte bilingue** : sur les sous-pages via `[lang-section="fr|en"]` ; dans le
   registre `APPS` via des valeurs `{ fr, en }` (ou une simple chaîne si identique).
 
@@ -59,7 +62,10 @@ dans `styles.css`, et `placeholder-logo.svg` si inutilisé.
 
 Le site n'a ni backend ni collecte de données, mais ces règles évitent de
 réintroduire des failles. **À appliquer dès qu'on touche au HTML ou au JS.**
-Détail et justifications dans `SECURITY-AUDIT.md`.
+Détail et justifications dans `SECURITY-AUDIT.md`. Un workflow CI
+`security-lint` (`.github/workflows/`) vérifie automatiquement ces règles à
+chaque push/PR (il échoue si `innerHTML`/handler inline/`<script>` inline
+réapparaît, ou si une page n'a pas de CSP stricte).
 
 ### Toujours
 

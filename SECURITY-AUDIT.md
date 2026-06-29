@@ -62,6 +62,9 @@ FR/EN fonctionnels, sonde d'injection rendue inerte) :
 | **F7** | ✅ Partiel | `Referrer-Policy` posé via `<meta>` ; `Permissions-Policy` nécessite des en-têtes (hors GitHub Pages). |
 | **F8** | ➖ Sans objet | Aucun lien `target="_blank"` aujourd'hui — rien à corriger (préventif documenté). |
 
+> Une **2ᵉ passe** (sécurité approfondie + conception web) a été menée le
+> **2026-06-29** : nouveaux constats F9–F14 / C1–C7 et leur statut au **§ 6**.
+
 ---
 
 ## 2. Constats détaillés
@@ -381,10 +384,66 @@ Ces éléments réduisent significativement le risque et méritent d'être maint
   de noms, pas de requête réseau) et une note localhost dans `CLAUDE.md`.
 - Recherche de secrets/identifiants dans le code et survol de l'historique git
   (`git log`) → rien de sensible.
-- Présence de workflows CI (`.github/`) → aucun.
+- Présence de workflows CI (`.github/`) → aucun à la 1ʳᵉ passe (un workflow
+  `security-lint` est ajouté en 2ᵉ passe, cf. § 6, F9).
 - Analyse des dépendances tierces → aucune.
 
 > **Limites de l'audit :** la configuration runtime de GitHub Pages (option
 > « Enforce HTTPS », en-têtes HTTP réellement servis) et un scan de secrets
 > exhaustif sur tout l'historique git **ne peuvent pas être validés depuis le seul
 > code source** et doivent être contrôlés côté plateforme (cf. F5).
+
+---
+
+## 6. Deuxième passe (2026-06-29) — sécurité approfondie & conception web
+
+Revue complémentaire sous deux angles (spécialiste sécurité de l'information +
+spécialiste conception web). **Aucune faille active** : il s'agit de **risques
+futurs** et d'améliorations de robustesse/qualité. La majorité a été **corrigée
+dans la même livraison** et **vérifiée en navigateur headless** (0 violation CSP,
+carousel + a11y fonctionnels, sonde XSS inerte) ainsi que par un lint local.
+
+### 6.1 Sécurité de l'information
+
+| # | Constat | Sévérité | Statut |
+|---|---------|----------|--------|
+| **F9** | Aucun garde-fou automatique → les correctifs F1–F3 peuvent régresser silencieusement | Moyen | ✅ Corrigé — workflow CI `security-lint` (échoue si `innerHTML`/handler inline/`<script>` inline / CSP manquante ou `script-src 'unsafe-inline'`) |
+| **F10** | `main` non protégé + déploiement immédiat en production | Moyen | ⏳ Manuel — protection de branche (PR + check `security-lint` requis, pas de `force-push`) |
+| **F11** | Risque de *subdomain takeover* / hygiène DNS (`app.sleeplow.ca`) | Faible-Moyen | ⏳ Manuel — retirer le DNS avant tout décommission ; ajouter un enregistrement CAA |
+| **F12** | CSP encore en `style-src 'unsafe-inline'` | Faible | ✅ Corrigé — styles inline retirés (`.mt-12`) → `style-src 'self'` strict (vérifié : CSSOM non bloquée) |
+| **F13** | Pas de `security.txt` (divulgation responsable) | Informatif | ✅ Corrigé — `/.well-known/security.txt` (+ `.nojekyll` pour le servir) |
+| **F14** | Promesses de confidentialité publiques fortes | Gouvernance | ⏳ À valider — cohérence avec l'app iOS (conformité App Store / juridique) |
+
+### 6.2 Conception web (robustesse, accessibilité, SEO, maintenabilité)
+
+| # | Constat | Sévérité | Statut |
+|---|---------|----------|--------|
+| **C1** | `app.cards[lang]`/`footer[lang]` sans repli → page d'accueil blanche si une clé de langue manque | Moyen | ✅ Corrigé — repli `… \|\| .fr \|\| []` ; `t()` retombe sur `fr` |
+| **C2** | `<head>`/header dupliqués sur chaque page → risque d'oubli de la CSP | Moyen | ⚠️ Atténué — le CI `security-lint` détecte une CSP manquante ; templating (build) laissé optionnel |
+| **C3** | Lacunes d'accessibilité | Moyen | ✅ Corrigé — `aria-expanded` (sections), `<html lang>` dynamique, slides inactives `inert`+`aria-hidden`, `prefers-reduced-motion` |
+| **C4** | Contraste `--text-muted` (#8e8e93) sous le seuil WCAG AA | Faible | ✅ Corrigé — assombri en `#636366` (≈6:1) |
+| **C5** | SEO / partage absents | Faible | ✅ Corrigé — `description` + Open Graph/Twitter + `favicon.svg` + `apple-touch-icon.png` + `og-image.png` + `theme-color` sur les 4 pages |
+| **C6** | `Screenshoot/` (2,7 Mo) servi publiquement | Faible | ⏳ À décider — suppression = retrait de contenu ajouté par le mainteneur (laissé à ta décision) |
+| **C7** | Clé `localStorage` `budget-lang` (nom hérité) | Cosmétique | ✅ Corrigé — renommée `sleeplow-lang` (lecture rétrocompatible avec l'ancienne clé) |
+
+### Détail des points laissés manuels / à décider
+
+- **F10 — Protection de `main`.** Réglage GitHub (*Settings → Branches*) : exiger
+  une PR + le check `security-lint`, interdire le `force-push`. Empêche un commit
+  direct (accidentel ou malveillant) de partir directement en production.
+- **F11 — DNS / subdomain takeover.** Si GitHub Pages est un jour désactivé alors
+  que le `CNAME` pointe encore vers GitHub, un tiers pourrait revendiquer
+  `app.sleeplow.ca`. Retirer l'enregistrement DNS **avant** tout décommission ;
+  ajouter un enregistrement **CAA** sur `sleeplow.ca` pour restreindre les
+  autorités de certification autorisées.
+- **F14 — Promesses de confidentialité.** La page affiche « rien ne quitte
+  l'appareil ». S'assurer que l'app iOS le respecte exactement (cohérence
+  juridique / déclaration de confidentialité App Store).
+- **C2 — Duplication du `<head>`.** Le CI `security-lint` rattrape une CSP oubliée,
+  mais factoriser l'en-tête commun (mini-build type 11ty/Astro, ou modèle canonique)
+  reste l'option propre si le nombre d'apps grandit — laissé optionnel (philosophie
+  « sans build »).
+- **C6 — Dossier `Screenshoot/`.** Committé et servi sur
+  `app.sleeplow.ca/Screenshoot/…`. Non sensible, mais inutile en production.
+  Suppression **non effectuée** (contenu ajouté par le mainteneur) — à confirmer,
+  ou à déplacer hors du site servi.

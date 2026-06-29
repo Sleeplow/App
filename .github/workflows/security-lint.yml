@@ -1,0 +1,59 @@
+name: security-lint
+
+# Enforces the security conventions from SECURITY-AUDIT.md / CLAUDE.md so the
+# F1–F3 fixes can never silently regress. Runs on every push and pull request.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: No dangerous JS sinks (innerHTML, eval, document.write…)
+        run: |
+          files=$(git ls-files '*.js' | grep -v node_modules || true)
+          if [ -n "$files" ] && grep -nE 'innerHTML|outerHTML|insertAdjacentHTML|document\.write|eval\(|new Function' $files; then
+            echo "::error::Dangerous JS sink found — build the DOM with the el() helper / textContent (see CLAUDE.md § Sécurité)."
+            exit 1
+          fi
+          echo "OK: no dangerous JS sinks."
+
+      - name: No inline event handlers in HTML
+        run: |
+          files=$(git ls-files '*.html')
+          if [ -n "$files" ] && grep -nEi '\s(onclick|onload|onerror|onmouseover|onmouseout|onfocus|onblur|onsubmit|onchange|oninput|onkeydown|onkeyup|onkeypress|ontouchstart|ontouchend|onscroll|onresize)=' $files; then
+            echo "::error::Inline event handler found — wire events via addEventListener in script.js."
+            exit 1
+          fi
+          echo "OK: no inline event handlers."
+
+      - name: No inline <script> in HTML
+        run: |
+          files=$(git ls-files '*.html')
+          if [ -n "$files" ] && grep -nE '<script>' $files; then
+            echo "::error::Inline <script> found — load JS from an external file so script-src 'self' holds."
+            exit 1
+          fi
+          echo "OK: no inline <script>."
+
+      - name: Every HTML page has a Content-Security-Policy (with strict script-src)
+        run: |
+          fail=0
+          for f in $(git ls-files '*.html'); do
+            if ! grep -q 'http-equiv="Content-Security-Policy"' "$f"; then
+              echo "::error file=$f::Missing Content-Security-Policy meta tag."
+              fail=1
+            fi
+            if grep -nE "script-src[^\";]*'unsafe-inline'" "$f"; then
+              echo "::error file=$f::script-src must not use 'unsafe-inline'."
+              fail=1
+            fi
+          done
+          [ "$fail" = "0" ] && echo "OK: all HTML pages carry a strict CSP."

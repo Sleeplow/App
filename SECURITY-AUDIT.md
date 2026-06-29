@@ -423,7 +423,7 @@ carousel + a11y fonctionnels, sonde XSS inerte) ainsi que par un lint local.
 | **C3** | Lacunes d'accessibilité | Moyen | ✅ Corrigé — `aria-expanded` (sections), `<html lang>` dynamique, slides inactives `inert`+`aria-hidden`, `prefers-reduced-motion` |
 | **C4** | Contraste `--text-muted` (#8e8e93) sous le seuil WCAG AA | Faible | ✅ Corrigé — assombri en `#636366` (≈6:1) |
 | **C5** | SEO / partage absents | Faible | ✅ Corrigé — `description` + Open Graph/Twitter + `favicon.svg` + `apple-touch-icon.png` + `og-image.png` + `theme-color` sur les 4 pages |
-| **C6** | `Screenshoot/` (2,7 Mo) servi publiquement | Faible | ⏳ À décider — suppression = retrait de contenu ajouté par le mainteneur (laissé à ta décision) |
+| **C6** | `Screenshoot/` (2,7 Mo) servi publiquement | Faible | ✅ Corrigé — dossier supprimé du dépôt (confirmé par le mainteneur, 2026-06-29) |
 | **C7** | Clé `localStorage` `budget-lang` (nom hérité) | Cosmétique | ✅ Corrigé — renommée `sleeplow-lang` (lecture rétrocompatible avec l'ancienne clé) |
 
 ### Détail des points laissés manuels / à décider
@@ -445,5 +445,5 @@ carousel + a11y fonctionnels, sonde XSS inerte) ainsi que par un lint local.
   « sans build »).
 - **C6 — Dossier `Screenshoot/`.** Committé et servi sur
   `app.sleeplow.ca/Screenshoot/…`. Non sensible, mais inutile en production.
-  Suppression **non effectuée** (contenu ajouté par le mainteneur) — à confirmer,
-  ou à déplacer hors du site servi.
+  **Supprimé du dépôt le 2026-06-29** (confirmé par le mainteneur). Les captures
+  restent disponibles dans l'historique git si besoin.

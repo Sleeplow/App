@@ -32,14 +32,14 @@ const APPS = [
     },
     cards: {
       fr: [
-        { icon: '📖', title: 'Aide & fonctionnalités', desc: "Apprenez à utiliser toutes les fonctions de l'application", href: 'budget/help.html' },
-        { icon: '🔒', title: 'Politique de confidentialité', desc: 'Comment vos données sont traitées et protégées', href: 'budget/privacy.html' },
-        { icon: '✉️', title: 'Contact & signaler un bug', desc: 'Une question, une suggestion ou un problème ?', href: 'budget/contact.html' }
+        { icon: '📖', title: 'Aide & fonctionnalités', desc: "Apprenez à utiliser toutes les fonctions de l'application", href: './budget/help.html' },
+        { icon: '🔒', title: 'Politique de confidentialité', desc: 'Comment vos données sont traitées et protégées', href: './budget/privacy.html' },
+        { icon: '✉️', title: 'Contact & signaler un bug', desc: 'Une question, une suggestion ou un problème ?', href: './budget/contact.html' }
       ],
       en: [
-        { icon: '📖', title: 'Help & Features', desc: "Learn how to use all of the app's features", href: 'budget/help.html' },
-        { icon: '🔒', title: 'Privacy Policy', desc: 'How your data is handled and protected', href: 'budget/privacy.html' },
-        { icon: '✉️', title: 'Contact & Report a Bug', desc: 'A question, a suggestion or a problem?', href: 'budget/contact.html' }
+        { icon: '📖', title: 'Help & Features', desc: "Learn how to use all of the app's features", href: './budget/help.html' },
+        { icon: '🔒', title: 'Privacy Policy', desc: 'How your data is handled and protected', href: './budget/privacy.html' },
+        { icon: '✉️', title: 'Contact & Report a Bug', desc: 'A question, a suggestion or a problem?', href: './budget/contact.html' }
       ]
     }
   },

@@ -416,62 +416,7 @@ header p {
   color: var(--arrow);
   font-size: 22px;
   flex-shrink: 0;
-  transition: transform 0.2s ease;
 }
-
-/* ── Accordion cards (home page) ─────────────────────────────────
-   A card whose header is a <button> toggles an inline panel below it. */
-button.menu-card {
-  width: 100%;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.menu-item.open .menu-card .menu-arrow {
-  transform: rotate(90deg);
-}
-
-.menu-panel {
-  padding: 8px 26px 4px;
-}
-
-.menu-panel p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 10px;
-}
-
-.menu-panel-points {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 10px;
-}
-
-.menu-panel-points li {
-  font-size: 14px;
-  color: var(--text-secondary);
-  padding: 5px 0 5px 22px;
-  position: relative;
-}
-
-.menu-panel-points li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.menu-panel a {
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.menu-panel a:hover { text-decoration: underline; }
-
-.menu-panel-more { font-weight: 600; margin-bottom: 0; }
 
 /* Buttons / call-to-action links */
 .btn {
@@ -601,7 +546,6 @@ button.menu-card {
   .carousel-arrow,
   .carousel-dots .dot,
   .section h2::after,
-  .menu-card .menu-arrow,
   .lang-switch button,
   .btn { transition: none; }
 

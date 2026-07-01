@@ -32,88 +32,14 @@ const APPS = [
     },
     cards: {
       fr: [
-        {
-          icon: '📖', title: 'Aide & fonctionnalités',
-          desc: "Apprenez à utiliser toutes les fonctions de l'application",
-          href: './budget/help.html',
-          details: {
-            intro: "Le guide complet de Budget, classé par onglet de l'application :",
-            points: [
-              'Premiers pas & tableau de bord',
-              'Dépenses, revenus et transactions rapides',
-              'Scan de documents et Insights (Apple Intelligence)',
-              'Widget, raccourcis Siri et réglages'
-            ]
-          }
-        },
-        {
-          icon: '🔒', title: 'Politique de confidentialité',
-          desc: 'Comment vos données sont traitées et protégées',
-          href: './budget/privacy.html',
-          details: {
-            intro: 'Vos données restent sur votre appareil et votre iCloud privé — aucune collecte, aucun serveur tiers, aucune publicité.',
-            points: [
-              'Connexion anonyme avec Sign in with Apple',
-              'Stockage local et synchronisation iCloud chiffrée',
-              'Aucune donnée partagée avec des tiers',
-              "Intelligence artificielle 100 % sur l'appareil"
-            ]
-          }
-        },
-        {
-          icon: '✉️', title: 'Contact & signaler un bug',
-          desc: 'Une question, une suggestion ou un problème ?',
-          href: './budget/contact.html',
-          details: {
-            intro: 'Une question, une suggestion ou un bug ? Écrivez-nous :',
-            links: [
-              { text: 'support@sleeplow.ca', href: 'mailto:support@sleeplow.ca?subject=Budget%20—%20Support' },
-              { text: 'privacy@sleeplow.ca', href: 'mailto:privacy@sleeplow.ca?subject=Budget%20—%20Confidentialité' }
-            ]
-          }
-        }
+        { icon: '📖', title: 'Aide & fonctionnalités', desc: "Apprenez à utiliser toutes les fonctions de l'application", href: './budget/help.html' },
+        { icon: '🔒', title: 'Politique de confidentialité', desc: 'Comment vos données sont traitées et protégées', href: './budget/privacy.html' },
+        { icon: '✉️', title: 'Contact & signaler un bug', desc: 'Une question, une suggestion ou un problème ?', href: './budget/contact.html' }
       ],
       en: [
-        {
-          icon: '📖', title: 'Help & Features',
-          desc: "Learn how to use all of the app's features",
-          href: './budget/help.html',
-          details: {
-            intro: "The complete Budget guide, organized by app tab:",
-            points: [
-              'Getting started & dashboard',
-              'Expenses, income and quick transactions',
-              'Document scanning and Insights (Apple Intelligence)',
-              'Widget, Siri shortcuts and settings'
-            ]
-          }
-        },
-        {
-          icon: '🔒', title: 'Privacy Policy',
-          desc: 'How your data is handled and protected',
-          href: './budget/privacy.html',
-          details: {
-            intro: 'Your data stays on your device and your private iCloud — no collection, no third-party servers, no ads.',
-            points: [
-              'Anonymous sign-in with Sign in with Apple',
-              'Local storage and encrypted iCloud sync',
-              'No data shared with third parties',
-              'Artificial intelligence runs 100% on-device'
-            ]
-          }
-        },
-        {
-          icon: '✉️', title: 'Contact & Report a Bug',
-          desc: 'A question, a suggestion or a problem?',
-          href: './budget/contact.html',
-          details: {
-            intro: 'A question, a suggestion or a bug? Write to us:',
-            links: [
-              { text: 'support@sleeplow.ca', href: 'mailto:support@sleeplow.ca?subject=Budget%20—%20Support' },
-              { text: 'privacy@sleeplow.ca', href: 'mailto:privacy@sleeplow.ca?subject=Budget%20—%20Privacy' }
-            ]
-          }
-        }
+        { icon: '📖', title: 'Help & Features', desc: "Learn how to use all of the app's features", href: './budget/help.html' },
+        { icon: '🔒', title: 'Privacy Policy', desc: 'How your data is handled and protected', href: './budget/privacy.html' },
+        { icon: '✉️', title: 'Contact & Report a Bug', desc: 'A question, a suggestion or a problem?', href: './budget/contact.html' }
       ]
     }
   },
@@ -165,85 +91,7 @@ function safeHref(href) {
     ? href : null;
 }
 
-// "Read more" link label for the accordion panel, by language.
-const READ_MORE = { fr: 'Lire la suite ›', en: 'Read more ›' };
-
-// Monotonic counter so each accordion panel gets a unique id for aria-controls.
-// It only needs to be unique among the panels present at once; an ever-growing
-// value guarantees that across re-renders (old DOM is replaced each time).
-let panelSeq = 0;
-
-// Build the inline panel revealed when an accordion card is expanded. Everything
-// is created via el()/createElement + textContent (which never interprets
-// HTML), so card data can't inject markup (F1). Links go through safeHref().
-function buildPanel(card, lang) {
-  const d = card.details;
-  const panel = el('div', 'menu-panel');
-  panel.hidden = true; // collapsed by default
-
-  if (d.intro) panel.appendChild(el('p', 'menu-panel-intro', d.intro));
-
-  if (Array.isArray(d.points) && d.points.length) {
-    const ul = el('ul', 'menu-panel-points');
-    d.points.forEach(pt => ul.appendChild(el('li', null, pt)));
-    panel.appendChild(ul);
-  }
-
-  if (Array.isArray(d.links)) {
-    d.links.forEach(link => {
-      const href = safeHref(link.href);
-      if (!href) return;
-      const p = el('p', 'menu-panel-link');
-      const a = el('a', null, link.text);
-      a.setAttribute('href', href);
-      p.appendChild(a);
-      panel.appendChild(p);
-    });
-  }
-
-  const moreHref = safeHref(card.href);
-  if (moreHref) {
-    const p = el('p', 'menu-panel-more');
-    const a = el('a', null, READ_MORE[lang] || READ_MORE.fr);
-    a.setAttribute('href', moreHref);
-    p.appendChild(a);
-    panel.appendChild(p);
-  }
-  return panel;
-}
-
-function buildCard(card, lang) {
-  // Accordion card: a header button toggles an inline panel in place.
-  if (card.details) {
-    const item = el('div', 'menu-item');
-
-    const header = el('button', 'menu-card');
-    header.type = 'button';
-    header.appendChild(el('span', 'menu-icon', card.icon));
-    const headText = el('span', 'menu-text');
-    headText.appendChild(el('h2', null, card.title));
-    headText.appendChild(el('p', null, card.desc));
-    header.appendChild(headText);
-    header.appendChild(el('span', 'menu-arrow', '›'));
-
-    const panel = buildPanel(card, lang);
-    const panelId = 'menu-panel-' + (panelSeq++);
-    panel.id = panelId;
-    header.setAttribute('aria-expanded', 'false');
-    header.setAttribute('aria-controls', panelId);
-
-    header.addEventListener('click', () => {
-      const open = item.classList.toggle('open');
-      header.setAttribute('aria-expanded', open ? 'true' : 'false');
-      panel.hidden = !open;
-    });
-
-    item.appendChild(header);
-    item.appendChild(panel);
-    return item;
-  }
-
-  // Plain card: a link (when it has a safe href) or a non-clickable "soon" tile.
+function buildCard(card) {
   const href = safeHref(card.href);
   const root = el(href ? 'a' : 'div', href ? 'menu-card' : 'menu-card soon');
   if (href) root.setAttribute('href', href);
@@ -268,7 +116,7 @@ function renderTrack(lang) {
     const menu = el('nav', 'menu');
     // Fall back to the French cards if a language key is missing on an app.
     const cards = (app.cards && (app.cards[lang] || app.cards.fr)) || [];
-    cards.forEach(card => menu.appendChild(buildCard(card, lang)));
+    cards.forEach(card => menu.appendChild(buildCard(card)));
     slide.appendChild(menu);
     slide.appendChild(el('p', 'updated', t(app.footer, lang)));
     return slide;

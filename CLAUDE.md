@@ -25,7 +25,10 @@ Tout est piloté par les données — **3 étapes** :
 1. **Créer le dossier** `monapp/` avec `help.html`, `privacy.html`, `contact.html`
    et `logo.svg`. Le plus simple : copier ceux de `budget/` puis adapter le contenu.
    Dans chaque page HTML, mettre `<html lang="fr" data-app="monapp">`. Les chemins
-   relatifs sont déjà en `../styles.css`, `../script.js`, back-link `../index.html`.
+   relatifs sont déjà en `../styles.css`, `../script.js`. **Adapter** le back-link
+   vers `../index.html?app=monapp` (paramètre `app` = l'`id` de l'app, cf. `APPS`
+   dans `script.js`) pour que le carousel se rouvre sur la bonne slide — même
+   convention pour toutes les apps, y compris la première.
    **Conserver** le bloc `<meta http-equiv="Content-Security-Policy">` + le
    `<meta name="referrer">` du `<head>` (cf. § Sécurité — toute page doit l'avoir).
    **Adapter** aussi `<meta name="description">` et les balises Open Graph

@@ -152,6 +152,7 @@ function updateHeader(lang) {
   if (name) name.textContent = t(app.name, lang);
   if (tagline) tagline.textContent = t(app.tagline, lang);
   if (logo) logo.setAttribute('aria-label', t(app.name, lang));
+  updateAppMenuActiveState();
 }
 
 // Slide the track and refresh dots/arrow states for the current index.
@@ -219,6 +220,82 @@ function setupCarousel() {
   if (APPS.length < 2) carousel.querySelectorAll('.carousel-arrow').forEach(a => { a.hidden = true; });
 }
 
+/* ─────────────────── App menu (hamburger, every page) ───────────────────
+   Lets any page jump straight to another app instead of stepping through
+   the carousel one slide at a time. On the home page it just moves the
+   carousel in place; on a sub-page it links to that app's home slide. */
+
+// data-app on the item scopes the app's own [data-app="id"] theme block
+// (--accent, --app-logo…) to it, so each entry renders in its app's colors.
+function buildAppMenuItem(app, lang, onHome) {
+  const item = el('a', 'app-menu-item');
+  const back = document.querySelector('.back-link');
+  const base = onHome ? '' : (back ? back.getAttribute('href').split('?')[0] : '../index.html');
+  item.setAttribute('href', `${base}?app=${encodeURIComponent(app.id)}`);
+  item.setAttribute('data-app', app.id);
+  item.dataset.appId = app.id;
+  item.appendChild(el('span', 'app-menu-icon'));
+  item.appendChild(el('span', 'app-menu-label', t(app.name, lang)));
+  item.addEventListener('click', e => {
+    if (onHome) {
+      e.preventDefault();
+      const idx = APPS.findIndex(a => a.id === app.id);
+      if (idx !== -1) goTo(idx);
+    }
+    closeAppMenu();
+  });
+  return item;
+}
+
+function renderAppMenu(lang) {
+  const menu = document.getElementById('app-menu');
+  if (!menu) return;
+  const onHome = !!document.querySelector('.carousel');
+  menu.replaceChildren(...APPS.map(app => buildAppMenuItem(app, lang, onHome)));
+  updateAppMenuActiveState();
+}
+
+// Highlight whichever app the page (or carousel slide) is currently showing.
+function updateAppMenuActiveState() {
+  const menu = document.getElementById('app-menu');
+  if (!menu) return;
+  const activeId = document.documentElement.getAttribute('data-app');
+  menu.querySelectorAll('.app-menu-item').forEach(item => {
+    const active = item.dataset.appId === activeId;
+    item.classList.toggle('active', active);
+    item.setAttribute('aria-current', active ? 'page' : 'false');
+  });
+}
+
+function closeAppMenu() {
+  const menu = document.getElementById('app-menu');
+  const toggle = document.querySelector('.menu-toggle');
+  if (menu) menu.hidden = true;
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+}
+
+function setupAppMenu() {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('app-menu');
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener('click', e => {
+    e.stopPropagation();
+    const willOpen = menu.hidden;
+    menu.hidden = !willOpen;
+    toggle.setAttribute('aria-expanded', String(willOpen));
+  });
+  document.addEventListener('click', e => {
+    if (!menu.hidden && !menu.contains(e.target) && e.target !== toggle) closeAppMenu();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !menu.hidden) {
+      closeAppMenu();
+      toggle.focus();
+    }
+  });
+}
+
 /* ─────────────────────── Language + content ─────────────────────── */
 
 function setLang(lang) {
@@ -231,6 +308,8 @@ function setLang(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
   try { localStorage.setItem('sleeplow-lang', lang); } catch (e) {}
+  // App menu labels are language-specific on every page.
+  renderAppMenu(lang);
   // Carousel cards are language-specific, so re-render them in place.
   if (document.querySelector('.carousel')) renderCarousel(lang);
 }
@@ -289,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   setupCarousel();
   setupLangSwitch();
+  setupAppMenu();
   setLang(lang);
   setupCollapsibleSections();
 });

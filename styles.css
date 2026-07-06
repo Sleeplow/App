@@ -199,6 +199,80 @@ header p {
   opacity: 1;
 }
 
+/* ──────── App menu (hamburger, top-left of the header on every page) ────────
+   Jumps directly to any app: the carousel on the home page, or that app's
+   home slide from a sub-page. */
+
+.menu-toggle {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--header-text);
+}
+
+.app-menu {
+  position: absolute;
+  top: 58px;
+  left: 16px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 190px;
+  padding: 6px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 12px 28px var(--card-shadow-hover);
+}
+
+.app-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.app-menu-item:hover,
+.app-menu-item:focus-visible,
+.app-menu-item.active {
+  background: var(--accent-bg);
+  color: var(--accent-contrast);
+}
+
+.app-menu-icon {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  background-color: var(--accent);
+  -webkit-mask: var(--app-logo) center / contain no-repeat;
+  mask: var(--app-logo) center / contain no-repeat;
+}
+
 /* ─────────────────────────── Layout ─────────────────────────── */
 
 .container {

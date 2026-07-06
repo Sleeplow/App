@@ -64,22 +64,6 @@ const APPS = [
         { icon: '✉️', title: 'Contact & Report a Bug', desc: 'A question, a suggestion or a problem?', href: './storage/contact.html' }
       ]
     }
-  },
-
-  /* Placeholder slide — demonstrates the multi-app navigation. Replace with a
-     real app (own folder + [data-app="..."] theme block) or delete this entry. */
-  {
-    id: 'next',
-    name: { fr: 'Votre prochaine app', en: 'Your next app' },
-    tagline: { fr: 'par Sleeplow', en: 'by Sleeplow' },
-    footer: {
-      fr: 'Un emplacement prêt pour votre prochaine application',
-      en: 'A slot ready for your next application'
-    },
-    cards: {
-      fr: [{ icon: '✨', title: 'Bientôt disponible', desc: 'Une nouvelle application arrive ici', soon: 'Bientôt' }],
-      en: [{ icon: '✨', title: 'Coming soon', desc: 'A new application is on its way here', soon: 'Soon' }]
-    }
   }
 ];
 

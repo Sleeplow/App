@@ -245,6 +245,13 @@ header p {
   box-shadow: 0 12px 28px var(--card-shadow-hover);
 }
 
+/* The `hidden` attribute alone loses to the `display: flex` above (author
+   CSS always beats the browser's default UA stylesheet), so it needs an
+   explicit override here to actually hide the menu. */
+.app-menu[hidden] {
+  display: none;
+}
+
 .app-menu-item {
   display: flex;
   align-items: center;

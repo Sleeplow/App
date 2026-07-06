@@ -87,17 +87,6 @@
   --app-logo: url(storage/logo.svg);
 }
 
-/* Placeholder slide for an upcoming app — remove once a real app replaces it. */
-[data-app="next"] {
-  --accent: #6366f1;
-  --accent-bg: #ececfb;
-  --accent-contrast: #2a2a6e;
-  --header-bg: #4f46e5;
-  --header-text: #fff;
-  --header-logo: #fff;
-  --app-logo: url(placeholder-logo.svg);
-}
-
 @media (prefers-color-scheme: dark) {
   [data-app="budget"] {
     --accent: #2ecc8f;
@@ -114,14 +103,6 @@
     --header-bg: #0d1e38;
     --header-text: #f5f5f7;
     --header-logo: #3b9ef5;
-  }
-  [data-app="next"] {
-    --accent: #8b8df0;
-    --accent-bg: #1c1c3a;
-    --accent-contrast: #d9d9fb;
-    --header-bg: #14142b;
-    --header-text: #f5f5f7;
-    --header-logo: #8b8df0;
   }
 }
 

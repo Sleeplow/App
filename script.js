@@ -297,6 +297,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (stored === 'fr' || stored === 'en') lang = stored;
     } catch (e) {}
   }
+  // Set initial carousel position from ?app= URL param (e.g. ?app=storage)
+  const urlApp = new URLSearchParams(window.location.search).get('app');
+  if (urlApp) {
+    const idx = APPS.findIndex(a => a.id === urlApp);
+    if (idx !== -1) current = idx;
+  }
   setupCarousel();
   setupLangSwitch();
   setLang(lang);

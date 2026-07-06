@@ -77,6 +77,16 @@
   --app-logo: url(budget/logo.svg);
 }
 
+[data-app="storage"] {
+  --accent: #1a7feb;
+  --accent-bg: #e8f2fd;
+  --accent-contrast: #0a2d56;
+  --header-bg: #1a7feb;
+  --header-text: #fff;
+  --header-logo: #fff;
+  --app-logo: url(storage/logo.svg);
+}
+
 /* Placeholder slide for an upcoming app — remove once a real app replaces it. */
 [data-app="next"] {
   --accent: #6366f1;
@@ -96,6 +106,14 @@
     --header-bg: #0d1311;
     --header-text: #f5f5f7;
     --header-logo: #2ecc8f;
+  }
+  [data-app="storage"] {
+    --accent: #3b9ef5;
+    --accent-bg: #0d1e38;
+    --accent-contrast: #d6eafc;
+    --header-bg: #0d1e38;
+    --header-text: #f5f5f7;
+    --header-logo: #3b9ef5;
   }
   [data-app="next"] {
     --accent: #8b8df0;

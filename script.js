@@ -44,6 +44,28 @@ const APPS = [
     }
   },
 
+  {
+    id: 'storage',
+    name: 'Storage',
+    tagline: { fr: 'par Sleeplow', en: 'by Sleeplow' },
+    footer: {
+      fr: 'Storage — application iOS de gestion d\'inventaire',
+      en: 'Storage — iOS inventory management application'
+    },
+    cards: {
+      fr: [
+        { icon: '📖', title: 'Aide & fonctionnalités', desc: "Apprenez à utiliser toutes les fonctions de l'application", href: './storage/help.html' },
+        { icon: '🔒', title: 'Politique de confidentialité', desc: 'Comment vos données sont traitées et protégées', href: './storage/privacy.html' },
+        { icon: '✉️', title: 'Contact & signaler un bug', desc: 'Une question, une suggestion ou un problème ?', href: './storage/contact.html' }
+      ],
+      en: [
+        { icon: '📖', title: 'Help & Features', desc: "Learn how to use all of the app's features", href: './storage/help.html' },
+        { icon: '🔒', title: 'Privacy Policy', desc: 'How your data is handled and protected', href: './storage/privacy.html' },
+        { icon: '✉️', title: 'Contact & Report a Bug', desc: 'A question, a suggestion or a problem?', href: './storage/contact.html' }
+      ]
+    }
+  },
+
   /* Placeholder slide — demonstrates the multi-app navigation. Replace with a
      real app (own folder + [data-app="..."] theme block) or delete this entry. */
   {

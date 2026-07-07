@@ -6,7 +6,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aide &amp; fonctionnalités — Storage App</title>
-  <meta name="description" content="Guide complet de Storage : boites, articles, localisation GPS, recherche, widget et verrou biométrique." />
+  <meta name="description" content="Guide complet de Storage : boites, listes, partage iCloud, articles, localisation GPS, recherche, widget et verrou biométrique." />
   <meta name="theme-color" content="#1a7feb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0d1e38" media="(prefers-color-scheme: dark)" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -14,7 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Sleeplow" />
   <meta property="og:title" content="Aide &amp; fonctionnalités — Storage" />
-  <meta property="og:description" content="Guide complet de Storage : boites, articles, localisation GPS, recherche, widget et verrou biométrique." />
+  <meta property="og:description" content="Guide complet de Storage : boites, listes, partage iCloud, articles, localisation GPS, recherche, widget et verrou biométrique." />
   <meta property="og:url" content="https://app.sleeplow.ca/storage/help.html" />
   <meta property="og:image" content="https://app.sleeplow.ca/og-image.png" />
   <meta property="og:locale" content="fr_CA" />
@@ -51,7 +51,7 @@
     <p>Storage est une application d'inventaire qui vous aide à savoir ce que vous avez et où vous l'avez rangé.</p>
     <ol>
       <li>Ouvrez l'application — aucun compte requis.</li>
-      <li>Créez votre première boite avec le bouton <strong>«&nbsp;+&nbsp;»</strong> en bas à droite de l'onglet Boites.</li>
+      <li>Créez votre première boite avec le bouton <strong>«&nbsp;+&nbsp;»</strong> en haut à droite de l'onglet Boites.</li>
       <li>Donnez-lui un numéro, un nom et une couleur, puis ajoutez vos articles.</li>
     </ol>
     <div class="highlight">Vos données se synchronisent automatiquement sur tous vos appareils Apple via iCloud — aucune configuration nécessaire.</div>
@@ -71,16 +71,75 @@
     </ul>
 
     <h3>Modifier ou supprimer une boite</h3>
-    <p>Depuis la liste des boites, faites glisser une ligne vers la gauche pour accéder aux actions rapides (Modifier, Supprimer). Vous pouvez aussi modifier une boite depuis la vue détaillée via le menu <strong>«&nbsp;⋯&nbsp;»</strong> en haut à droite.</p>
+    <p>Depuis la liste des boites, faites glisser une rangée vers la gauche pour accéder aux actions rapides (Supprimer). Vous pouvez aussi modifier une boite depuis sa vue détaillée via l'icône ⚙️ en haut à droite.</p>
 
     <h3>Trier les boites</h3>
-    <p>Depuis l'onglet Boites, le menu <strong>«&nbsp;⋯&nbsp;»</strong> vous permet de trier par numéro, nom, couleur ou nombre d'articles.</p>
+    <p>Depuis l'onglet Boites, le menu de tri en haut à gauche vous permet de trier par numéro, nom ou localisation. Le dernier tri choisi est mémorisé automatiquement.</p>
+
+    <h3>Associer une boite à une liste</h3>
+    <p>Dans la vue détaillée d'une boite, appuyez sur <strong>«&nbsp;Liste&nbsp;»</strong> pour choisir à quelle liste elle appartient. Une boite peut appartenir à une seule liste à la fois.</p>
+  </div>
+
+  <!-- ── Listes de boites ─────────────────────────────────────── -->
+  <div class="section">
+    <h2><span class="emoji">🗂️</span> Listes de boites</h2>
+    <p>Les listes vous permettent de regrouper vos boites par thème, lieu ou projet (ex. : Cave, Chalet, Déménagement).</p>
+
+    <h3>Créer une liste</h3>
+    <ol>
+      <li>Dans l'onglet Boites, appuyez sur le titre au centre de la barre de navigation.</li>
+      <li>Dans le menu déroulant, choisissez <strong>«&nbsp;Nouvelle liste&nbsp;»</strong>.</li>
+      <li>Saisissez un nom et appuyez sur <strong>«&nbsp;Créer&nbsp;»</strong>.</li>
+    </ol>
+
+    <h3>Naviguer entre les listes</h3>
+    <p>Appuyez sur le titre de l'onglet Boites pour ouvrir le sélecteur. Choisissez <strong>«&nbsp;Toutes les boites&nbsp;»</strong> pour tout afficher, ou une liste précise pour filtrer. En vue «&nbsp;Toutes les boites&nbsp;», les boites sont regroupées par liste.</p>
+
+    <h3>Gérer les listes</h3>
+    <p>Dans le menu déroulant du titre, appuyez sur <strong>«&nbsp;Gérer les listes&nbsp;»</strong> pour :</p>
+    <ul>
+      <li><strong>Réordonner</strong> — appuyez sur <strong>«&nbsp;Modifier&nbsp;»</strong> puis faites glisser les rangées.</li>
+      <li><strong>Définir par défaut</strong> — appuyez sur l'étoile ☆ d'une liste pour qu'elle s'ouvre automatiquement au démarrage de l'app.</li>
+      <li><strong>Configurer</strong> — appuyez sur une liste pour accéder à ses détails : nombre de boites, renommer, partage.</li>
+      <li><strong>Supprimer</strong> — faites glisser une liste vers la gauche ou utilisez le mode Modifier. Les boites de la liste ne sont pas supprimées — elles reviennent dans la vue «&nbsp;Boite&nbsp;».</li>
+    </ul>
+  </div>
+
+  <!-- ── Partage de liste ─────────────────────────────────────── -->
+  <div class="section">
+    <h2><span class="emoji">🤝</span> Partage de liste</h2>
+    <p>Vous pouvez partager une liste de boites avec d'autres personnes. Chaque participant voit la liste et ses boites directement dans sa propre application Storage, sans avoir besoin de se connecter à votre compte.</p>
+
+    <h3>Partager une liste</h3>
+    <ol>
+      <li>Dans <strong>«&nbsp;Gérer les listes&nbsp;»</strong>, appuyez sur la liste à partager pour ouvrir ses détails.</li>
+      <li>Dans la section <strong>«&nbsp;Partage&nbsp;»</strong>, appuyez sur le bouton <strong>«&nbsp;+&nbsp;»</strong> à droite du titre.</li>
+      <li>Invitez un contact par e-mail ou AirDrop.</li>
+      <li>Choisissez le niveau d'accès :
+        <ul>
+          <li><strong>Lecture seule</strong> — l'autre personne peut consulter les boites et les articles, mais pas les modifier.</li>
+          <li><strong>Peut modifier</strong> — l'autre personne peut ajouter, modifier et supprimer des boites et des articles.</li>
+        </ul>
+      </li>
+      <li>Appuyez sur <strong>«&nbsp;Envoyer&nbsp;»</strong>.</li>
+    </ol>
+
+    <h3>Accepter une invitation</h3>
+    <p>Le destinataire reçoit un lien par e-mail ou message. En appuyant sur ce lien, l'application Storage s'ouvre et la liste partagée apparaît automatiquement dans l'onglet Boites, aux côtés de ses propres listes.</p>
+
+    <h3>Voir et gérer les participants</h3>
+    <p>Dans la vue détaillée de la liste (accessible depuis «&nbsp;Gérer les listes&nbsp;»), chaque participant est affiché avec son statut (<em>Accepté</em> ou <em>En attente</em>) et son niveau d'accès (badge <em>Lecture</em> ou <em>Écriture</em>). Appuyez sur <strong>«&nbsp;+&nbsp;»</strong> pour modifier les permissions ou retirer un participant à tout moment.</p>
+
+    <h3>Listes partagées avec vous</h3>
+    <p>Les listes que quelqu'un d'autre partage avec vous apparaissent automatiquement dans votre onglet Boites, identifiées par une icône distinctive. Si votre accès est en lecture seule, les boutons d'ajout et de suppression sont masqués automatiquement.</p>
+
+    <div class="highlight">Le partage nécessite que les deux parties soient connectées à iCloud et disposent de l'application Storage. Une connexion Internet est requise pour envoyer et accepter les invitations.</div>
   </div>
 
   <!-- ── Articles ──────────────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">🗃️</span> Articles</h2>
-    <p>Un article est un objet rangé dans une boite. Pour en ajouter un, ouvrez une boite puis appuyez sur le bouton <strong>«&nbsp;+&nbsp;»</strong> en bas de l'écran.</p>
+    <p>Un article est un objet rangé dans une boite. Pour en ajouter un, ouvrez une boite puis appuyez sur le bouton <strong>«&nbsp;+&nbsp;»</strong> en haut à droite de la section Articles.</p>
     <ul>
       <li><strong>Nom</strong> — désignation de l'article (obligatoire).</li>
       <li><strong>Descriptif</strong> — détails optionnels (couleur, taille, référence…).</li>
@@ -92,7 +151,7 @@
     <p>Depuis la vue détaillée d'une boite, faites glisser un article vers la gauche pour le modifier ou le supprimer.</p>
 
     <h3>Trier les articles</h3>
-    <p>Dans le menu <strong>«&nbsp;⋯&nbsp;»</strong> de la vue détaillée, vous pouvez trier les articles par date d'ajout (anciens ou récents en premier), par nom ou par quantité.</p>
+    <p>Dans le menu de tri de la section Articles, vous pouvez trier par date d'ajout (anciens ou récents en premier), par nom ou par quantité.</p>
   </div>
 
   <!-- ── Recherche ─────────────────────────────────────────────── -->
@@ -103,7 +162,7 @@
       <li>Le nom et le descriptif des articles</li>
       <li>Le nom, le numéro et la localisation des boites</li>
     </ul>
-    <p>Les résultats s'affichent en deux sections — Boites et Articles — et se mettent à jour en temps réel à chaque caractère saisi.</p>
+    <p>Les résultats s'affichent groupés par liste et se mettent à jour en temps réel à chaque caractère saisi. Appuyez sur un résultat pour être directement amené à l'article dans sa boite.</p>
   </div>
 
   <!-- ── Localisation GPS ─────────────────────────────────────── -->
@@ -149,7 +208,7 @@
     <p>Activez le verrou biométrique pour protéger l'accès à votre inventaire. Lorsqu'il est actif, l'application demande une authentification Face ID, Touch ID ou code à chaque ouverture.</p>
 
     <h3>Activer le verrou</h3>
-    <p>Allez dans <strong>Réglages → Sécurité → Verrou Face ID</strong> et activez l'option.</p>
+    <p>Allez dans <strong>Réglages → Sécurité → Verrouiller l'app</strong> et activez l'option.</p>
 
     <h3>Protection dans le sélecteur d'apps</h3>
     <p>Même lorsque l'application est en arrière-plan, un écran de confidentialité masque votre inventaire dans le sélecteur d'applications iOS.</p>
@@ -160,8 +219,9 @@
     <h2><span class="emoji">⚙️</span> Réglages</h2>
     <p>L'onglet <strong>Réglages</strong> regroupe les préférences de l'application :</p>
     <ul>
-      <li><strong>Verrou biométrique</strong> — activer / désactiver le verrou Face ID ou Touch ID.</li>
+      <li><strong>Sécurité</strong> — activer / désactiver le verrou Face ID ou Touch ID.</li>
       <li><strong>À propos</strong> — version de l'application, liens vers l'aide et la politique de confidentialité.</li>
+      <li><strong>iCloud</strong> — état de la synchronisation et option de suppression complète de l'inventaire.</li>
     </ul>
   </div>
 
@@ -179,7 +239,13 @@
     <p>Oui, toutes les données sont stockées localement sur votre appareil. La synchronisation iCloud reprend automatiquement dès que la connexion est rétablie.</p>
 
     <h3>Puis-je utiliser Storage sur plusieurs appareils ?</h3>
-    <p>Oui. Connectez-vous avec le même identifiant Apple sur vos appareils iOS. L'application synchronise vos boites et articles automatiquement via iCloud.</p>
+    <p>Oui. Connectez-vous avec le même identifiant Apple sur vos appareils iOS. L'application synchronise vos boites, listes et articles automatiquement via iCloud.</p>
+
+    <h3>Puis-je partager une liste avec quelqu'un qui n'a pas l'application ?</h3>
+    <p>Non. Les deux parties doivent avoir Storage installé et être connectées à iCloud. Le destinataire recevra une invitation qu'il pourra accepter directement depuis le lien reçu.</p>
+
+    <h3>Comment arrêter de partager une liste ?</h3>
+    <p>Dans la vue détaillée de la liste (depuis «&nbsp;Gérer les listes&nbsp;»), appuyez sur <strong>«&nbsp;+&nbsp;»</strong> dans la section Partage. L'interface de gestion vous permet de retirer des participants ou de désactiver complètement le partage.</p>
 
     <h3>Pourquoi l'emplacement GPS n'est-il pas disponible ?</h3>
     <p>Vérifiez que l'accès à la localisation est activé dans <strong>Réglages → Confidentialité → Service de localisation → Storage</strong>. Sélectionnez <strong>«&nbsp;Lors de l'utilisation&nbsp;»</strong>.</p>
@@ -199,7 +265,7 @@
     <p>Storage is an inventory app that helps you know what you have and where you put it.</p>
     <ol>
       <li>Open the app — no account required.</li>
-      <li>Create your first box with the <strong>"+"</strong> button at the bottom right of the Boxes tab.</li>
+      <li>Create your first box with the <strong>"+"</strong> button at the top right of the Boxes tab.</li>
       <li>Give it a number, a name, and a color, then add your items.</li>
     </ol>
     <div class="highlight">Your data syncs automatically across all your Apple devices via iCloud — no setup required.</div>
@@ -219,16 +285,75 @@
     </ul>
 
     <h3>Edit or Delete a Box</h3>
-    <p>From the box list, swipe a row left to access quick actions (Edit, Delete). You can also edit a box from the detail view via the <strong>"⋯"</strong> menu in the top right.</p>
+    <p>From the box list, swipe a row left to delete it. You can also edit a box from its detail view via the ⚙️ icon in the top right.</p>
 
     <h3>Sort Boxes</h3>
-    <p>From the Boxes tab, the <strong>"⋯"</strong> menu lets you sort by number, name, color, or item count.</p>
+    <p>From the Boxes tab, the sort menu in the top left lets you sort by number, name, or location. Your last choice is remembered automatically.</p>
+
+    <h3>Assign a Box to a List</h3>
+    <p>In a box's detail view, tap <strong>"List"</strong> to choose which list the box belongs to. A box can belong to only one list at a time.</p>
+  </div>
+
+  <!-- ── Box Lists ─────────────────────────────────────────────── -->
+  <div class="section">
+    <h2><span class="emoji">🗂️</span> Box Lists</h2>
+    <p>Lists let you group your boxes by theme, location, or project (e.g. Basement, Cottage, Moving).</p>
+
+    <h3>Create a List</h3>
+    <ol>
+      <li>In the Boxes tab, tap the title in the center of the navigation bar.</li>
+      <li>In the dropdown, choose <strong>"New List"</strong>.</li>
+      <li>Enter a name and tap <strong>"Create"</strong>.</li>
+    </ol>
+
+    <h3>Navigate Between Lists</h3>
+    <p>Tap the Boxes tab title to open the selector. Choose <strong>"All Boxes"</strong> to see everything, or a specific list to filter the view. In "All Boxes" view, boxes are grouped by list.</p>
+
+    <h3>Manage Lists</h3>
+    <p>In the title dropdown, tap <strong>"Manage Lists"</strong> to:</p>
+    <ul>
+      <li><strong>Reorder</strong> — tap <strong>"Edit"</strong> then drag the rows.</li>
+      <li><strong>Set as default</strong> — tap the star ☆ next to a list to open it automatically on app launch.</li>
+      <li><strong>Configure</strong> — tap a list to access its details: box count, rename, sharing.</li>
+      <li><strong>Delete</strong> — swipe a list left or use Edit mode. Boxes in the list are not deleted — they return to the "Box" view.</li>
+    </ul>
+  </div>
+
+  <!-- ── List Sharing ──────────────────────────────────────────── -->
+  <div class="section">
+    <h2><span class="emoji">🤝</span> List Sharing</h2>
+    <p>You can share a box list with other people. Each participant sees the list and its boxes directly in their own Storage app, without needing to log into your account.</p>
+
+    <h3>Share a List</h3>
+    <ol>
+      <li>In <strong>"Manage Lists"</strong>, tap the list you want to share to open its details.</li>
+      <li>In the <strong>"Sharing"</strong> section, tap the <strong>"+"</strong> button on the right.</li>
+      <li>Invite a contact by email or AirDrop.</li>
+      <li>Choose the access level:
+        <ul>
+          <li><strong>Read Only</strong> — the other person can view boxes and items, but not edit them.</li>
+          <li><strong>Can Edit</strong> — the other person can add, modify, and delete boxes and items.</li>
+        </ul>
+      </li>
+      <li>Tap <strong>"Send"</strong>.</li>
+    </ol>
+
+    <h3>Accept an Invitation</h3>
+    <p>The recipient receives a link by email or message. Tapping it opens the Storage app and the shared list automatically appears in the Boxes tab, alongside their own lists.</p>
+
+    <h3>View and Manage Participants</h3>
+    <p>In the list detail view (accessible from "Manage Lists"), each participant is shown with their status (<em>Accepted</em> or <em>Pending</em>) and access level (<em>Read</em> or <em>Write</em> badge). Tap <strong>"+"</strong> at any time to change permissions or remove a participant.</p>
+
+    <h3>Lists Shared With You</h3>
+    <p>Lists shared by others automatically appear in your Boxes tab, identified by a distinctive icon. If your access is read-only, add and delete buttons are hidden automatically.</p>
+
+    <div class="highlight">Sharing requires both parties to be signed into iCloud and have the Storage app installed. An internet connection is required to send and accept invitations.</div>
   </div>
 
   <!-- ── Items ─────────────────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">🗃️</span> Items</h2>
-    <p>An item is an object stored inside a box. To add one, open a box then tap the <strong>"+"</strong> button at the bottom of the screen.</p>
+    <p>An item is an object stored inside a box. To add one, open a box then tap the <strong>"+"</strong> button at the top right of the Items section.</p>
     <ul>
       <li><strong>Name</strong> — item label (required).</li>
       <li><strong>Description</strong> — optional details (color, size, reference…).</li>
@@ -240,7 +365,7 @@
     <p>From a box's detail view, swipe an item left to edit or delete it.</p>
 
     <h3>Sort Items</h3>
-    <p>In the <strong>"⋯"</strong> menu of the detail view, you can sort items by date added (oldest or newest first), by name, or by quantity.</p>
+    <p>In the sort menu of the Items section, you can sort by date added (oldest or newest first), by name, or by quantity.</p>
   </div>
 
   <!-- ── Search ────────────────────────────────────────────────── -->
@@ -251,7 +376,7 @@
       <li>Item names and descriptions</li>
       <li>Box names, numbers, and locations</li>
     </ul>
-    <p>Results appear in two sections — Boxes and Items — and update in real time with each character you type.</p>
+    <p>Results appear grouped by list and update in real time with each character you type. Tap a result to be taken directly to the item inside its box.</p>
   </div>
 
   <!-- ── GPS Location ──────────────────────────────────────────── -->
@@ -297,7 +422,7 @@
     <p>Enable biometric lock to protect access to your inventory. When active, the app requires Face ID, Touch ID, or passcode authentication each time it opens.</p>
 
     <h3>Enable the Lock</h3>
-    <p>Go to <strong>Settings → Security → Face ID Lock</strong> and turn on the option.</p>
+    <p>Go to <strong>Settings → Security → Lock App</strong> and turn on the option.</p>
 
     <h3>Privacy in the App Switcher</h3>
     <p>Even when the app is in the background, a privacy screen hides your inventory in the iOS app switcher.</p>
@@ -308,8 +433,9 @@
     <h2><span class="emoji">⚙️</span> Settings</h2>
     <p>The <strong>Settings</strong> tab contains app preferences:</p>
     <ul>
-      <li><strong>Biometric lock</strong> — enable/disable Face ID or Touch ID lock.</li>
+      <li><strong>Security</strong> — enable/disable Face ID or Touch ID lock.</li>
       <li><strong>About</strong> — app version, links to help and privacy policy.</li>
+      <li><strong>iCloud</strong> — sync status and option to delete all inventory data.</li>
     </ul>
   </div>
 
@@ -327,7 +453,13 @@
     <p>Yes, all data is stored locally on your device. iCloud sync resumes automatically once a connection is restored.</p>
 
     <h3>Can I use Storage on multiple devices?</h3>
-    <p>Yes. Sign in with the same Apple ID on your iOS devices. The app syncs your boxes and items automatically via iCloud.</p>
+    <p>Yes. Sign in with the same Apple ID on your iOS devices. The app syncs your boxes, lists, and items automatically via iCloud.</p>
+
+    <h3>Can I share a list with someone who doesn't have the app?</h3>
+    <p>No. Both parties must have Storage installed and be signed into iCloud. The recipient will receive an invitation they can accept directly from the link they receive.</p>
+
+    <h3>How do I stop sharing a list?</h3>
+    <p>In the list detail view (from "Manage Lists"), tap <strong>"+"</strong> in the Sharing section. The management interface lets you remove individual participants or fully disable sharing.</p>
 
     <h3>Why is GPS location unavailable?</h3>
     <p>Make sure location access is enabled in <strong>Settings → Privacy → Location Services → Storage</strong>. Select <strong>"While Using the App"</strong>.</p>

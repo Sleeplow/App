@@ -47,10 +47,10 @@ const APPS = [
   {
     id: 'storage',
     name: 'Storage',
-    tagline: { fr: 'par Sleeplow', en: 'by Sleeplow' },
+    tagline: { fr: 'par Sleeplow · Français & English', en: 'by Sleeplow · Français & English' },
     footer: {
-      fr: 'Storage — application iOS de gestion d\'inventaire',
-      en: 'Storage — iOS inventory management application'
+      fr: 'Storage — application iOS de gestion d\'inventaire · Disponible en français et en anglais',
+      en: 'Storage — iOS inventory management application · Available in French and English'
     },
     cards: {
       fr: [

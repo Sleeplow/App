@@ -157,6 +157,7 @@
       <li><strong>Unique</strong> — transaction ponctuelle, une seule fois.</li>
       <li><strong>Hebdo.</strong> — toutes les semaines.</li>
       <li><strong>Aux 2 sem.</strong> — toutes les deux semaines.</li>
+      <li><strong>Aux 4 sem.</strong> — toutes les quatre semaines (13 occurrences/an — différent de « Mensuel »).</li>
       <li><strong>Mensuel</strong> — une fois par mois.</li>
       <li><strong>Aux 2 mois</strong> — tous les deux mois.</li>
       <li><strong>Trimestriel</strong> — tous les trois mois.</li>
@@ -312,7 +313,7 @@
     <h4>Aperçu des notifications</h4>
     <p>Le menu <strong>« Aperçu des notifications »</strong> contrôle les informations affichées sur l'écran verrouillé :</p>
     <ul>
-      <li><strong>Complet</strong> — la description <em>et</em> le montant sont visibles (ex. : « Demain · Loyer — 1 200,00 $ »).</li>
+      <li><strong>Complet</strong> — la description, la catégorie <em>et</em> le montant sont visibles (ex. : « Demain · Loyer (Habitation) — 1 200,00 $ »).</li>
       <li><strong>Standard</strong> (par défaut) — seule la description est affichée (ex. : « Demain · Loyer »).</li>
       <li><strong>Anonyme</strong> — aucun détail financier n'apparaît sur l'écran verrouillé ; la notification reste discrète.</li>
     </ul>
@@ -332,7 +333,7 @@
     <p><code>Description, Montant, Date (ISO8601), Fréquence, Catégorie, Compte</code></p>
     <p>Format attendu pour les revenus :</p>
     <p><code>Description, Montant, Date (ISO8601), Fréquence, Compte</code></p>
-    <div class="highlight">Les fréquences valides dans le CSV sont : unique, hebdo, bihebdo, mensuel, bimensuel, trimestriel, annuel.</div>
+    <div class="highlight">Les fréquences valides dans le CSV sont : unique, hebdo, bihebdo, quatreSemaines, mensuel, bimensuel, trimestriel, annuel.</div>
     <div class="highlight">Les catégories et comptes présents dans le fichier CSV sont créés automatiquement s'ils n'existent pas encore — vous pourrez les personnaliser ensuite dans <strong>Paramètres › Catégories</strong> et <strong>Paramètres › Comptes</strong>.</div>
 
     <h3>Synchronisation iCloud</h3>
@@ -566,6 +567,7 @@
       <li><strong>One-time</strong> — a single, non-recurring transaction.</li>
       <li><strong>Weekly</strong> — every week.</li>
       <li><strong>Bi-weekly</strong> — every two weeks.</li>
+      <li><strong>Every 4 weeks</strong> — every four weeks (13 occurrences/year — distinct from "Monthly").</li>
       <li><strong>Monthly</strong> — once a month.</li>
       <li><strong>Every 2 months</strong> — every two months.</li>
       <li><strong>Quarterly</strong> — every three months.</li>
@@ -721,7 +723,7 @@
     <h4>Notification preview</h4>
     <p>The <strong>"Notification preview"</strong> menu controls what information is displayed on the lock screen:</p>
     <ul>
-      <li><strong>Full</strong> — the description <em>and</em> the amount are visible (e.g., "Tomorrow · Rent — $1,200.00").</li>
+      <li><strong>Full</strong> — the description, category <em>and</em> amount are visible (e.g., "Tomorrow · Rent (Housing) — $1,200.00").</li>
       <li><strong>Standard</strong> (default) — only the description is shown (e.g., "Tomorrow · Rent").</li>
       <li><strong>Anonymous</strong> — no financial details appear on the lock screen; the notification stays discreet.</li>
     </ul>
@@ -741,7 +743,7 @@
     <p><code>Description, Amount, Date (ISO8601), Frequency, Category, Account</code></p>
     <p>Expected format for income:</p>
     <p><code>Description, Amount, Date (ISO8601), Frequency, Account</code></p>
-    <div class="highlight">Valid frequency values in CSV: unique, hebdo, bihebdo, mensuel, bimensuel, trimestriel, annuel.</div>
+    <div class="highlight">Valid frequency values in CSV: unique, hebdo, bihebdo, quatreSemaines, mensuel, bimensuel, trimestriel, annuel.</div>
     <div class="highlight">Categories and accounts referenced in the CSV file are automatically created if they don't already exist — you can customize them afterwards in <strong>Settings › Categories</strong> and <strong>Settings › Accounts</strong>.</div>
 
     <h3>iCloud Sync</h3>

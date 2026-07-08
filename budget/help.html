@@ -129,6 +129,7 @@
           <li><strong>Fréquence</strong> — voir tableau ci-dessous.</li>
           <li><strong>Catégorie</strong> — classement pour les statistiques et les budgets.</li>
           <li><strong>Compte</strong> — compte débité.</li>
+          <li><strong>Date de fin</strong> (optionnel, fréquences récurrentes uniquement) — définissez une date à laquelle la récurrence s'arrête automatiquement (ex. : fin d'un prêt, abonnement annulé à une date connue). Laissez vide pour une récurrence indéfinie.</li>
         </ul>
       </li>
       <li>Appuyez sur <strong>«&nbsp;Enregistrer&nbsp;»</strong>.</li>
@@ -164,6 +165,8 @@
       <li><strong>Annuel</strong> — une fois par an.</li>
     </ul>
 
+    <div class="highlight">Une dépense récurrente avec une <strong>date de fin</strong> affiche un badge orange <strong>« Fin : JJ-MM-AAAA »</strong> dans la liste. Son montant mensuel est automatiquement remis à zéro une fois la date dépassée — les projections et le tableau de bord se mettent à jour sans aucune intervention.</div>
+
     <h3>Transactions rapides dans la liste</h3>
     <p>Les Quick TX saisies comme <strong>dépenses</strong> apparaissent directement dans cet onglet, mêlées aux dépenses planifiées. Elles se distinguent visuellement par un indicateur <strong>⚡</strong> et une barre jaune à gauche de la ligne.</p>
     <ul>
@@ -198,6 +201,7 @@
       <li>Appuyez sur l'icône <strong>«&nbsp;Scanner&nbsp;»</strong> pour lire un bulletin de paie ou autre document de revenu et pré-remplir le formulaire automatiquement (voir la section Dépenses pour les détails de la fonctionnalité et les conditions de disponibilité).</li>
     </ul>
     <p>Les Quick TX saisies comme <strong>revenus</strong> apparaissent directement dans cet onglet avec un indicateur <strong>⚡</strong> et une barre jaune, modifiables et supprimables par balayage.</p>
+    <p>Comme pour les dépenses, vous pouvez définir une <strong>date de fin</strong> (optionnel) pour tout revenu récurrent, directement dans le formulaire (visible dans la section Options quand la fréquence est récurrente).</p>
     <div class="highlight">Les revenus récurrents alimentent la projection à 6 mois et les calculs de flux mensuel du tableau de bord.</div>
   </div>
 
@@ -330,9 +334,9 @@
       <li><strong>Importer</strong> — sélectionnez un fichier .csv pour ajouter des transactions en lot.</li>
     </ul>
     <p>Format attendu pour les dépenses :</p>
-    <p><code>Description, Montant, Date (ISO8601), Fréquence, Catégorie, Compte</code></p>
+    <p><code>Description, Montant, Date (ISO8601), Fréquence, Catégorie, Compte, Date de fin (optionnel)</code></p>
     <p>Format attendu pour les revenus :</p>
-    <p><code>Description, Montant, Date (ISO8601), Fréquence, Compte</code></p>
+    <p><code>Description, Montant, Date (ISO8601), Fréquence, Compte, Date de fin (optionnel)</code></p>
     <div class="highlight">Les fréquences valides dans le CSV sont : unique, hebdo, bihebdo, quatreSemaines, mensuel, bimensuel, trimestriel, annuel.</div>
     <div class="highlight">Les catégories et comptes présents dans le fichier CSV sont créés automatiquement s'ils n'existent pas encore — vous pourrez les personnaliser ensuite dans <strong>Paramètres › Catégories</strong> et <strong>Paramètres › Comptes</strong>.</div>
 
@@ -342,22 +346,31 @@
 
   <!-- ── Widget ──────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🔲</span> Widget</h2>
-    <p>Budget App inclut un <strong>widget pour l'écran d'accueil</strong> (format petite case) qui affiche en un coup d'œil votre situation financière mensuelle.</p>
+    <h2><span class="emoji">🔲</span> Widgets</h2>
+    <p>Budget App inclut plusieurs widgets pour suivre vos finances d'un coup d'œil, depuis l'écran d'accueil ou l'écran verrouillé.</p>
 
-    <h3>Contenu du widget</h3>
+    <h3>Widget écran d'accueil (petite case)</h3>
+    <p>Affiche votre situation financière mensuelle :</p>
     <ul>
       <li><strong>Flux net mensuel</strong> — affiché en grand, en vert si positif, en rouge si négatif (ex. : +250 $).</li>
       <li><strong>Revenus</strong> — total mensuel en bas à gauche.</li>
       <li><strong>Dépenses</strong> — total mensuel en bas à droite.</li>
+      <li><strong>Bouton +</strong> — appuyez directement sur le widget pour ouvrir le formulaire d'ajout de dépense sans déverrouiller ou naviguer dans l'app.</li>
     </ul>
 
-    <h3>Ajouter le widget</h3>
+    <h3>Widgets écran verrouillé</h3>
+    <p>Deux formats disponibles pour l'écran verrouillé :</p>
+    <ul>
+      <li><strong>Circulaire</strong> — jauge colorée (verte/rouge) indiquant le flux net mensuel. Pratique sur une complication d'horloge.</li>
+      <li><strong>Rectangulaire</strong> — flux net en gros caractères + revenus/dépenses en sous-texte.</li>
+    </ul>
+
+    <h3>Ajouter un widget</h3>
     <ol>
-      <li>Sur l'écran d'accueil, appuyez longuement sur une zone vide.</li>
+      <li>Sur l'écran d'accueil (ou l'écran verrouillé), appuyez longuement sur une zone vide.</li>
       <li>Appuyez sur le bouton <strong>+</strong> en haut à gauche.</li>
       <li>Recherchez <strong>Budget</strong> dans la liste.</li>
-      <li>Sélectionnez le widget et appuyez sur <strong>«&nbsp;Ajouter le widget&nbsp;»</strong>.</li>
+      <li>Choisissez le widget souhaité (<strong>Budget</strong> pour l'écran d'accueil, <strong>Budget Lock Screen</strong> pour l'écran verrouillé) et appuyez sur <strong>«&nbsp;Ajouter le widget&nbsp;»</strong>.</li>
     </ol>
 
     <h3>Langue du widget</h3>
@@ -539,6 +552,7 @@
           <li><strong>Frequency</strong> — see table below.</li>
           <li><strong>Category</strong> — used for statistics and budget tracking.</li>
           <li><strong>Account</strong> — the account to debit.</li>
+          <li><strong>End date</strong> (optional, recurring frequencies only) — set a date on which the recurrence stops automatically (e.g. end of a loan, a subscription cancelled on a known date). Leave blank for an open-ended recurrence.</li>
         </ul>
       </li>
       <li>Tap <strong>"Save"</strong>.</li>
@@ -574,6 +588,8 @@
       <li><strong>Annual</strong> — once a year.</li>
     </ul>
 
+    <div class="highlight">A recurring expense with an <strong>end date</strong> shows an orange <strong>"End: MM-DD-YYYY"</strong> badge in the list. Its monthly amount is automatically zeroed out once that date passes — projections and the dashboard update with no action required.</div>
+
     <h3>Quick Transactions in the List</h3>
     <p>Quick TX recorded as <strong>expenses</strong> appear directly in this tab, alongside your planned expenses. They are visually identified by a <strong>⚡</strong> indicator and a yellow bar on the left of the row.</p>
     <ul>
@@ -608,6 +624,7 @@
       <li>Tap the <strong>"Scan"</strong> icon to read a pay stub or other income document and pre-fill the form automatically (see the Expenses section for full feature details and availability requirements).</li>
     </ul>
     <p>Quick TX recorded as <strong>income</strong> appear directly in this tab with a <strong>⚡</strong> indicator and a yellow bar, editable and deletable by swiping.</p>
+    <p>Like expenses, you can set an optional <strong>end date</strong> for any recurring income entry directly in the form (shown in the Options section when a recurring frequency is selected).</p>
     <div class="highlight">Recurring income feeds the 6-month projection and the monthly cash flow calculations on the dashboard.</div>
   </div>
 
@@ -740,9 +757,9 @@
       <li><strong>Import</strong> — select a .csv file to add transactions in bulk.</li>
     </ul>
     <p>Expected format for expenses:</p>
-    <p><code>Description, Amount, Date (ISO8601), Frequency, Category, Account</code></p>
+    <p><code>Description, Amount, Date (ISO8601), Frequency, Category, Account, End date (optional)</code></p>
     <p>Expected format for income:</p>
-    <p><code>Description, Amount, Date (ISO8601), Frequency, Account</code></p>
+    <p><code>Description, Amount, Date (ISO8601), Frequency, Account, End date (optional)</code></p>
     <div class="highlight">Valid frequency values in CSV: unique, hebdo, bihebdo, quatreSemaines, mensuel, bimensuel, trimestriel, annuel.</div>
     <div class="highlight">Categories and accounts referenced in the CSV file are automatically created if they don't already exist — you can customize them afterwards in <strong>Settings › Categories</strong> and <strong>Settings › Accounts</strong>.</div>
 
@@ -752,22 +769,31 @@
 
   <!-- ── Widget ──────────────────────────────────────────────── -->
   <div class="section">
-    <h2><span class="emoji">🔲</span> Widget</h2>
-    <p>Budget App includes a <strong>Home Screen widget</strong> (small size) that lets you see your monthly financial snapshot at a glance.</p>
+    <h2><span class="emoji">🔲</span> Widgets</h2>
+    <p>Budget App includes several widgets to track your finances at a glance, from the Home Screen or the Lock Screen.</p>
 
-    <h3>Widget Content</h3>
+    <h3>Home Screen Widget (small)</h3>
+    <p>Shows your monthly financial snapshot:</p>
     <ul>
       <li><strong>Monthly net flow</strong> — displayed large, green if positive, red if negative (e.g. +$250).</li>
       <li><strong>Income</strong> — monthly total at the bottom left.</li>
       <li><strong>Expenses</strong> — monthly total at the bottom right.</li>
+      <li><strong>+ button</strong> — tap directly on the widget to open the add-expense form without unlocking or navigating the app.</li>
     </ul>
 
-    <h3>Adding the Widget</h3>
+    <h3>Lock Screen Widgets</h3>
+    <p>Two sizes available for the Lock Screen:</p>
+    <ul>
+      <li><strong>Circular</strong> — a color-coded gauge (green/red) showing your monthly net flow. Great as a clock complication.</li>
+      <li><strong>Rectangular</strong> — net flow in large text with income/expenses as secondary text.</li>
+    </ul>
+
+    <h3>Adding a Widget</h3>
     <ol>
-      <li>On the Home Screen, long-press on an empty area.</li>
+      <li>On the Home Screen (or Lock Screen), long-press on an empty area.</li>
       <li>Tap the <strong>+</strong> button in the top left.</li>
       <li>Search for <strong>Budget</strong> in the list.</li>
-      <li>Select the widget and tap <strong>"Add Widget"</strong>.</li>
+      <li>Choose the widget you want (<strong>Budget</strong> for the Home Screen, <strong>Budget Lock Screen</strong> for the Lock Screen) and tap <strong>"Add Widget"</strong>.</li>
     </ol>
 
     <h3>Widget Language</h3>

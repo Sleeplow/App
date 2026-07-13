@@ -48,12 +48,11 @@
   <!-- ── Premiers pas ─────────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">🚀</span> Premiers pas</h2>
-    <p>Budget App utilise <strong>Sign in with Apple</strong> pour vous identifier de façon sécurisée et anonyme — aucun mot de passe à retenir.</p>
+    <p>Budget App ne requiert aucun compte ni mot de passe. Ouvrez l'app et c'est parti.</p>
     <ol>
-      <li>Ouvrez l'app et appuyez sur <strong>«&nbsp;Se connecter avec Apple&nbsp;»</strong>.</li>
-      <li>Authentifiez-vous avec Face ID, Touch ID ou votre code.</li>
-      <li>L'app lance un court tutoriel d'introduction. Vous pouvez l'ignorer en appuyant sur <strong>«&nbsp;Passer&nbsp;»</strong> en haut à droite, ou le revoir à tout moment depuis <strong>Paramètres › À propos › Revoir l'introduction</strong>.</li>
-      <li>Des catégories de départ sont créées automatiquement pour vous aider à démarrer.</li>
+      <li>Au premier lancement, un court tutoriel d'introduction vous guide. Vous pouvez l'ignorer en appuyant sur <strong>«&nbsp;Passer&nbsp;»</strong> en haut à droite.</li>
+      <li>Des catégories et un compte de départ sont créés automatiquement pour vous aider à démarrer.</li>
+      <li>Ajoutez vos revenus récurrents (salaire, allocations…) et vos dépenses récurrentes (loyer, abonnements…).</li>
     </ol>
     <div class="highlight">Vos données se synchronisent automatiquement sur tous vos appareils Apple via iCloud — aucune configuration nécessaire.</div>
   </div>
@@ -84,7 +83,12 @@
     </ul>
 
     <h3>Résumé des comptes</h3>
-    <p>Aperçu rapide du solde de chacun de vos comptes.</p>
+    <p>Aperçu du flux mensuel de chaque compte (revenus et dépenses qui y sont affectés ce mois-ci). Les comptes sont regroupés en deux sections :</p>
+    <ul>
+      <li><strong>Actifs</strong> — comptes chèques, épargne, placements, bourse : soldes positifs qui constituent votre patrimoine.</li>
+      <li><strong>Dettes</strong> — cartes de crédit, marges de crédit : soldes représentant ce que vous devez.</li>
+    </ul>
+    <p>En bas de la carte, le <strong>Patrimoine net</strong> = total des actifs − total des dettes.</p>
 
     <h3>Insights</h3>
     <p>La carte <strong>Insights</strong> analyse vos données et génère automatiquement des observations sur votre situation financière :</p>
@@ -242,7 +246,24 @@
       <li>Appuyez sur <strong>«&nbsp;Ajouter&nbsp;»</strong>.</li>
     </ol>
     <p>La Quick TX apparaît immédiatement dans la liste avec un fond jaune et un indicateur ⚡, et met à jour le solde du compte en temps réel. Elle est également visible dans les onglets <strong>Dépenses</strong> ou <strong>Revenus</strong> selon son type. Balayez à droite pour modifier, à gauche pour supprimer.</p>
-    <div class="highlight">Les Quick TX sont automatiquement supprimées après leur date afin de ne pas alourdir votre historique.</div>
+    <div class="highlight">Les Quick TX du jour précédent et antérieures sont automatiquement <strong>archivées</strong> au lancement — elles restent consultables dans <strong>l'Historique</strong> (voir ci-dessous).</div>
+
+    <h3>Historique</h3>
+    <p>Appuyez sur l'icône <strong>«&nbsp;Historique&nbsp;»</strong> (⏱ en haut à droite de l'onglet Transactions) pour accéder à l'ensemble de vos transactions passées.</p>
+    <p>L'historique regroupe :</p>
+    <ul>
+      <li><strong>Quick TX archivées</strong> — les transactions rapides saisies les jours précédents.</li>
+      <li><strong>Occurrences récurrentes</strong> — les dépenses et revenus récurrents appliqués automatiquement par <strong>Auto Suivi</strong>.</li>
+      <li><strong>Relevés bancaires importés</strong> — les transactions importées depuis un fichier CSV bancaire. Repérables par l'icône 🏦 dans la ligne.</li>
+    </ul>
+    <p>Les transactions sont regroupées par mois avec, en en-tête, le total des revenus et dépenses du mois.</p>
+    <h4>Graphiques disponibles</h4>
+    <ul>
+      <li><strong>Tendance sur 12 mois</strong> — revenus et dépenses réels côte à côte pour les 12 derniers mois.</li>
+      <li><strong>Réel vs Planifié</strong> — compare les dépenses réelles enregistrées dans l'historique aux dépenses récurrentes prévues dans le budget, mois par mois. Pratique pour détecter les écarts entre votre budget et vos dépenses effectives.</li>
+    </ul>
+    <p>Utilisez le sélecteur <strong>Compte</strong> pour filtrer l'historique par compte.</p>
+    <p>Le bouton <strong>🗑</strong> en haut à droite permet d'effacer définitivement tout l'historique. Une confirmation est demandée avant la suppression.</p>
 
     <h3>Accéder aux détails d'une transaction à venir</h3>
     <p>Appuyez longuement (ou via le menu contextuel) sur une transaction à venir pour :</p>
@@ -279,11 +300,27 @@
     <h3>Comptes bancaires</h3>
     <p>Accédez à <strong>Paramètres › Comptes</strong> pour gérer vos comptes.</p>
     <ul>
-      <li><strong>Ajouter</strong> — appuyez sur <strong>+</strong> et donnez un nom au compte (max. 50 caractères).</li>
+      <li><strong>Ajouter</strong> — appuyez sur <strong>+</strong> pour ouvrir le formulaire : saisissez un nom (max. 50 caractères), choisissez le <strong>type de compte</strong> et la <strong>couleur</strong>.</li>
+      <li><strong>Modifier le type ou la couleur</strong> — appuyez sur l'icône du type à gauche du nom pour ouvrir le formulaire d'édition.</li>
       <li><strong>Renommer</strong> — appuyez sur l'icône crayon (max. 50 caractères). Le renommage met à jour toutes les transactions associées.</li>
-      <li><strong>Changer la couleur</strong> — appuyez sur le cercle coloré à gauche du nom.</li>
       <li><strong>Réorganiser</strong> — appuyez sur «&nbsp;Modifier&nbsp;» puis faites glisser.</li>
       <li><strong>Supprimer</strong> — balayez à gauche.</li>
+    </ul>
+    <h4>Types de comptes</h4>
+    <ul>
+      <li>🏦 <strong>Chèques</strong> — compte courant, dépenses quotidiennes.</li>
+      <li>💵 <strong>Épargne</strong> — compte d'épargne à intérêts, fonds d'urgence.</li>
+      <li>💳 <strong>Crédit</strong> — carte de crédit (le solde représente ce que vous devez).</li>
+      <li>💳 <strong>Marge de crédit</strong> — ligne de crédit hypothécaire ou personnelle.</li>
+      <li>📈 <strong>Placement</strong> — REER, CELI, CPG, fonds communs.</li>
+      <li>📊 <strong>Bourse</strong> — compte de courtage, actions, ETF.</li>
+    </ul>
+    <p>Le type détermine si le compte est affiché dans la section <strong>Actifs</strong> ou <strong>Dettes</strong> du résumé des comptes et du calcul du patrimoine net.</p>
+    <h4>Échéance de paiement (comptes de dette)</h4>
+    <p>Pour un compte de type <strong>Crédit</strong> ou <strong>Marge de crédit</strong>, vous pouvez configurer un <strong>jour d'échéance mensuel</strong> (1–28) depuis le formulaire d'édition (appuyez sur l'icône du type à gauche du nom). La section <strong>«&nbsp;Paiement mensuel&nbsp;»</strong> apparaît automatiquement pour ces types.</p>
+    <ul>
+      <li>Une fois configuré, un rappel <strong>«&nbsp;Paiement [nom du compte]&nbsp;»</strong> s'affiche dans la prévision des transactions à venir, chaque mois à la date choisie, tant que le solde est positif.</li>
+      <li>Le montant affiché correspond au solde actuel du compte — ajustez le solde dans l'onglet Transactions.</li>
     </ul>
     <div class="highlight">Le solde d'un compte se modifie directement depuis l'onglet Transactions, pas depuis les Paramètres.</div>
 
@@ -339,6 +376,18 @@
     <p><code>Description, Montant, Date (ISO8601), Fréquence, Compte, Date de fin (optionnel)</code></p>
     <div class="highlight">Les fréquences valides dans le CSV sont : unique, hebdo, bihebdo, quatreSemaines, mensuel, bimensuel, trimestriel, annuel.</div>
     <div class="highlight">Les catégories et comptes présents dans le fichier CSV sont créés automatiquement s'ils n'existent pas encore — vous pourrez les personnaliser ensuite dans <strong>Paramètres › Catégories</strong> et <strong>Paramètres › Comptes</strong>.</div>
+
+    <h3>Importer un relevé bancaire</h3>
+    <p>Dans la section <strong>«&nbsp;Relevés bancaires&nbsp;»</strong>, appuyez sur <strong>«&nbsp;Importer un relevé bancaire (.csv)&nbsp;»</strong> pour importer directement un relevé de compte de votre banque.</p>
+    <ol>
+      <li>Sélectionnez le fichier CSV exporté depuis votre banque (Desjardins, BMO, RBC, TD ou tout autre format standard).</li>
+      <li>L'app détecte automatiquement les colonnes Date, Débit/Crédit et Description.</li>
+      <li>Prévisualisez les transactions et ajustez les catégories si nécessaire.</li>
+      <li>Optionnel — appuyez sur <strong>«&nbsp;Catégoriser avec Apple Intelligence&nbsp;»</strong> pour que l'app propose automatiquement la catégorie la plus pertinente pour chaque transaction (requiert iOS 26 et Apple Intelligence).</li>
+      <li>Choisissez le <strong>compte de destination</strong> et appuyez sur <strong>«&nbsp;Importer&nbsp;»</strong>.</li>
+    </ol>
+    <p>Les transactions importées apparaissent dans l'<strong>Historique</strong> avec l'icône 🏦.</p>
+    <div class="highlight"><strong>Confidentialité :</strong> la catégorisation par Apple Intelligence se fait entièrement sur votre appareil. Aucune donnée bancaire n'est transmise à l'extérieur.</div>
 
     <h3>Synchronisation iCloud</h3>
     <p>La synchronisation est entièrement automatique. Dès que vous ajoutez ou modifiez une transaction sur un appareil, les changements se propagent sur tous vos appareils Apple connectés au même identifiant iCloud. Aucune action de votre part n'est requise.</p>
@@ -459,10 +508,11 @@
     <p>Pour révoquer également les autorisations Apple, rendez-vous dans <strong>Réglages iOS › [Votre nom] › Mot de passe et sécurité › Apps utilisant votre identifiant Apple</strong>.</p>
 
     <h3>L'app utilise-t-elle de l'intelligence artificielle ?</h3>
-    <p>Oui, pour deux fonctionnalités — toutes deux entièrement <strong>sur votre appareil</strong>, sans aucun envoi de données à l'extérieur. Ces fonctionnalités nécessitent <strong>iOS 26</strong> ou plus récent et un appareil compatible Apple Intelligence (puce A17 Pro, A18 ou série M). Sur iOS 18-25, elles ne sont pas disponibles et l'app fonctionne normalement sans elles :</p>
+    <p>Oui, pour trois fonctionnalités — toutes entièrement <strong>sur votre appareil</strong>, sans aucun envoi de données à l'extérieur. Ces fonctionnalités nécessitent <strong>iOS 26</strong> ou plus récent et un appareil compatible Apple Intelligence (puce A17 Pro, A18 ou série M). Sur iOS 18-25, elles ne sont pas disponibles et l'app fonctionne normalement sans elles :</p>
     <ul>
       <li><strong>Scan de documents</strong> (factures, reçus, bulletins de paie) — disponible dans les onglets Dépenses, Revenus et Transaction rapide. Utilise Vision (OCR) pour reconnaître le texte, puis Apple Intelligence pour en extraire le montant, la date, le marchand et la catégorie.</li>
       <li><strong>Analyse personnalisée des Insights</strong> — dans l'onglet Tableau de bord, Apple Intelligence génère jusqu'à 3 observations en langage naturel sur votre situation financière (tendances, conseils, alertes) à partir de vos agrégats mensuels.</li>
+      <li><strong>Catégorisation des relevés bancaires</strong> — lors de l'import d'un relevé CSV, Apple Intelligence suggère automatiquement la catégorie la plus pertinente pour chaque transaction bancaire.</li>
     </ul>
     <p><strong>Aucune image, aucun texte de vos documents et aucune donnée financière n'est envoyée à un serveur externe.</strong> Le traitement se fait localement sur votre iPhone via le modèle Apple Intelligence (FoundationModels), sans connexion internet nécessaire.</p>
     <p>Toutes les autres fonctionnalités (projections, notifications, widget, synchronisation iCloud, etc.) ne font appel à aucune intelligence artificielle.</p>
@@ -480,12 +530,11 @@
   <!-- ── Getting Started ──────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">🚀</span> Getting Started</h2>
-    <p>Budget App uses <strong>Sign in with Apple</strong> to identify you securely and anonymously — no password to remember.</p>
+    <p>Budget App requires no account or password. Just open and go.</p>
     <ol>
-      <li>Open the app and tap <strong>"Sign in with Apple"</strong>.</li>
-      <li>Authenticate with Face ID, Touch ID, or your passcode.</li>
-      <li>A short introduction tutorial will launch. You can skip it by tapping <strong>"Skip"</strong> in the top right, or replay it at any time from <strong>Settings › About › Replay Introduction</strong>.</li>
-      <li>Default categories are created automatically to help you get started.</li>
+      <li>On first launch, a short introduction tutorial guides you. Tap <strong>"Skip"</strong> in the top right to dismiss it.</li>
+      <li>Default categories and an account are created automatically to help you get started.</li>
+      <li>Add your recurring income (salary, benefits…) and recurring expenses (rent, subscriptions…).</li>
     </ol>
     <div class="highlight">Your data syncs automatically across all your Apple devices via iCloud — no configuration required.</div>
   </div>
@@ -516,7 +565,12 @@
     </ul>
 
     <h3>Account Summary</h3>
-    <p>A quick view of each account's current balance.</p>
+    <p>A monthly cash flow summary per account (income and expenses assigned to each account this month). Accounts are grouped into two sections:</p>
+    <ul>
+      <li><strong>Assets</strong> — chequing, savings, investments, brokerage: positive balances that make up your wealth.</li>
+      <li><strong>Debts</strong> — credit cards, lines of credit: balances representing what you owe.</li>
+    </ul>
+    <p>At the bottom of the card, <strong>Net Worth</strong> = total assets − total debts.</p>
 
     <h3>Insights</h3>
     <p>The <strong>Insights</strong> card analyses your data and automatically surfaces observations about your financial situation:</p>
@@ -674,7 +728,24 @@
       <li>Tap <strong>"Add"</strong>.</li>
     </ol>
     <p>The Quick TX appears immediately in the list with a yellow background and a ⚡ indicator, and updates the account balance in real time. It is also visible in the <strong>Expenses</strong> or <strong>Income</strong> tab depending on its type. Swipe right to edit, left to delete.</p>
-    <div class="highlight">Quick transactions are automatically purged after their date to keep your data clean.</div>
+    <div class="highlight">Quick transactions from previous days are automatically <strong>archived</strong> on launch — they remain accessible in <strong>History</strong> (see below).</div>
+
+    <h3>History</h3>
+    <p>Tap the <strong>History</strong> icon (⏱ top-right of the Transactions tab) to view all your past transactions.</p>
+    <p>History includes:</p>
+    <ul>
+      <li><strong>Archived Quick TX</strong> — quick transactions from previous days.</li>
+      <li><strong>Recurring occurrences</strong> — expenses and income automatically applied by <strong>Auto-Track</strong>.</li>
+      <li><strong>Imported bank statements</strong> — transactions imported from a bank CSV file. Identifiable by the 🏦 icon on each row.</li>
+    </ul>
+    <p>Transactions are grouped by month with a header showing total income and expenses for that month.</p>
+    <h4>Available charts</h4>
+    <ul>
+      <li><strong>12-Month Trend</strong> — actual income and expenses side by side for the past 12 months.</li>
+      <li><strong>Actual vs Planned</strong> — compares actual expenses recorded in history against recurring budget expenses, month by month. Useful for spotting gaps between your budget and real spending.</li>
+    </ul>
+    <p>Use the <strong>Account</strong> picker to filter history by account.</p>
+    <p>The <strong>🗑</strong> button in the top right permanently clears all history. A confirmation is required before deletion.</p>
 
     <h3>Accessing an Upcoming Transaction's Details</h3>
     <p>Long-press (or use the context menu) on an upcoming transaction to:</p>
@@ -711,11 +782,27 @@
     <h3>Bank Accounts</h3>
     <p>Go to <strong>Settings › Accounts</strong> to manage your accounts.</p>
     <ul>
-      <li><strong>Add</strong> — tap <strong>+</strong> and name the account (max. 50 characters).</li>
+      <li><strong>Add</strong> — tap <strong>+</strong> to open the form: enter a name (max. 50 characters), choose the <strong>account type</strong>, and set a <strong>colour</strong>.</li>
+      <li><strong>Edit type or colour</strong> — tap the type icon to the left of the name to open the edit form.</li>
       <li><strong>Rename</strong> — tap the pencil icon (max. 50 characters). The rename updates all associated transactions.</li>
-      <li><strong>Change color</strong> — tap the colored circle next to the name.</li>
       <li><strong>Reorder</strong> — tap "Edit" then drag rows.</li>
       <li><strong>Delete</strong> — swipe left.</li>
+    </ul>
+    <h4>Account Types</h4>
+    <ul>
+      <li>🏦 <strong>Chequing</strong> — everyday spending account.</li>
+      <li>💵 <strong>Savings</strong> — savings account, emergency fund.</li>
+      <li>💳 <strong>Credit</strong> — credit card (balance represents what you owe).</li>
+      <li>💳 <strong>Line of Credit</strong> — home equity or personal line of credit.</li>
+      <li>📈 <strong>Investment</strong> — RRSP, TFSA, GIC, mutual funds.</li>
+      <li>📊 <strong>Brokerage</strong> — trading account, stocks, ETFs.</li>
+    </ul>
+    <p>The type determines whether an account appears under <strong>Assets</strong> or <strong>Debts</strong> in the account summary and net worth calculation.</p>
+    <h4>Payment Due Date (debt accounts)</h4>
+    <p>For <strong>Credit</strong> or <strong>Line of Credit</strong> accounts, you can configure a monthly <strong>payment due day</strong> (1–28) in the edit form (tap the type icon to the left of the account name). The <strong>"Monthly payment"</strong> section appears automatically for these types.</p>
+    <ul>
+      <li>Once configured, a <strong>"Payment [account name]"</strong> reminder appears in your upcoming transactions forecast each month on the specified day, as long as the balance is positive.</li>
+      <li>The amount shown reflects the current account balance — adjust the balance in the Transactions tab.</li>
     </ul>
     <div class="highlight">An account's balance is edited directly in the Transactions tab, not in Settings.</div>
 
@@ -771,6 +858,18 @@
     <p><code>Description, Amount, Date (ISO8601), Frequency, Account, End date (optional)</code></p>
     <div class="highlight">Valid frequency values in CSV: unique, hebdo, bihebdo, quatreSemaines, mensuel, bimensuel, trimestriel, annuel.</div>
     <div class="highlight">Categories and accounts referenced in the CSV file are automatically created if they don't already exist — you can customize them afterwards in <strong>Settings › Categories</strong> and <strong>Settings › Accounts</strong>.</div>
+
+    <h3>Import a Bank Statement</h3>
+    <p>In the <strong>"Bank Statements"</strong> section, tap <strong>"Import a bank statement (.csv)"</strong> to import a statement directly from your bank.</p>
+    <ol>
+      <li>Select the CSV file exported from your bank (Desjardins, BMO, RBC, TD, or any standard format).</li>
+      <li>The app automatically detects Date, Debit/Credit, and Description columns.</li>
+      <li>Preview the transactions and adjust categories as needed.</li>
+      <li>Optional — tap <strong>"Categorize with Apple Intelligence"</strong> to have the app automatically suggest the most relevant category for each transaction (requires iOS 26 and Apple Intelligence).</li>
+      <li>Choose the <strong>destination account</strong> and tap <strong>"Import"</strong>.</li>
+    </ol>
+    <p>Imported transactions appear in <strong>History</strong> with a 🏦 icon.</p>
+    <div class="highlight"><strong>Privacy:</strong> Apple Intelligence categorization runs entirely on your device. No banking data is ever sent externally.</div>
 
     <h3>iCloud Sync</h3>
     <p>Sync is fully automatic. Any transaction you add or edit on one device is propagated to all your Apple devices signed in with the same iCloud account. No action is required on your part.</p>
@@ -891,10 +990,11 @@
     <p>To also revoke Apple Sign-In permissions, go to <strong>iOS Settings › [Your Name] › Password &amp; Security › Apps Using Your Apple ID</strong>.</p>
 
     <h3>Does the app use artificial intelligence?</h3>
-    <p>Yes, for two features — both running entirely <strong>on your device</strong>, with no data sent anywhere. These features require <strong>iOS 26</strong> or later and an Apple Intelligence-compatible device (A17 Pro, A18, or M-series chip). On iOS 18–25, they are unavailable and the app works fully without them:</p>
+    <p>Yes, for three features — all running entirely <strong>on your device</strong>, with no data sent anywhere. These features require <strong>iOS 26</strong> or later and an Apple Intelligence-compatible device (A17 Pro, A18, or M-series chip). On iOS 18–25, they are unavailable and the app works fully without them:</p>
     <ul>
       <li><strong>Document scanning</strong> (receipts, invoices, pay stubs) — available in the Expenses, Income, and Quick Transaction tabs. Uses Vision (OCR) to recognize text, then Apple Intelligence to extract the amount, date, merchant, and category.</li>
       <li><strong>Personalized Insights analysis</strong> — in the Dashboard tab, Apple Intelligence generates up to 3 natural-language observations about your financial situation (trends, advice, alerts) based on your monthly aggregates.</li>
+      <li><strong>Bank statement categorization</strong> — when importing a bank CSV, Apple Intelligence automatically suggests the most relevant category for each bank transaction.</li>
     </ul>
     <p><strong>No image, no text from your documents, and no financial data is ever sent to an external server.</strong> Processing happens locally on your iPhone via the Apple Intelligence model (FoundationModels), with no internet connection required.</p>
     <p>All other features (projections, notifications, widget, iCloud sync, etc.) do not use any artificial intelligence.</p>

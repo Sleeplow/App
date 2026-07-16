@@ -22,19 +22,21 @@ permissions:
   contents: write
   pull-requests: write
 
-# Un seul groupe pour TOUT le workflow (pas par ref) : main, qa et chaque PR
-# poussent tous vers la même branche gh-pages, donc ils doivent se mettre en
-# file au lieu de tourner en parallèle — sinon deux pushes concurrents se
-# livrent une course sur la même ref et l'un des deux est rejeté par Git.
-concurrency:
-  group: gh-pages-publish
-  cancel-in-progress: false
-
 jobs:
   # ── Environnements persistants : prod (main) et QA (qa) ──
   deploy:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    # Groupe partagé entre main et qa uniquement : les deux poussent vers la
+    # même branche gh-pages et doivent se mettre en file plutôt que tourner en
+    # parallèle (sinon l'un des deux pushes est rejeté par Git, non
+    # fast-forward). Un groupe dédié à ce job (pas partagé avec `preview`)
+    # évite qu'un événement de PR simultané (ex. fermeture lors d'un merge)
+    # fasse annuler ce déploiement par la règle GitHub « seul le run le plus
+    # récemment mis en file dans un groupe est conservé ».
+    concurrency:
+      group: gh-pages-deploy
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
 
@@ -74,6 +76,11 @@ jobs:
   preview:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    # Groupe dédié par PR : n'entre jamais en compétition avec le groupe
+    # gh-pages-deploy (main/qa) ni avec l'aperçu d'une autre PR.
+    concurrency:
+      group: gh-pages-preview-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
 

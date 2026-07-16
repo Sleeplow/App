@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr" data-app="budget">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleeplow — Applications</title>
+  <meta name="description" content="Sleeplow — applications iOS. Aide, confidentialité et contact pour Budget et nos prochaines applications." />
+  <meta name="theme-color" content="#1d9e75" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0d1311" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sleeplow" />
+  <meta property="og:title" content="Sleeplow — Applications" />
+  <meta property="og:description" content="Aide, confidentialité et contact pour Budget et nos prochaines applications." />
+  <meta property="og:url" content="https://app.sleeplow.ca/" />
+  <meta property="og:image" content="https://app.sleeplow.ca/og-image.png" />
+  <meta property="og:locale" content="fr_CA" />
+  <meta property="og:locale:alternate" content="en_CA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <button class="menu-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="app-menu" aria-label="Menu des applications / Apps menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="app-menu" id="app-menu" hidden aria-label="Applications"></nav>
+  <div class="lang-switch" role="group" aria-label="Langue / Language">
+    <button class="active" type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+  <span class="logo-icon" id="app-logo" role="img" aria-label="Budget"></span>
+  <h1 id="app-name">Budget</h1>
+  <p id="app-tagline">par Sleeplow</p>
+</header>
+
+<!-- Carousel: one slide per app. Header, theme color and cards are rendered
+     from the APPS registry in script.js. -->
+<div class="carousel">
+  <button class="carousel-arrow prev" type="button" aria-label="Application précédente / Previous app">‹</button>
+  <button class="carousel-arrow next" type="button" aria-label="Application suivante / Next app">›</button>
+
+  <div class="carousel-viewport">
+    <div class="carousel-track" id="carousel-track"></div>
+  </div>
+
+  <div class="carousel-dots" id="carousel-dots"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

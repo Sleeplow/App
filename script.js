@@ -304,6 +304,12 @@ function setLang(lang) {
   document.querySelectorAll('[lang-section]').forEach(sec => {
     sec.style.display = sec.getAttribute('lang-section') === lang ? 'block' : 'none';
   });
+  // The <title> (browser tab / window title) isn't a [lang-section], so it
+  // needs its own translation via data-title-fr/data-title-en attributes.
+  const titleEl = document.querySelector('title');
+  if (titleEl && titleEl.dataset.titleFr && titleEl.dataset.titleEn) {
+    document.title = lang === 'en' ? titleEl.dataset.titleEn : titleEl.dataset.titleFr;
+  }
   document.querySelectorAll('.lang-switch button').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });

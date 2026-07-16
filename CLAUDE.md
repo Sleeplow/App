@@ -1,8 +1,24 @@
 # CLAUDE.md — Site Sleeplow (hub multi-applications)
 
-Site statique (HTML/CSS/JS, sans build) déployé sur GitHub Pages via `CNAME`.
-La page d'accueil est un **carousel** qui présente plusieurs applications ; chaque
-app a son propre dossier, son icône, sa couleur de thème et ses pages.
+Site statique (HTML/CSS/JS, **sans build**) déployé sur GitHub Pages (domaine
+`app.sleeplow.ca`) par un workflow CI/CD (§ Déploiement). La page d'accueil est un
+**carousel** qui présente plusieurs applications ; chaque app a son propre dossier,
+son icône, sa couleur de thème et ses pages.
+
+## En bref (à lire en premier)
+
+- **Quoi** : site statique HTML/CSS/JS, **sans build ni dépendances**. On édite les
+  fichiers et ils sont publiés tels quels — pas de compilation.
+- **Règle d'or** : `main` = **PROD** et est **protégé** → *jamais* de push direct.
+  Tout changement suit le flux **branche → PR → `qa` (test sur `/qa/`) → PR `qa` → `main`**
+  (mise en prod). URLs et détails : § Déploiement.
+- **Sécurité stricte** (CSP `default-src 'none'`, zéro `innerHTML` / handler inline) :
+  § Sécurité, imposée à chaque PR par le CI `security-lint` (le check s'appelle `lint`).
+- **Multi-app** : une app = un dossier (`budget/`, `storage/`, …) + une entrée dans le
+  registre `APPS` de `script.js`. Pour en ajouter une : § Ajouter une application.
+- **Bilingue FR/EN** : un seul sélecteur, et *tout* suit la langue (cartes, gros titre
+  d'en-tête, titre d'onglet) — cf. § Conventions.
+- **Vérifier avant de livrer** : § Développement / vérification.
 
 ## Structure
 

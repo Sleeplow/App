@@ -1,0 +1,92 @@
+name: Deploy Pages (dev / QA / prod)
+
+# Publie le site statique sur GitHub Pages avec trois environnements, tous
+# servis depuis la branche `gh-pages` (seule source que GitHub Pages peut
+# lire) :
+#   - prod  : push sur `main`  → racine du site      (app.sleeplow.ca/)
+#   - QA    : push sur `qa`    → sous-dossier /qa/    (app.sleeplow.ca/qa/)
+#   - dev   : chaque Pull Request → /pr-preview/pr-<n>/, nettoyé à la
+#             fermeture de la PR
+#
+# Étape unique à faire manuellement après le premier run : dans Settings →
+# Pages, changer la source de "main" vers "gh-pages" (branche créée
+# automatiquement par ce workflow).
+
+on:
+  push:
+    branches: [main, qa]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ── Environnements persistants : prod (main) et QA (qa) ──
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prépare le contenu du site (exclut docs/CI)
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='CLAUDE.md' \
+            --exclude='SECURITY-AUDIT.md' \
+            --exclude='CNAME' \
+            --exclude='_site/' \
+            ./ _site/
+
+      - name: Déploie en PROD (main → racine)
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
+          destination_dir: .
+          keep_files: true
+          cname: app.sleeplow.ca
+
+      - name: Déploie en QA (qa → /qa)
+        if: github.ref == 'refs/heads/qa'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
+          destination_dir: qa
+          keep_files: true
+
+  # ── Aperçu éphémère par Pull Request (dev) ──
+  preview:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prépare le contenu du site (exclut docs/CI)
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='CLAUDE.md' \
+            --exclude='SECURITY-AUDIT.md' \
+            --exclude='CNAME' \
+            --exclude='_site/' \
+            ./ _site/
+
+      - name: Déploie / nettoie l'aperçu de PR
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: _site

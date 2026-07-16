@@ -108,6 +108,17 @@
     </ul>
     <div class="highlight"><strong>Confidentialité :</strong> l'analyse utilise Apple Intelligence (FoundationModels) entièrement sur votre appareil. Aucune donnée financière n'est transmise à un serveur externe.</div>
 
+    <h3>Objectifs d'épargne</h3>
+    <p>La carte <strong>Objectifs d'épargne</strong> vous aide à suivre votre progression vers un montant cible sur un compte donné (fonds d'urgence, mise de fonds, voyage…).</p>
+    <ul>
+      <li>Appuyez sur <strong>+</strong> pour ajouter un objectif : un <strong>nom</strong>, un <strong>montant cible</strong>, le <strong>compte suivi</strong> et, en option, une <strong>date d'échéance</strong>.</li>
+      <li>Une <strong>barre de progression</strong> se remplit automatiquement selon le solde actuel du compte suivi par rapport à la cible, avec le pourcentage atteint.</li>
+      <li>La couleur reflète l'état : <strong>bleu</strong> (en cours), <strong>vert</strong> (objectif atteint) et <strong>rouge</strong> (échéance dépassée avant d'avoir atteint la cible).</li>
+      <li>Sous la barre : le solde actuel sur la cible (ex. : 1 200 $ / 5 000 $) et, si une échéance est définie, le nombre de jours restants («&nbsp;Échéance dans 90 jour(s)&nbsp;», «&nbsp;Échéance aujourd'hui&nbsp;» ou «&nbsp;Échéance dépassée&nbsp;»).</li>
+      <li>Appuyez sur un objectif pour le <strong>modifier</strong> ; balayez vers la gauche pour le <strong>supprimer</strong> (une confirmation est demandée).</li>
+    </ul>
+    <div class="highlight">La progression se met à jour toute seule : il suffit d'ajuster le solde du compte suivi dans l'onglet Transactions. Comme les autres cartes, «&nbsp;Objectifs d'épargne&nbsp;» peut être réordonnée ou masquée via <strong>Personnaliser</strong>.</div>
+
     <h3>Personnaliser le tableau de bord</h3>
     <p>Appuyez sur l'icône <strong>« Personnaliser »</strong> (trois curseurs) en haut à droite pour réorganiser ou masquer les cartes du tableau de bord.</p>
     <ul>
@@ -230,6 +241,7 @@
       <li>🟡 <strong>Jaune</strong> — transaction rapide (Quick TX).</li>
       <li>🟢 <strong>Vert</strong> — revenu prévu.</li>
       <li>🔴 <strong>Rouge</strong> — dépense prévue.</li>
+      <li>🟠 <strong>Orange</strong> — échéance de paiement d'une dette (carte de crédit ou marge — voir «&nbsp;Échéance de paiement&nbsp;» dans les Paramètres).</li>
     </ul>
 
     <h3>Auto Suivi</h3>
@@ -263,6 +275,7 @@
       <li><strong>Réel vs Planifié</strong> — compare les dépenses réelles enregistrées dans l'historique aux dépenses récurrentes prévues dans le budget, mois par mois. Pratique pour détecter les écarts entre votre budget et vos dépenses effectives.</li>
     </ul>
     <p>Utilisez le sélecteur <strong>Compte</strong> pour filtrer l'historique par compte.</p>
+    <p>Pour retirer une entrée précise, balayez sa ligne vers la <strong>gauche</strong> et appuyez sur <strong>«&nbsp;Supprimer&nbsp;»</strong> — une confirmation récapitule la transaction avant de l'effacer définitivement.</p>
     <p>Le bouton <strong>🗑</strong> en haut à droite permet d'effacer définitivement tout l'historique. Une confirmation est demandée avant la suppression.</p>
 
     <h3>Accéder aux détails d'une transaction à venir</h3>
@@ -343,16 +356,22 @@
     </ul>
 
     <h3>Notifications</h3>
-    <p>Activez les rappels depuis <strong>Paramètres › Notifications</strong>. Une fois activés, un <strong>stepper « Délai d'avertissement »</strong> apparaît pour choisir combien de jours à l'avance vous souhaitez être averti (de 1 à 7 jours).</p>
+    <p>Toutes les notifications se règlent depuis <strong>Paramètres › Notifications</strong>. Un interrupteur principal <strong>«&nbsp;Notifications&nbsp;»</strong> commande l'ensemble ; en dessous, chaque catégorie (rappels de paiements, résumés) possède son propre interrupteur.</p>
+
+    <h4>Interrupteur principal et heure d'envoi</h4>
+    <p>Activez <strong>«&nbsp;Notifications&nbsp;»</strong> pour autoriser l'app à vous notifier (iOS demande alors la permission). Un sélecteur <strong>«&nbsp;Heure des notifications&nbsp;»</strong> apparaît pour choisir l'heure d'envoi (par défaut&nbsp;9h00) — elle s'applique aussi bien aux rappels de paiements qu'aux résumés.</p>
+    <div class="highlight">Désactiver l'interrupteur principal coupe <em>toutes</em> les notifications d'un coup. Quand il est réactivé, chaque catégorie ci-dessous reprend selon son propre interrupteur.</div>
+
+    <h4>Rappels de paiements</h4>
+    <p>L'interrupteur <strong>«&nbsp;Rappels de paiements&nbsp;»</strong> contrôle les alertes envoyées avant chaque transaction récurrente à venir. Un <strong>stepper «&nbsp;Délai d'avertissement&nbsp;»</strong> choisit combien de jours à l'avance vous êtes averti (de 1 à 7 jours) :</p>
     <ul>
-      <li><strong>1 jour avant</strong> (par défaut) — notification la veille à 9h00 : « Demain · Loyer ».</li>
+      <li><strong>1 jour avant</strong> (par défaut) — notification la veille, à l'heure choisie : « Demain · Loyer ».</li>
       <li><strong>2 à 7 jours avant</strong> — notification X jours avant l'échéance : « Dans 3 jours · Loyer ».</li>
     </ul>
-    <p>Les transactions des <strong>14 prochains jours</strong> sont couvertes. Changer le délai replanifie immédiatement toutes les notifications.</p>
-    <p>Pour désactiver, basculez l'interrupteur. Vous pouvez également gérer les permissions depuis <strong>Réglages iOS › Budget App › Notifications</strong>.</p>
+    <p>Les transactions des <strong>14 prochains jours</strong> sont couvertes. Changer le délai replanifie immédiatement les rappels. Désactiver ce seul interrupteur arrête les rappels de paiements sans toucher aux résumés ci-dessous.</p>
 
     <h4>Aperçu des notifications</h4>
-    <p>Le menu <strong>« Aperçu des notifications »</strong> contrôle les informations affichées sur l'écran verrouillé :</p>
+    <p>Le menu <strong>« Aperçu des notifications »</strong> (sous les rappels de paiements) contrôle les informations affichées sur l'écran verrouillé :</p>
     <ul>
       <li><strong>Complet</strong> — la description, la catégorie <em>et</em> le montant sont visibles (ex. : « Demain · Loyer (Habitation) — 1 200,00 $ »).</li>
       <li><strong>Standard</strong> (par défaut) — seule la description est affichée (ex. : « Demain · Loyer »).</li>
@@ -361,7 +380,7 @@
     <div class="highlight">Choisissez <strong>Anonyme</strong> si des personnes de votre entourage peuvent voir votre téléphone verrouillé et que vous préférez ne pas exposer vos données financières.</div>
 
     <h4>Résumé hebdomadaire</h4>
-    <p>Activez le <strong>Résumé hebdomadaire</strong> depuis <strong>Paramètres › Notifications</strong> pour recevoir chaque dimanche à 10h00 une notification qui résume vos dépenses et revenus des 7 derniers jours.</p>
+    <p>Activez le <strong>Résumé hebdomadaire</strong> pour recevoir chaque <strong>dimanche</strong> (à l'heure des notifications choisie plus haut) une notification qui résume vos dépenses et revenus des 7 derniers jours :</p>
     <ul>
       <li><strong>Total des dépenses</strong> et <strong>total des revenus</strong> de la semaine écoulée.</li>
       <li><strong>Catégorie principale</strong> — la catégorie où vous avez le plus dépensé.</li>
@@ -369,6 +388,10 @@
     </ul>
     <p>Sur iOS 26 avec Apple Intelligence activé, le résumé est rédigé en langage naturel par l'IA. Sur iOS 18–25 (ou si Apple Intelligence n'est pas disponible), un résumé formaté avec les chiffres clés est généré automatiquement.</p>
     <div class="highlight"><strong>Confidentialité :</strong> si Apple Intelligence est utilisée pour rédiger le résumé, l'analyse se fait entièrement sur votre appareil. Aucune donnée financière n'est transmise à un serveur externe.</div>
+
+    <h4>Bilan mensuel</h4>
+    <p>Activez le <strong>Bilan mensuel</strong> pour recevoir, chaque <strong>1<sup>er</sup> du mois</strong> (à l'heure des notifications choisie), un récapitulatif de vos revenus et dépenses du <strong>mois précédent</strong> : total des dépenses, total des revenus et flux net.</p>
+    <p>Vous pouvez à tout moment gérer les permissions système depuis <strong>Réglages iOS › Budget App › Notifications</strong>.</p>
 
     <h3>Verrouillage Face ID / Touch ID</h3>
     <p>Activez le verrou depuis <strong>Paramètres › Sécurité</strong>. À chaque ouverture, l'app demande votre Face ID, Touch ID ou le code de l'appareil avant d'afficher vos données.</p>
@@ -386,6 +409,15 @@
     <p><code>Description, Montant, Date (ISO8601), Fréquence, Compte, Date de fin (optionnel)</code></p>
     <div class="highlight">Les fréquences valides dans le CSV sont : unique, hebdo, bihebdo, quatreSemaines, mensuel, bimensuel, trimestriel, annuel.</div>
     <div class="highlight">Les catégories et comptes présents dans le fichier CSV sont créés automatiquement s'ils n'existent pas encore — vous pourrez les personnaliser ensuite dans <strong>Paramètres › Catégories</strong> et <strong>Paramètres › Comptes</strong>.</div>
+
+    <h3>Rapport mensuel PDF</h3>
+    <p>Toujours dans <strong>Paramètres › Données › Import / Export CSV</strong>, la section <strong>«&nbsp;Rapport mensuel PDF&nbsp;»</strong> génère un rapport PDF d'un mois complet à partir de votre <strong>historique</strong>.</p>
+    <ol>
+      <li>Choisissez le mois dans le menu <strong>«&nbsp;Mois du rapport&nbsp;»</strong> (les 12 derniers mois sont proposés).</li>
+      <li>Appuyez sur <strong>«&nbsp;Générer et partager&nbsp;»</strong> : la feuille de partage s'ouvre directement pour enregistrer le PDF dans Fichiers, l'imprimer ou l'envoyer.</li>
+    </ol>
+    <p>Le rapport contient le titre du mois, un <strong>résumé</strong> (total des revenus, total des dépenses, flux net et nombre de transactions) et la <strong>répartition des dépenses par catégorie</strong>.</p>
+    <div class="highlight">Le rapport s'appuie sur les transactions réelles de votre <strong>historique</strong> (occurrences appliquées par Auto Suivi, Quick TX archivées, imports bancaires) — pas sur les projections.</div>
 
     <h3>Importer un relevé bancaire</h3>
     <p>Dans la section <strong>«&nbsp;Relevés bancaires&nbsp;»</strong>, appuyez sur <strong>«&nbsp;Importer un relevé bancaire (.csv)&nbsp;»</strong> pour importer directement un relevé de compte de votre banque.</p>
@@ -523,7 +555,7 @@
       <li><strong>Scan de documents</strong> (factures, reçus, bulletins de paie) — disponible dans les onglets Dépenses, Revenus et Transaction rapide. Utilise Vision (OCR) pour reconnaître le texte, puis Apple Intelligence pour en extraire le montant, la date, le marchand et la catégorie.</li>
       <li><strong>Analyse personnalisée des Insights</strong> — dans l'onglet Tableau de bord, Apple Intelligence génère jusqu'à 3 observations en langage naturel sur votre situation financière (tendances, conseils, alertes) à partir de vos agrégats mensuels.</li>
       <li><strong>Catégorisation des relevés bancaires</strong> — lors de l'import d'un relevé CSV, Apple Intelligence suggère automatiquement la catégorie la plus pertinente pour chaque transaction bancaire.</li>
-      <li><strong>Résumé hebdomadaire</strong> — chaque dimanche, Apple Intelligence rédige en langage naturel un résumé de vos dépenses et revenus de la semaine, envoyé en notification à 10h00.</li>
+      <li><strong>Résumé hebdomadaire</strong> — chaque dimanche, Apple Intelligence rédige en langage naturel un résumé de vos dépenses et revenus de la semaine, envoyé en notification à l'heure choisie dans les Paramètres.</li>
     </ul>
     <p><strong>Aucune image, aucun texte de vos documents et aucune donnée financière n'est envoyée à un serveur externe.</strong> Le traitement se fait localement sur votre iPhone via le modèle Apple Intelligence (FoundationModels), sans connexion internet nécessaire.</p>
     <p>Toutes les autres fonctionnalités (projections, notifications, widget, synchronisation iCloud, etc.) ne font appel à aucune intelligence artificielle.</p>
@@ -600,6 +632,17 @@
       <li>Each observation is classified as: <strong>positive</strong>, <strong>attention</strong>, <strong>advice</strong>, or <strong>alert</strong>.</li>
     </ul>
     <div class="highlight"><strong>Privacy:</strong> the analysis uses Apple Intelligence (FoundationModels) entirely on your device. No financial data is ever sent to an external server.</div>
+
+    <h3>Savings Goals</h3>
+    <p>The <strong>Savings Goals</strong> card helps you track your progress toward a target amount on a given account (emergency fund, down payment, trip…).</p>
+    <ul>
+      <li>Tap <strong>+</strong> to add a goal: a <strong>name</strong>, a <strong>target amount</strong>, the <strong>tracked account</strong>, and optionally a <strong>due date</strong>.</li>
+      <li>A <strong>progress bar</strong> fills automatically based on the tracked account's current balance relative to the target, with the percentage reached.</li>
+      <li>The colour reflects the status: <strong>blue</strong> (in progress), <strong>green</strong> (goal reached), and <strong>red</strong> (due date passed before reaching the target).</li>
+      <li>Below the bar: the current balance out of the target (e.g. $1,200 / $5,000) and, if a due date is set, the days remaining ("Due in 90 day(s)", "Due Today", or "Deadline Passed").</li>
+      <li>Tap a goal to <strong>edit</strong> it; swipe left to <strong>delete</strong> it (a confirmation is required).</li>
+    </ul>
+    <div class="highlight">Progress updates on its own — just adjust the tracked account's balance in the Transactions tab. Like the other cards, "Savings Goals" can be reordered or hidden via <strong>Customize</strong>.</div>
 
     <h3>Customize the Dashboard</h3>
     <p>Tap the <strong>Customize</strong> icon (three sliders) in the top right to reorder or hide dashboard cards.</p>
@@ -723,6 +766,7 @@
       <li>🟡 <strong>Yellow</strong> — quick transaction (Quick TX).</li>
       <li>🟢 <strong>Green</strong> — upcoming income.</li>
       <li>🔴 <strong>Red</strong> — upcoming expense.</li>
+      <li>🟠 <strong>Orange</strong> — a debt payment due date (credit card or line of credit — see "Payment Due Date" in Settings).</li>
     </ul>
 
     <h3>Auto-Track</h3>
@@ -756,6 +800,7 @@
       <li><strong>Actual vs Planned</strong> — compares actual expenses recorded in history against recurring budget expenses, month by month. Useful for spotting gaps between your budget and real spending.</li>
     </ul>
     <p>Use the <strong>Account</strong> picker to filter history by account.</p>
+    <p>To remove a single entry, swipe its row to the <strong>left</strong> and tap <strong>"Delete"</strong> — a confirmation recaps the transaction before erasing it permanently.</p>
     <p>The <strong>🗑</strong> button in the top right permanently clears all history. A confirmation is required before deletion.</p>
 
     <h3>Accessing an Upcoming Transaction's Details</h3>
@@ -836,16 +881,22 @@
     </ul>
 
     <h3>Notifications</h3>
-    <p>Enable reminders from <strong>Settings › Notifications</strong>. Once enabled, a <strong>"Notification lead time" stepper</strong> appears so you can choose how many days in advance you want to be notified (1 to 7 days).</p>
+    <p>All notifications are managed from <strong>Settings › Notifications</strong>. A master <strong>"Notifications"</strong> switch controls everything; below it, each category (payment reminders, summaries) has its own switch.</p>
+
+    <h4>Master switch and delivery time</h4>
+    <p>Turn on <strong>"Notifications"</strong> to allow the app to notify you (iOS then asks for permission). A <strong>"Notification Time"</strong> picker appears to choose the delivery time (9:00&nbsp;AM by default) — it applies to both payment reminders and summaries.</p>
+    <div class="highlight">Turning the master switch off silences <em>all</em> notifications at once. When it's turned back on, each category below resumes according to its own switch.</div>
+
+    <h4>Payment Reminders</h4>
+    <p>The <strong>"Payment Reminders"</strong> switch controls the alerts sent before each upcoming recurring transaction. A <strong>"Notification lead time" stepper</strong> chooses how many days in advance you're notified (1 to 7 days):</p>
     <ul>
-      <li><strong>1 day before</strong> (default) — notification the day before at 9:00 AM: "Tomorrow · Rent".</li>
+      <li><strong>1 day before</strong> (default) — notification the day before, at your chosen time: "Tomorrow · Rent".</li>
       <li><strong>2 to 7 days before</strong> — notification X days before the due date: "In 3 days · Rent".</li>
     </ul>
-    <p>Transactions within the <strong>next 14 days</strong> are covered. Changing the lead time immediately reschedules all notifications.</p>
-    <p>To disable, toggle the switch off. You can also manage permissions from <strong>iOS Settings › Budget App › Notifications</strong>.</p>
+    <p>Transactions within the <strong>next 14 days</strong> are covered. Changing the lead time immediately reschedules the reminders. Turning off this switch alone stops the payment reminders without affecting the summaries below.</p>
 
     <h4>Notification preview</h4>
-    <p>The <strong>"Notification preview"</strong> menu controls what information is displayed on the lock screen:</p>
+    <p>The <strong>"Notification preview"</strong> menu (under Payment Reminders) controls what information is displayed on the lock screen:</p>
     <ul>
       <li><strong>Full</strong> — the description, category <em>and</em> amount are visible (e.g., "Tomorrow · Rent (Housing) — $1,200.00").</li>
       <li><strong>Standard</strong> (default) — only the description is shown (e.g., "Tomorrow · Rent").</li>
@@ -854,7 +905,7 @@
     <div class="highlight">Choose <strong>Anonymous</strong> if people around you can see your locked phone and you prefer not to expose your financial data.</div>
 
     <h4>Weekly Summary</h4>
-    <p>Enable <strong>Weekly Summary</strong> from <strong>Settings › Notifications</strong> to receive a notification every Sunday at 10:00 AM summarizing your expenses and income over the past 7 days.</p>
+    <p>Enable <strong>Weekly Summary</strong> to receive a notification every <strong>Sunday</strong> (at the notification time you set above) summarizing your expenses and income over the past 7 days:</p>
     <ul>
       <li><strong>Total expenses</strong> and <strong>total income</strong> for the past week.</li>
       <li><strong>Top category</strong> — the category where you spent the most.</li>
@@ -862,6 +913,10 @@
     </ul>
     <p>On iOS 26 with Apple Intelligence enabled, the summary is written in natural language by AI. On iOS 18–25 (or if Apple Intelligence is unavailable), a pre-formatted summary with key figures is generated automatically.</p>
     <div class="highlight"><strong>Privacy:</strong> if Apple Intelligence is used to write the summary, all analysis runs entirely on your device. No financial data is ever sent to an external server.</div>
+
+    <h4>Monthly Summary</h4>
+    <p>Enable <strong>Monthly Summary</strong> to receive, on the <strong>1st of each month</strong> (at your chosen notification time), a recap of your income and expenses for the <strong>previous month</strong>: total expenses, total income, and net flow.</p>
+    <p>You can manage system permissions at any time from <strong>iOS Settings › Budget App › Notifications</strong>.</p>
 
     <h3>Face ID / Touch ID Lock</h3>
     <p>Enable the lock from <strong>Settings › Security</strong>. Each time the app opens, it will request your Face ID, Touch ID, or device passcode before displaying your data.</p>
@@ -879,6 +934,15 @@
     <p><code>Description, Amount, Date (ISO8601), Frequency, Account, End date (optional)</code></p>
     <div class="highlight">Valid frequency values in CSV: unique, hebdo, bihebdo, quatreSemaines, mensuel, bimensuel, trimestriel, annuel.</div>
     <div class="highlight">Categories and accounts referenced in the CSV file are automatically created if they don't already exist — you can customize them afterwards in <strong>Settings › Categories</strong> and <strong>Settings › Accounts</strong>.</div>
+
+    <h3>Monthly PDF Report</h3>
+    <p>Also in <strong>Settings › Data › Import / Export CSV</strong>, the <strong>"Monthly PDF Report"</strong> section generates a PDF report for a full month from your <strong>history</strong>.</p>
+    <ol>
+      <li>Choose the month from the <strong>"Report Month"</strong> menu (the last 12 months are offered).</li>
+      <li>Tap <strong>"Generate &amp; Share"</strong>: the share sheet opens directly so you can save the PDF to Files, print it, or send it.</li>
+    </ol>
+    <p>The report includes the month title, a <strong>summary</strong> (total income, total expenses, net flow, and number of transactions) and a <strong>breakdown of expenses by category</strong>.</p>
+    <div class="highlight">The report is based on the actual transactions in your <strong>history</strong> (occurrences applied by Auto-Track, archived Quick TX, bank imports) — not on projections.</div>
 
     <h3>Import a Bank Statement</h3>
     <p>In the <strong>"Bank Statements"</strong> section, tap <strong>"Import a bank statement (.csv)"</strong> to import a statement directly from your bank.</p>
@@ -1016,7 +1080,7 @@
       <li><strong>Document scanning</strong> (receipts, invoices, pay stubs) — available in the Expenses, Income, and Quick Transaction tabs. Uses Vision (OCR) to recognize text, then Apple Intelligence to extract the amount, date, merchant, and category.</li>
       <li><strong>Personalized Insights analysis</strong> — in the Dashboard tab, Apple Intelligence generates up to 3 natural-language observations about your financial situation (trends, advice, alerts) based on your monthly aggregates.</li>
       <li><strong>Bank statement categorization</strong> — when importing a bank CSV, Apple Intelligence automatically suggests the most relevant category for each bank transaction.</li>
-      <li><strong>Weekly Summary</strong> — every Sunday, Apple Intelligence writes a natural-language summary of your week's expenses and income, delivered as a notification at 10:00 AM.</li>
+      <li><strong>Weekly Summary</strong> — every Sunday, Apple Intelligence writes a natural-language summary of your week's expenses and income, delivered as a notification at your chosen time in Settings.</li>
     </ul>
     <p><strong>No image, no text from your documents, and no financial data is ever sent to an external server.</strong> Processing happens locally on your iPhone via the Apple Intelligence model (FoundationModels), with no internet connection required.</p>
     <p>All other features (projections, notifications, widget, iCloud sync, etc.) do not use any artificial intelligence.</p>

@@ -1,0 +1,634 @@
+/* ───────────────────── Color tokens (light mode) ───────────────────── */
+
+:root {
+  --bg: #f5f5f7;
+  --text: #1d1d1f;
+  --text-secondary: #3a3a3c;
+  --text-muted: #636366; /* darkened for WCAG AA contrast on light backgrounds (≈6:1) */
+
+  --card-bg: #fff;
+  --card-border: transparent;
+  --card-shadow: rgba(0,0,0,0.06);
+  --card-shadow-hover: rgba(0,0,0,0.10);
+
+  --accent: #1d9e75;
+  --accent-bg: #e8f7f2;
+  --accent-contrast: #1a3a2e;
+  --on-accent: #fff;
+
+  --border: #f2f2f7;
+  --divider: #d0d0d0;
+  --contact-bg: #f5f5f7;
+  --arrow: #c0c0c5;
+
+  /* Header / app logo — light variant: green tile, white glyph */
+  --header-bg: #1d9e75;
+  --header-text: #fff;
+  --header-logo: #fff;
+}
+
+/* ───────────────────── Color tokens (dark mode) ────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --text: #f5f5f7;
+    --text-secondary: #c7c7cc;
+    --text-muted: #8e8e93;
+
+    --card-bg: #1c1c1e;
+    --card-border: #2c2c2e;
+    --card-shadow: rgba(0,0,0,0.5);
+    --card-shadow-hover: rgba(0,0,0,0.7);
+
+    --accent: #2ecc8f;
+    --accent-bg: #14302a;
+    --accent-contrast: #d7f5ea;
+    --on-accent: #0d1311;
+
+    --border: #2c2c2e;
+    --divider: #3a3a3c;
+    --contact-bg: #2c2c2e;
+    --arrow: #6e6e73;
+
+    /* Header / app logo — dark variant: near-black tile, green glyph */
+    --header-bg: #0d1311;
+    --header-text: #f5f5f7;
+    --header-logo: #2ecc8f;
+  }
+}
+
+/* ───────────────────── Per-app themes (data-app) ─────────────────────
+   Each app overrides its accent + header + logo. Light values live here,
+   dark variants in the media query below. Adding an app = duplicate one
+   block (light + dark) with the app's own colors and logo path. The matching
+   data-app attribute is set on <html> (statically on sub-pages, dynamically
+   by the carousel on the home page). */
+
+:root { --app-logo: url(budget/logo.svg); }
+
+[data-app="budget"] {
+  --accent: #1d9e75;
+  --accent-bg: #e8f7f2;
+  --accent-contrast: #1a3a2e;
+  --header-bg: #1d9e75;
+  --header-text: #fff;
+  --header-logo: #fff;
+  --app-logo: url(budget/logo.svg);
+}
+
+[data-app="storage"] {
+  --accent: #1a7feb;
+  --accent-bg: #e8f2fd;
+  --accent-contrast: #0a2d56;
+  --header-bg: #1a7feb;
+  --header-text: #fff;
+  --header-logo: #fff;
+  --app-logo: url(storage/logo.svg);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-app="budget"] {
+    --accent: #2ecc8f;
+    --accent-bg: #14302a;
+    --accent-contrast: #d7f5ea;
+    --header-bg: #0d1311;
+    --header-text: #f5f5f7;
+    --header-logo: #2ecc8f;
+  }
+  [data-app="storage"] {
+    --accent: #3b9ef5;
+    --accent-bg: #0d1e38;
+    --accent-contrast: #d6eafc;
+    --header-bg: #0d1e38;
+    --header-text: #f5f5f7;
+    --header-logo: #3b9ef5;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────── Header ─────────────────────────── */
+
+header {
+  position: relative;
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 48px 24px 36px;
+  text-align: center;
+}
+
+/* App logo — the "$" glyph drawn from logo.svg, recolored per color scheme */
+header .logo-icon {
+  display: block;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 14px;
+  background-color: var(--header-logo);
+  -webkit-mask: var(--app-logo) center / contain no-repeat;
+  mask: var(--app-logo) center / contain no-repeat;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+header p {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* ─────────────────────── Back navigation ────────────────────── */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 20px 0 0 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.back-link:hover { text-decoration: underline; }
+
+/* ──────────────── Language switch (in header banner) ──────────────── */
+/* Compact FR/EN segmented toggle, pinned to the top-right of the header.
+   Global control: identical on every page, only its banner color changes. */
+
+.lang-switch {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.lang-switch button {
+  border: none;
+  background: transparent;
+  color: var(--header-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s;
+}
+
+.lang-switch button.active {
+  background: var(--header-text);
+  color: var(--header-bg);
+  opacity: 1;
+}
+
+/* ──────── App menu (hamburger, top-left of the header on every page) ────────
+   Jumps directly to any app: the carousel on the home page, or that app's
+   home slide from a sub-page. */
+
+.menu-toggle {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--header-text);
+}
+
+.app-menu {
+  position: absolute;
+  top: 58px;
+  left: 16px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 190px;
+  padding: 6px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 12px 28px var(--card-shadow-hover);
+}
+
+/* The `hidden` attribute alone loses to the `display: flex` above (author
+   CSS always beats the browser's default UA stylesheet), so it needs an
+   explicit override here to actually hide the menu. */
+.app-menu[hidden] {
+  display: none;
+}
+
+.app-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.app-menu-item:hover,
+.app-menu-item:focus-visible,
+.app-menu-item.active {
+  background: var(--accent-bg);
+  color: var(--accent-contrast);
+}
+
+.app-menu-icon {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  background-color: var(--accent);
+  -webkit-mask: var(--app-logo) center / contain no-repeat;
+  mask: var(--app-logo) center / contain no-repeat;
+}
+
+/* ─────────────────────────── Layout ─────────────────────────── */
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.section {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px var(--card-shadow);
+}
+
+.section h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.section h2 .emoji { font-size: 22px; }
+
+/* Chevron indicator for collapsible sections */
+.section h2::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.section:not(.collapsed) h2::after {
+  transform: rotate(90deg);
+}
+
+/* Collapsed sections show only their title */
+.section.collapsed {
+  padding-bottom: 28px;
+}
+
+.section.collapsed h2 {
+  margin-bottom: 0;
+}
+
+.section.collapsed > :not(h2) {
+  display: none;
+}
+
+.section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 18px 0 8px;
+}
+
+.section p { margin-bottom: 12px; font-size: 15px; color: var(--text-secondary); }
+.section p:last-child { margin-bottom: 0; }
+
+.section ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.section ul li {
+  font-size: 15px;
+  color: var(--text-secondary);
+  padding: 6px 0 6px 20px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.section ul li:last-child { border-bottom: none; }
+
+.section ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Numbered steps (for help sections) */
+.section ol {
+  margin: 0 0 12px 20px;
+  padding: 0;
+}
+
+.section ol li {
+  font-size: 15px;
+  color: var(--text-secondary);
+  padding: 4px 0;
+}
+
+/* Links inside content */
+.section a,
+.highlight a,
+.contact-box a,
+.updated a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.section a:hover,
+.highlight a:hover,
+.contact-box a:hover,
+.updated a:hover { text-decoration: underline; }
+
+/* ───────────────────────── Components ───────────────────────── */
+
+.badge {
+  display: inline-block;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.highlight {
+  background: var(--accent-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 16px;
+  margin: 14px 0;
+  font-size: 15px;
+  color: var(--accent-contrast);
+}
+
+.contact-box {
+  background: var(--contact-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 12px;
+}
+
+/* Small spacing utility (replaces inline style="margin-top:12px" so the CSP
+   can drop style-src 'unsafe-inline'). */
+.mt-12 { margin-top: 12px; }
+
+.divider {
+  border: none;
+  border-top: 2px dashed var(--divider);
+  margin: 40px 0;
+}
+
+.updated {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 32px;
+}
+
+/* ────────────────────────── Menu hub ───────────────────────── */
+
+.menu {
+  display: grid;
+  gap: 16px;
+}
+
+.menu-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 4px var(--card-shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.menu-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px var(--card-shadow-hover);
+}
+
+.menu-card .menu-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.menu-card .menu-text h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.menu-card .menu-text p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.menu-card .menu-arrow {
+  margin-left: auto;
+  color: var(--arrow);
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+/* Buttons / call-to-action links */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--on-accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: 24px;
+  transition: opacity 0.15s;
+}
+
+.btn:hover { opacity: 0.9; }
+
+/* Language section visibility (toggled by script.js) */
+[lang-section="en"] { display: none; }
+
+/* ─────────────────────────── App carousel ─────────────────────────── */
+/* Home page only: one slide per app, navigated by arrows / dots / swipe.
+   Slide content reuses the existing .menu / .menu-card visuals. */
+
+.carousel {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.35s ease;
+}
+
+.carousel-track .slide {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 36px 48px 16px;
+}
+
+/* Side navigation arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--card-bg);
+  color: var(--accent);
+  box-shadow: 0 2px 8px var(--card-shadow);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.15s, opacity 0.2s;
+}
+
+.carousel-arrow:hover { transform: translateY(-50%) scale(1.08); }
+.carousel-arrow.prev { left: 4px; }
+.carousel-arrow.next { right: 4px; }
+.carousel-arrow:disabled { opacity: 0.3; cursor: default; }
+.carousel-arrow[hidden] { display: none; }
+
+/* Dot indicators */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 0 48px;
+}
+
+.carousel-dots .dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--arrow);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.carousel-dots .dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+.carousel-dots[hidden] { display: none; }
+
+/* Placeholder card for an upcoming app (non-clickable) */
+.menu-card.soon {
+  cursor: default;
+}
+
+.menu-card.soon:hover {
+  transform: none;
+  box-shadow: 0 1px 4px var(--card-shadow);
+}
+
+.menu-card .soon-badge {
+  margin-left: auto;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+/* ───────────────────── Reduced motion ───────────────────── */
+/* Honor users who ask for less motion: disable carousel/hover animations. */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track,
+  .menu-card,
+  .carousel-arrow,
+  .carousel-dots .dot,
+  .section h2::after,
+  .lang-switch button,
+  .btn { transition: none; }
+
+  .menu-card:hover,
+  .carousel-arrow:hover { transform: none; }
+}

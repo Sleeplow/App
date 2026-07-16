@@ -1,8 +1,24 @@
 # CLAUDE.md — Site Sleeplow (hub multi-applications)
 
-Site statique (HTML/CSS/JS, sans build) déployé sur GitHub Pages via `CNAME`.
-La page d'accueil est un **carousel** qui présente plusieurs applications ; chaque
-app a son propre dossier, son icône, sa couleur de thème et ses pages.
+Site statique (HTML/CSS/JS, **sans build**) déployé sur GitHub Pages (domaine
+`app.sleeplow.ca`) par un workflow CI/CD (§ Déploiement). La page d'accueil est un
+**carousel** qui présente plusieurs applications ; chaque app a son propre dossier,
+son icône, sa couleur de thème et ses pages.
+
+## En bref (à lire en premier)
+
+- **Quoi** : site statique HTML/CSS/JS, **sans build ni dépendances**. On édite les
+  fichiers et ils sont publiés tels quels — pas de compilation.
+- **Règle d'or** : `main` = **PROD** et est **protégé** → *jamais* de push direct.
+  Tout changement suit le flux **branche → PR → `qa` (test sur `/qa/`) → PR `qa` → `main`**
+  (mise en prod). URLs et détails : § Déploiement.
+- **Sécurité stricte** (CSP `default-src 'none'`, zéro `innerHTML` / handler inline) :
+  § Sécurité, imposée à chaque PR par le CI `security-lint` (le check s'appelle `lint`).
+- **Multi-app** : une app = un dossier (`budget/`, `storage/`, …) + une entrée dans le
+  registre `APPS` de `script.js`. Pour en ajouter une : § Ajouter une application.
+- **Bilingue FR/EN** : un seul sélecteur, et *tout* suit la langue (cartes, gros titre
+  d'en-tête, titre d'onglet) — cf. § Conventions.
+- **Vérifier avant de livrer** : § Développement / vérification.
 
 ## Structure
 
@@ -10,12 +26,15 @@ app a son propre dossier, son icône, sa couleur de thème et ses pages.
 index.html            Accueil = carousel (en-tête + cartes rendus par script.js)
 styles.css            Styles partagés + thèmes par app ([data-app]) + carousel
 script.js             Registre APPS + logique carousel + langue + sections repliables
-placeholder-logo.svg  Icône de l'app placeholder « Bientôt »
-budget/               1 dossier par app
+CNAME                 Domaine custom GitHub Pages (app.sleeplow.ca)
+budget/  storage/     1 dossier par app (ajouter le sien à côté)
   ├── help.html       Aide & fonctionnalités
   ├── privacy.html    Politique de confidentialité
   ├── contact.html    Contact & support
   └── logo.svg        Icône de l'app (glyphe utilisé comme masque CSS)
+.github/workflows/
+  ├── security-lint.yml   CI sécurité (cf. § Sécurité)
+  └── deploy-pages.yml    CI/CD dev → QA → prod (cf. § Déploiement)
 ```
 
 ## Ajouter une nouvelle application
@@ -43,11 +62,6 @@ Tout est piloté par les données — **3 étapes** :
 
 Le carousel (en-tête, couleur, cartes, flèches, points) se met à jour tout seul.
 
-### Slide placeholder « Bientôt »
-La dernière entrée `id: 'next'` de `APPS` est une démo. Quand une vraie app la
-remplace, **supprimer** cette entrée dans `script.js`, le bloc `[data-app="next"]`
-dans `styles.css`, et `placeholder-logo.svg` si inutilisé.
-
 ## Conventions
 
 - **Thème par app** : déclaratif en CSS via l'attribut `data-app` sur `<html>`
@@ -60,6 +74,13 @@ dans `styles.css`, et `placeholder-logo.svg` si inutilisé.
   `?lang=fr|en`, met à jour `<html lang>`, et re-rend le carousel.
 - **Texte bilingue** : sur les sous-pages via `[lang-section="fr|en"]` ; dans le
   registre `APPS` via des valeurs `{ fr, en }` (ou une simple chaîne si identique).
+  `setLang()` affiche/masque les éléments `[lang-section]` selon la langue.
+- **Titre affiché des sous-pages** : le gros titre de l'en-tête suit la langue —
+  deux `<h1 lang-section="fr">`/`<h1 lang-section="en">` (pas de bloc bilingue qui
+  afficherait les deux en même temps).
+- **Titre de l'onglet** (`<title>`) : traduit via les attributs
+  `data-title-fr`/`data-title-en` sur la balise `<title>`, que `setLang()` recopie
+  dans `document.title`.
 
 ## Sécurité (règles à respecter)
 
@@ -107,6 +128,43 @@ réapparaît, ou si une page n'a pas de CSP stricte).
   activé côté GitHub Pages ; l'anti-clickjacking repose sur la garde JS en tête de
   `script.js`.
 
+## Déploiement (dev → QA → prod)
+
+Le site est publié par le workflow `.github/workflows/deploy-pages.yml`, qui copie
+le contenu (site statique, sans build) vers la branche **`gh-pages`** — la source
+servie par GitHub Pages (Settings → Pages → *Deploy from a branch* → `gh-pages`).
+Trois environnements coexistent sur le même domaine :
+
+| Env  | Déclencheur                | Emplacement `gh-pages` | URL                              |
+|------|----------------------------|------------------------|----------------------------------|
+| DEV  | ouverture / màj d'une PR   | `pr-preview/pr-<n>/`   | `…/pr-preview/pr-<n>/` (éphémère)|
+| QA   | push sur `qa`              | `qa/`                  | `app.sleeplow.ca/qa/`            |
+| PROD | push sur `main`            | racine                 | `app.sleeplow.ca/`               |
+
+L'aperçu DEV est créé/supprimé automatiquement à chaque PR
+(`rossjrw/pr-preview-action`). Le `CNAME` n'est régénéré que par le déploiement
+PROD (option `cname` de l'action), jamais dupliqué dans `qa/` ou `pr-preview/`.
+Docs et CI (`CLAUDE.md`, `SECURITY-AUDIT.md`, `.github/`, `.gitignore`, `CNAME`)
+sont exclus du contenu publié (`rsync --exclude`).
+
+### Flux de travail
+
+1. Brancher depuis `qa` + ouvrir une PR → tester sur l'aperçu **DEV** de la PR.
+2. Merger la PR dans **`qa`** → tester sur `app.sleeplow.ca/qa/` (SIT / UAT).
+3. Bug ? corriger via une nouvelle PR vers `qa`, `/qa/` se met à jour, retester.
+4. Validé ? ouvrir une PR **`qa` → `main`** → PROD se déploie automatiquement.
+
+### Garde-fous
+
+- **`main` est protégé** (ruleset GitHub, Settings → Rules) : aucun push direct,
+  toute modif passe par une PR, `security-lint` doit être vert, force-push bloqué.
+  → on ne modifie donc jamais la PROD sans passer par le flux ci-dessus.
+- **`main` ≠ QA en direct** : GitHub ne peut pas forcer qu'une PR vers `main`
+  vienne de `qa` ; c'est une discipline (ne créer de PR vers `main` que depuis `qa`).
+- Les déploiements `main` / `qa` partagent un même groupe de concurrence
+  (`gh-pages-deploy`) pour ne pas se livrer une course sur `gh-pages` ; les aperçus
+  de PR ont leur propre groupe par PR.
+
 ## Développement / vérification
 
 ```bash
@@ -115,8 +173,9 @@ python3 -m http.server 8000   # puis ouvrir http://localhost:8000/
 
 À vérifier après une modif du carousel : changement d'app (flèches/points/clavier/
 swipe) met bien à jour icône + nom + couleur du thème ; mode sombre ; bascule FR/EN
-re-traduit les cartes ; sous-pages (`budget/help.html`…) ont le switch dans l'en-tête
-et le retour `‹ Accueil` fonctionne ; aucune erreur console.
+re-traduit les cartes ; sous-pages (`budget/help.html`…) ont le switch dans l'en-tête,
+le **titre d'en-tête et le titre d'onglet changent de langue**, et le retour
+`‹ Accueil` fonctionne ; aucune erreur console.
 
 À vérifier côté **sécurité** (cf. § Sécurité) : **aucune violation CSP** dans la
 console ; toute nouvelle page possède le bloc `<meta>` CSP + referrer ; aucun

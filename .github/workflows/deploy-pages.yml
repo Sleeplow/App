@@ -22,8 +22,12 @@ permissions:
   contents: write
   pull-requests: write
 
+# Un seul groupe pour TOUT le workflow (pas par ref) : main, qa et chaque PR
+# poussent tous vers la même branche gh-pages, donc ils doivent se mettre en
+# file au lieu de tourner en parallèle — sinon deux pushes concurrents se
+# livrent une course sur la même ref et l'un des deux est rejeté par Git.
 concurrency:
-  group: pages-${{ github.ref }}
+  group: gh-pages-publish
   cancel-in-progress: false
 
 jobs:

@@ -11,7 +11,8 @@ son icône, sa couleur de thème et ses pages.
   fichiers et ils sont publiés tels quels — pas de compilation.
 - **Règle d'or** : `main` = **PROD** et est **protégé** → *jamais* de push direct.
   Tout changement suit le flux **branche → PR → `qa` (test sur `/qa/`) → PR `qa` → `main`**
-  (mise en prod). URLs et détails : § Déploiement.
+  (mise en prod). Ne pas court-circuiter `qa` : le CI `qa-only-into-main` refuse
+  désormais toute PR vers `main` venue d'ailleurs. URLs et détails : § Déploiement.
 - **Sécurité stricte** (CSP `default-src 'none'`, zéro `innerHTML` / handler inline) :
   § Sécurité, imposée à chaque PR par le CI `security-lint` (le check s'appelle `lint`).
 - **Multi-app** : une app = un dossier (`budget/`, `storage/`, …) + une entrée dans le
@@ -33,8 +34,9 @@ budget/  storage/     1 dossier par app (ajouter le sien à côté)
   ├── contact.html    Contact & support
   └── logo.svg        Icône de l'app (glyphe utilisé comme masque CSS)
 .github/workflows/
-  ├── security-lint.yml   CI sécurité (cf. § Sécurité)
-  └── deploy-pages.yml    CI/CD dev → QA → prod (cf. § Déploiement)
+  ├── security-lint.yml       CI sécurité (cf. § Sécurité)
+  ├── qa-only-into-main.yml   Refuse une PR vers main qui ne vient pas de qa
+  └── deploy-pages.yml        CI/CD dev → QA → prod (cf. § Déploiement)
 ```
 
 ## Ajouter une nouvelle application
@@ -159,8 +161,16 @@ sont exclus du contenu publié (`rsync --exclude`).
 - **`main` est protégé** (ruleset GitHub, Settings → Rules) : aucun push direct,
   toute modif passe par une PR, `security-lint` doit être vert, force-push bloqué.
   → on ne modifie donc jamais la PROD sans passer par le flux ci-dessus.
-- **`main` ≠ QA en direct** : GitHub ne peut pas forcer qu'une PR vers `main`
-  vienne de `qa` ; c'est une discipline (ne créer de PR vers `main` que depuis `qa`).
+- **Une PR vers `main` doit venir de `qa`** — vérifié par le CI `qa-only-into-main`
+  (check `source-branch`). La protection de branche ne sait pas l'exprimer : elle
+  protège la *destination* (push direct, PR obligatoire, `lint` vert) et n'a aucune
+  notion de la branche *source*. Tant que ça n'a été qu'une discipline, quatre PR
+  (#24 à #27) sont parties directement dans `main` et `qa` a pris onze commits de
+  retard — `/qa/` servait une version d'un mois plus tôt sans que rien ne le dise.
+  → Une PR vers `main` depuis autre chose que `qa` : la **re-cibler vers `qa`**.
+  Urgence réelle : poser le label **`hotfix`** sur la PR (le check repasse au vert,
+  avec un avertissement) — puis **reporter le correctif sur `qa`** juste après, sinon
+  la promotion suivante l'écrase.
 - Les déploiements `main` / `qa` partagent un même groupe de concurrence
   (`gh-pages-deploy`) pour ne pas se livrer une course sur `gh-pages` ; les aperçus
   de PR ont leur propre groupe par PR.

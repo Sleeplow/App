@@ -1,0 +1,56 @@
+name: qa-only-into-main
+
+# `main` = PROD. Le ruleset GitHub protège la **destination** — pas de push
+# direct, PR obligatoire, `lint` vert — mais n'a aucune notion de la branche
+# **source** : n'importe quelle branche peut proposer une PR vers `main`.
+#
+# CLAUDE.md appelait ça « une discipline ». En un mois, la discipline a produit
+# quatre PR fusionnées dans `main` sans passer par `qa` (#24 à #27), et une
+# branche `qa` restée onze commits en arrière — donc un `app.sleeplow.ca/qa/`
+# qui servait une version de juillet. L'environnement de test existait, mais
+# plus personne ne passait par lui, et rien ne le signalait.
+#
+# Ce check rend la règle exécutable. Il ne bloque cependant RIEN tant qu'il
+# n'est pas déclaré **requis** : Settings → Rules → ruleset de `main` →
+# « Require status checks to pass » → ajouter « source-branch ».
+
+on:
+  pull_request:
+    branches: [main]
+    # `edited` est indispensable : sans lui, on ouvre la PR vers `qa`, on la
+    # re-cible vers `main` après coup, et le check ne rejoue jamais — le
+    # garde-fou serait un décor. `labeled`/`unlabeled` pour que poser ou retirer
+    # le label `hotfix` réévalue la PR immédiatement.
+    types: [opened, reopened, synchronize, edited, labeled, unlabeled]
+
+permissions:
+  contents: read
+
+jobs:
+  source-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Une PR vers main doit venir de qa
+        # Les valeurs passent par `env` et sont lues entre guillemets : une
+        # branche nommée `$(...)` ou `; rm -rf .` ne doit pas s'exécuter.
+        env:
+          SOURCE: ${{ github.head_ref }}
+          HOTFIX: ${{ contains(github.event.pull_request.labels.*.name, 'hotfix') }}
+        run: |
+          if [ "$SOURCE" = "qa" ]; then
+            echo "OK : promotion qa → main."
+            exit 0
+          fi
+
+          if [ "$HOTFIX" = "true" ]; then
+            echo "::warning::Correctif urgent accepté depuis « $SOURCE » : la PR porte le label « hotfix », le passage par QA est donc sauté. Reporter le correctif sur qa juste après la mise en prod, sinon la prochaine promotion l'écrasera."
+            exit 0
+          fi
+
+          echo "::error::Cette PR vient de « $SOURCE » et cible main (PROD)."
+          echo "Le flux est : branche → PR vers qa → test sur app.sleeplow.ca/qa/ → PR qa → main."
+          echo ""
+          echo "Deux issues :"
+          echo "  · re-cibler cette PR vers qa (Edit, à côté du titre), puis ouvrir une PR qa → main une fois testé ;"
+          echo "  · en cas d'urgence réelle, poser le label « hotfix » sur cette PR — le check repassera au vert."
+          exit 1

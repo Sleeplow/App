@@ -468,7 +468,7 @@
 
     <h3>Synchronisation iCloud</h3>
     <p>La synchronisation est entièrement automatique. Dès que vous ajoutez ou modifiez une transaction sur un appareil, les changements se propagent sur tous vos appareils Apple connectés au même identifiant iCloud. Aucune action de votre part n'est requise.</p>
-    <p>La section <strong>Synchronisation</strong> dans les paramètres affiche l'état en temps réel : <em>Synchronisation en cours…</em>, <em>Synchronisé</em> (avec l'heure de la dernière sync), ou <em>Erreur de synchronisation</em> si un problème iCloud est détecté. En cas d'erreur, un bouton <strong>Copier les détails</strong> apparaît pour vous permettre de copier les informations techniques de l'erreur et de les transmettre au support. Vérifiez également votre connexion et les réglages iCloud dans l'app Réglages de votre iPhone.</p>
+    <p>La section <strong>Synchronisation</strong> dans les paramètres affiche l'état en temps réel : <em>Synchronisation en cours…</em>, <em>Synchronisé</em> (avec l'heure de la dernière sync), ou <em>Erreur de synchronisation</em> si un problème iCloud est détecté. En cas d'erreur, la ligne <strong>Détails techniques</strong> se déplie pour afficher l'erreur en clair — dont le décompte des enregistrements refusés et la raison exacte du refus — et un bouton <strong>Copier les détails</strong> permet de la transmettre au support. Vérifiez également votre connexion et les réglages iCloud dans l'app Réglages de votre iPhone.</p>
   </div>
 
   <!-- ── Budget partagé ───────────────────────────────────────── -->
@@ -482,12 +482,13 @@
 
     <h3>Activer le partage et inviter un proche</h3>
     <ol>
-      <li>Appuyez sur <strong>«&nbsp;Activer le partage&nbsp;»</strong>. La feuille d'invitation iCloud s'ouvre — un indicateur de chargement apparaît pendant la préparation initiale (5 à 15 secondes le temps qu'iCloud synchronise vos données).</li>
+      <li>Appuyez sur <strong>«&nbsp;Activer le partage&nbsp;»</strong>. Un écran <strong>«&nbsp;Préparation du partage&nbsp;»</strong> s'affiche avec le temps écoulé&nbsp;: vos données sont copiées vers un espace iCloud partagé, un enregistrement à la fois. C'est l'étape la plus longue — jusqu'à une minute à la première activation.</li>
+      <li>La feuille d'invitation iCloud s'ouvre <strong>seulement une fois le lien créé</strong>. Tant qu'il n'existe pas, il n'y a rien à envoyer&nbsp;: l'app vous le dit plutôt que de vous laisser attendre devant une feuille vide.</li>
       <li>Dans la feuille iCloud, appuyez sur <strong>«&nbsp;+&nbsp;»</strong> pour ajouter un contact, ou utilisez l'icône de partage pour envoyer le lien d'invitation par <strong>Messages</strong>, <strong>Mail</strong> ou <strong>AirDrop</strong>.</li>
       <li>Choisissez les permissions : <strong>«&nbsp;Peut modifier&nbsp;»</strong> (accès complet) ou <strong>«&nbsp;Lecture seule&nbsp;»</strong> (consultation uniquement).</li>
       <li>Votre proche reçoit une notification iCloud et doit accepter pour accéder à votre budget.</li>
     </ol>
-    <div class="highlight">Patientez sans fermer l'app pendant la préparation initiale — iCloud doit synchroniser vos données existantes avant d'ouvrir l'interface d'invitation.</div>
+    <div class="highlight">Vous pouvez appuyer sur <strong>«&nbsp;Continuer en arrière-plan&nbsp;»</strong> pour fermer l'écran d'attente&nbsp;: la copie vers iCloud <em>n'est pas annulée</em>, et l'app continue de guetter le lien. Quand il arrive, le statut passe tout seul à <strong>Partagé</strong> — aucune fenêtre ne surgit par-dessus ce que vous êtes en train de faire. Appuyez alors sur <strong>«&nbsp;Inviter ou gérer les participants&nbsp;»</strong>&nbsp;: l'invitation s'ouvre immédiatement.</div>
 
     <h3>Gérer les participants</h3>
     <p>Une fois le partage actif, appuyez sur <strong>«&nbsp;Inviter ou gérer les participants&nbsp;»</strong> pour inviter de nouvelles personnes, modifier leurs permissions (lecture seule ↔ modification) ou les retirer.</p>
@@ -500,6 +501,16 @@
     </ol>
     <p>Pour quitter un budget partagé, appuyez sur <strong>«&nbsp;Quitter ce budget&nbsp;»</strong> — vos propres données restent intactes.</p>
     <div class="highlight"><strong>Recevoir</strong> un budget partagé ne nécessite pas Budget Pro — un invité avec la version gratuite peut consulter ou modifier le budget selon les permissions accordées.</div>
+
+    <h3>Si le partage reste «&nbsp;incomplet&nbsp;»</h3>
+    <p>Juste après l'activation, le statut affiche <em>Finalisation du partage…</em> le temps qu'iCloud crée le lien d'invitation. C'est normal et cela dure quelques secondes.</p>
+    <p>Si le statut passe à <strong>Partage incomplet</strong>, c'est qu'iCloud n'a jamais réussi à créer ce lien : les envois par Messages et «&nbsp;Copier le lien&nbsp;» échouent alors avec le message «&nbsp;Aucun lien n'a pu être créé pour le partage&nbsp;». Dans ce cas&nbsp;:</p>
+    <ol>
+      <li>Appuyez sur <strong>«&nbsp;Arrêter ce partage&nbsp;»</strong>, puis sur <strong>«&nbsp;Arrêter le partage&nbsp;»</strong> en bas de l'écran iCloud.</li>
+      <li>Fermez complètement l'app, puis relancez-la.</li>
+      <li>Réactivez le partage.</li>
+    </ol>
+    <div class="highlight">Vérifiez d'abord la section <strong>Synchronisation</strong> des paramètres&nbsp;: tant qu'elle signale une erreur, le partage ne pourra pas aboutir — c'est cette erreur qu'il faut régler en premier.</div>
 
     <h3>Arrêter le partage</h3>
     <p>Appuyez sur <strong>«&nbsp;Arrêter le partage&nbsp;»</strong> pour révoquer l'accès de tous les participants. Vos données restent intactes sur votre appareil.</p>
@@ -1063,7 +1074,7 @@
 
     <h3>iCloud Sync</h3>
     <p>Sync is fully automatic. Any transaction you add or edit on one device is propagated to all your Apple devices signed in with the same iCloud account. No action is required on your part.</p>
-    <p>The <strong>Sync</strong> section in Settings shows the real-time status: <em>Syncing…</em>, <em>Synced</em> (with the time of the last sync), or <em>Sync error</em> if an iCloud issue is detected. When an error appears, a <strong>Copy details</strong> button is displayed so you can copy the technical error information and share it with support. Also check your connection and your iCloud settings in the iPhone Settings app.</p>
+    <p>The <strong>Sync</strong> section in Settings shows the real-time status: <em>Syncing…</em>, <em>Synced</em> (with the time of the last sync), or <em>Sync error</em> if an iCloud issue is detected. When an error appears, a <strong>Technical details</strong> disclosure expands to show the error in full — including how many records were rejected and the exact reason — and a <strong>Copy details</strong> button lets you send it to support. Also check your connection and your iCloud settings in the iPhone Settings app.</p>
   </div>
 
   <!-- ── Shared Budget ────────────────────────────────────────── -->
@@ -1077,12 +1088,13 @@
 
     <h3>Enable Sharing and Invite Someone</h3>
     <ol>
-      <li>Tap <strong>"Enable Sharing"</strong>. The iCloud invitation sheet opens immediately — a loading indicator appears during the initial preparation (5–15 seconds while iCloud syncs your existing data).</li>
+      <li>Tap <strong>"Enable Sharing"</strong>. A <strong>"Preparing the share"</strong> screen appears with the elapsed time: your data is being copied to a shared iCloud space, one record at a time. This is the longest step — up to a minute on first activation.</li>
+      <li>The iCloud invitation sheet opens <strong>only once the link has been created</strong>. Until it exists there is nothing to send: the app tells you so instead of leaving you waiting in front of an empty sheet.</li>
       <li>In the iCloud sheet, tap <strong>"+"</strong> to add a contact, or use the share icon to send the invitation link via <strong>Messages</strong>, <strong>Mail</strong>, or <strong>AirDrop</strong>.</li>
       <li>Choose the participant's permissions: <strong>"Can Edit"</strong> (full access) or <strong>"View Only"</strong> (read access only).</li>
       <li>Your contact receives an iCloud notification and must accept it to access your budget.</li>
     </ol>
-    <div class="highlight">Wait without closing the app during initial preparation — iCloud must sync your existing data before opening the invitation interface.</div>
+    <div class="highlight">You can tap <strong>"Continue in the background"</strong> to close the waiting screen: the copy to iCloud is <em>not cancelled</em>, and the app keeps watching for the link. When it arrives the status switches to <strong>Shared</strong> on its own — nothing pops up over whatever you are doing. Then tap <strong>"Invite or manage participants"</strong> and the invitation opens immediately.</div>
 
     <h3>Managing Participants</h3>
     <p>Once sharing is active, tap <strong>"Invite or Manage Participants"</strong> to invite additional people, change their permissions (read-only ↔ edit), or remove them.</p>
@@ -1095,6 +1107,16 @@
     </ol>
     <p>To leave a shared budget, tap <strong>"Leave this budget"</strong> — your own data remains intact.</p>
     <div class="highlight"><strong>Receiving</strong> a shared budget does not require Budget Pro — a guest on the free version can view or edit the budget according to the permissions granted.</div>
+
+    <h3>If the share stays "incomplete"</h3>
+    <p>Right after you turn sharing on, the status reads <em>Finalizing share…</em> while iCloud creates the invitation link. This is normal and takes a few seconds.</p>
+    <p>If the status changes to <strong>Incomplete share</strong>, iCloud never managed to create that link: sending via Messages and "Copy Link" then fail with "No link could be created for sharing". In that case:</p>
+    <ol>
+      <li>Tap <strong>"Stop this share"</strong>, then <strong>"Stop Sharing"</strong> at the bottom of the iCloud screen.</li>
+      <li>Quit the app completely, then relaunch it.</li>
+      <li>Turn sharing back on.</li>
+    </ol>
+    <div class="highlight">Check the <strong>Sync</strong> section in Settings first: as long as it reports an error, sharing cannot complete — that error is what needs fixing first.</div>
 
     <h3>Stop Sharing</h3>
     <p>Tap <strong>"Stop Sharing"</strong> to revoke access for all participants. Your data remains intact on your device.</p>

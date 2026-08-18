@@ -506,11 +506,17 @@
     <p>Juste après l'activation, le statut affiche <em>Finalisation du partage…</em> le temps qu'iCloud crée le lien d'invitation. C'est normal et cela dure quelques secondes.</p>
     <p>Si le statut passe à <strong>Partage incomplet</strong>, c'est qu'iCloud n'a jamais réussi à créer ce lien : les envois par Messages et «&nbsp;Copier le lien&nbsp;» échouent alors avec le message «&nbsp;Aucun lien n'a pu être créé pour le partage&nbsp;». Dans ce cas&nbsp;:</p>
     <ol>
-      <li>Appuyez sur <strong>«&nbsp;Arrêter ce partage&nbsp;»</strong>, puis sur <strong>«&nbsp;Arrêter le partage&nbsp;»</strong> en bas de l'écran iCloud.</li>
-      <li>Fermez complètement l'app, puis relancez-la.</li>
+      <li>Appuyez sur <strong>«&nbsp;Retirer ce partage&nbsp;»</strong>, puis confirmez.</li>
+      <li>Si l'app répond <em>«&nbsp;Partage supprimé sur iCloud. Appuyez une seconde fois pour terminer le retrait sur cet appareil.&nbsp;»</em>, appuyez une seconde fois. Ce second appui n'est pas un échec du premier&nbsp;: il signifie qu'iCloud connaissait encore ce partage, et l'app préfère attendre d'en être certaine avant d'effacer quoi que ce soit de votre appareil.</li>
       <li>Réactivez le partage.</li>
     </ol>
-    <div class="highlight">Vérifiez d'abord la section <strong>Synchronisation</strong> des paramètres&nbsp;: tant qu'elle signale une erreur, le partage ne pourra pas aboutir — c'est cette erreur qu'il faut régler en premier.</div>
+    <p>Le retrait se fait entièrement dans l'app, sans passer par l'écran iCloud d'Apple et sans relancer l'application. Vos dépenses, revenus, comptes et catégories sont conservés&nbsp;: un partage incomplet n'a jamais été visible par personne d'autre, il n'y a donc aucun accès à révoquer.</p>
+    <p>Si le partage est en réalité <strong>actif</strong> — il a un lien, et peut-être des participants — l'app refuse de le retirer par ce chemin et vous renvoie vers «&nbsp;Inviter ou gérer les participants&nbsp;». C'est voulu&nbsp;: ce bouton-là ne doit jamais couper l'accès de quelqu'un.</p>
+    <div class="highlight">Vérifiez d'abord la section <strong>Synchronisation</strong> des paramètres&nbsp;: tant qu'elle signale une erreur, le partage ne pourra pas aboutir — c'est cette erreur qu'il faut régler en premier, sinon le nouveau partage se bloquera au même endroit.</div>
+
+    <h3>Si l'activation échoue</h3>
+    <p>Quand la préparation n'aboutit pas, l'écran d'attente <strong>reste ouvert</strong> et affiche la raison à la place du compteur — il ne se referme jamais tout seul. Selon le cas, il propose de fermer simplement, ou de retirer un partage précédent resté bloqué.</p>
+    <p>Au moment où vous ouvrez le menu de partage, le statut affiche <em>Vérification…</em>&nbsp;: l'app lit l'état du partage sur l'appareil. Le bouton d'activation n'apparaît qu'une fois cette lecture terminée, pour ne pas proposer de créer un partage par-dessus un partage existant. Si la synchronisation iCloud est bloquée, cette lecture peut prendre du temps&nbsp;: l'app préfère alors ne rien proposer plutôt que de proposer le mauvais geste, et affiche un bouton <strong>«&nbsp;Réessayer&nbsp;»</strong> pour relancer la lecture.</p>
 
     <h3>Arrêter le partage</h3>
     <p>Appuyez sur <strong>«&nbsp;Arrêter le partage&nbsp;»</strong> pour révoquer l'accès de tous les participants. Vos données restent intactes sur votre appareil.</p>
@@ -1112,11 +1118,17 @@
     <p>Right after you turn sharing on, the status reads <em>Finalizing share…</em> while iCloud creates the invitation link. This is normal and takes a few seconds.</p>
     <p>If the status changes to <strong>Incomplete share</strong>, iCloud never managed to create that link: sending via Messages and "Copy Link" then fail with "No link could be created for sharing". In that case:</p>
     <ol>
-      <li>Tap <strong>"Stop this share"</strong>, then <strong>"Stop Sharing"</strong> at the bottom of the iCloud screen.</li>
-      <li>Quit the app completely, then relaunch it.</li>
+      <li>Tap <strong>"Remove this share"</strong>, then confirm.</li>
+      <li>If the app answers <em>"Share deleted on iCloud. Tap a second time to finish removing it from this device."</em>, tap again. That second tap is not a failure of the first: it means iCloud still knew about this share, and the app would rather be certain before erasing anything from your device.</li>
       <li>Turn sharing back on.</li>
     </ol>
-    <div class="highlight">Check the <strong>Sync</strong> section in Settings first: as long as it reports an error, sharing cannot complete — that error is what needs fixing first.</div>
+    <p>The removal happens entirely inside the app — no detour through Apple's iCloud screen, and no need to relaunch. Your expenses, income, accounts and categories are kept: an incomplete share was never visible to anyone else, so there is no access to revoke.</p>
+    <p>If the share turns out to be <strong>active</strong> — it has a link, and possibly participants — the app refuses to remove it this way and points you to "Invite or Manage Participants" instead. That is deliberate: this button must never cut off someone's access.</p>
+    <div class="highlight">Check the <strong>Sync</strong> section in Settings first: as long as it reports an error, sharing cannot complete — that error is what needs fixing first, otherwise the new share will get stuck in the same place.</div>
+
+    <h3>If turning sharing on fails</h3>
+    <p>When the preparation does not complete, the waiting screen <strong>stays open</strong> and shows the reason in place of the timer — it never closes on its own. Depending on the case, it offers to simply close, or to remove an earlier share that got stuck.</p>
+    <p>When you open the sharing menu, the status reads <em>Checking…</em> while the app reads the sharing state on the device. The activation button only appears once that read is done, so it can never offer to create a share on top of an existing one. If iCloud sync is blocked, that read can take a while: the app would rather offer nothing than offer the wrong action, and shows a <strong>"Try again"</strong> button to run the read again.</p>
 
     <h3>Stop Sharing</h3>
     <p>Tap <strong>"Stop Sharing"</strong> to revoke access for all participants. Your data remains intact on your device.</p>

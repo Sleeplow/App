@@ -63,7 +63,7 @@
   <!-- ── Budget Pro ──────────────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">⭐</span> Budget Pro</h2>
-    <p>Budget App est <strong>gratuit</strong>, avec un achat unique facultatif <strong>«&nbsp;Budget Pro&nbsp;»</strong> (~15&nbsp;$&nbsp;CA, aucun abonnement, Family Sharing inclus).</p>
+    <p>Budget App est <strong>gratuit</strong>, avec un achat unique facultatif <strong>«&nbsp;Budget Pro&nbsp;»</strong> — aucun abonnement, Family Sharing inclus. Le prix exact, qui varie selon la région, s'affiche dans la feuille d'achat au sein de l'application.</p>
     <h3>Fonctionnalités toujours gratuites</h3>
     <ul>
       <li>Dépenses et revenus récurrents (illimités) et transactions rapides</li>
@@ -474,11 +474,21 @@
   <!-- ── Budget partagé ───────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">👥</span> Budget partagé <small>(Budget Pro pour partager)</small></h2>
-    <p>La fonctionnalité <strong>Budget partagé</strong> vous permet de partager votre budget en temps réel avec un proche — conjoint·e, colocataire, partenaire — directement via iCloud. Chaque transaction ajoutée par un participant affiche ses initiales pour identifier facilement qui a saisi quoi.</p>
+    <p>La fonctionnalité <strong>Budget partagé</strong> vous permet de partager votre budget en temps réel avec un proche — conjoint·e, colocataire, partenaire — directement via iCloud. Chaque transaction partagée affiche un badge d'initiales pour identifier facilement qui a saisi quoi.</p>
     <p>Accédez au menu de partage depuis le <strong>Tableau de bord</strong> en appuyant sur l'icône <strong>personne&nbsp;+</strong> en haut à gauche.</p>
 
     <h3>Nom affiché</h3>
-    <p>Avant d'activer le partage, saisissez vos <strong>initiales ou surnom</strong> dans le champ <strong>«&nbsp;Nom affiché&nbsp;»</strong>. Ce nom apparaît sous forme de badge sur chaque transaction que vous ajoutez, visible par tous les participants.</p>
+    <p>Avant d'activer le partage, saisissez vos <strong>initiales ou surnom</strong> dans le champ <strong>«&nbsp;Nom affiché&nbsp;»</strong>. Ce nom apparaît sous forme de badge sur les transactions partagées, visible par tous les participants.</p>
+
+    <h3>Le badge d'initiales&nbsp;: ce qu'il signifie</h3>
+    <p>Le badge marque les transactions qui font <strong>réellement partie du budget partagé</strong>. Il apparaît donc aussi sur vos dépenses et revenus saisis <em>avant</em> d'avoir activé le partage&nbsp;: activer le partage y fait entrer tout votre budget, pas seulement ce que vous ajoutez ensuite. La première fois que l'app détecte un partage actif, elle appose vos initiales sur ces anciennes transactions, une bonne fois pour toutes.</p>
+    <p>Une transaction déjà signée par quelqu'un d'autre n'est jamais réattribuée&nbsp;: l'app n'écrit vos initiales que là où aucun nom n'est encore inscrit.</p>
+    <p>Si le partage est actif mais qu'aucun <strong>Nom affiché</strong> n'a été saisi, le badge montre une icône de deux personnes au lieu de lettres. Il indique alors que la transaction est partagée, sans prétendre savoir qui l'a ajoutée. Saisissez votre nom affiché pour que vos initiales apparaissent.</p>
+    <p>Sans partage actif, aucun badge n'apparaît&nbsp;: rien n'est partagé, il n'y a donc rien à signaler.</p>
+
+    <h3>Changer vos initiales</h3>
+    <p>Modifier le champ <strong>«&nbsp;Nom affiché&nbsp;»</strong> met à jour vos initiales sur <strong>toutes vos transactions passées</strong>, pas seulement sur les prochaines. La mise à jour se fait quand vous quittez le champ, et un message confirme le nombre de transactions concernées.</p>
+    <p>Seules <em>vos</em> transactions sont touchées&nbsp;: l'app les reconnaît par un identifiant interne posé à la création, jamais par les initiales elles-mêmes. Si l'autre participant a choisi les mêmes initiales que vous, ses transactions restent les siennes.</p>
 
     <h3>Activer le partage et inviter un proche</h3>
     <ol>
@@ -507,12 +517,13 @@
     <p>Si le statut passe à <strong>Partage incomplet</strong>, c'est qu'iCloud n'a jamais réussi à créer ce lien : les envois par Messages et «&nbsp;Copier le lien&nbsp;» échouent alors avec le message «&nbsp;Aucun lien n'a pu être créé pour le partage&nbsp;». Dans ce cas&nbsp;:</p>
     <ol>
       <li>Appuyez sur <strong>«&nbsp;Retirer ce partage&nbsp;»</strong>, puis confirmez.</li>
-      <li>Si l'app répond <em>«&nbsp;Partage supprimé sur iCloud. Appuyez une seconde fois pour terminer le retrait sur cet appareil.&nbsp;»</em>, appuyez une seconde fois. Ce second appui n'est pas un échec du premier&nbsp;: il signifie qu'iCloud connaissait encore ce partage, et l'app préfère attendre d'en être certaine avant d'effacer quoi que ce soit de votre appareil.</li>
       <li>Réactivez le partage.</li>
     </ol>
+    <p>Le retrait se termine en un seul geste. Si l'app affiche un message d'erreur à la place, c'est qu'elle n'a rien effacé&nbsp;: le message dit quoi faire, et le bouton reste disponible.</p>
     <p>Le retrait se fait entièrement dans l'app, sans passer par l'écran iCloud d'Apple et sans relancer l'application. Vos dépenses, revenus, comptes et catégories sont conservés&nbsp;: un partage incomplet n'a jamais été visible par personne d'autre, il n'y a donc aucun accès à révoquer.</p>
     <p>Si le partage est en réalité <strong>actif</strong> — il a un lien, et peut-être des participants — l'app refuse de le retirer par ce chemin et vous renvoie vers «&nbsp;Inviter ou gérer les participants&nbsp;». C'est voulu&nbsp;: ce bouton-là ne doit jamais couper l'accès de quelqu'un.</p>
-    <div class="highlight">Vérifiez d'abord la section <strong>Synchronisation</strong> des paramètres&nbsp;: tant qu'elle signale une erreur, le partage ne pourra pas aboutir — c'est cette erreur qu'il faut régler en premier, sinon le nouveau partage se bloquera au même endroit.</div>
+    <div class="highlight">Vérifiez d'abord la section <strong>Synchronisation</strong> des paramètres&nbsp;: tant qu'elle signale une erreur, le partage ne pourra pas aboutir — c'est cette erreur qu'il faut régler en premier, sinon le nouveau partage se bloquera au même endroit. Un écran vert ne suffit pas à conclure&nbsp;: dépliez <strong>«&nbsp;Derniers échecs retenus&nbsp;»</strong>, qui garde les erreurs passées même après un passage réussi.</div>
+    <p>Après un échec d'activation, l'écran de partage affiche une ligne <strong>«&nbsp;Dernière tentative&nbsp;»</strong> avec la raison — le code entre parenthèses identifie la cause précise — et un <strong>«&nbsp;Journal de la tentative&nbsp;»</strong> repliable qui horodate chaque étape. Si vous signalez un problème, copiez ces deux éléments&nbsp;: ils disent où la préparation s'est arrêtée.</p>
 
     <h3>Si l'activation échoue</h3>
     <p>Quand la préparation n'aboutit pas, l'écran d'attente <strong>reste ouvert</strong> et affiche la raison à la place du compteur — il ne se referme jamais tout seul. Selon le cas, il propose de fermer simplement, ou de retirer un partage précédent resté bloqué.</p>
@@ -604,6 +615,53 @@
     <div class="highlight">Les raccourcis vocaux fonctionnent aussi via les boutons d'action (iPhone 15 Pro et ultérieurs) et les automatisations de l'app Raccourcis.</div>
   </div>
 
+  <!-- ── Accessibilité ────────────────────────────────────────── -->
+  <div class="section">
+    <h2><span class="emoji">♿</span> Accessibilité</h2>
+    <p>Budget App suit les réglages d'accessibilité d'iOS. Rien n'est à activer dans l'app : tout se règle dans <strong>Réglages › Accessibilité</strong> de l'iPhone.</p>
+
+    <h3>VoiceOver</h3>
+    <p>Chaque écran est conçu pour être parcouru à la voix, sans regarder l'écran :</p>
+    <ul>
+      <li><strong>Une transaction = un seul balayage.</strong> Une ligne de dépense ou de revenu s'annonce d'un bloc — nature, description, fréquence, date, catégorie, compte — puis son montant comme <em>valeur</em> séparée. Quand le montant change, VoiceOver ne réannonce que lui.</li>
+      <li><strong>Ce que la couleur disait toute seule est maintenant dit.</strong> Un solde négatif, un budget dépassé, un objectif atteint, une échéance passée, le sens d'une opération : chacun s'annonce en toutes lettres, et non plus par un vert ou un rouge.</li>
+      <li><strong>Les avertissements sont énoncés</strong> — une dépense dont la catégorie ou le compte n'existe plus le dit, là où seul un triangle orange le signalait.</li>
+      <li><strong>Les graphiques sont parcourables.</strong> Répartition par catégorie, projection sur 6 mois, tendance sur 12 mois, réel vs planifié : chaque barre et chaque point s'annonce avec son mois et son montant. Un résumé en texte (total, solde projeté, creux) accompagne les graphiques.</li>
+      <li><strong>Les boutons icône ont tous un nom</strong> — «&nbsp;Partager le budget&nbsp;», «&nbsp;Personnaliser le tableau de bord&nbsp;», «&nbsp;Relancer l'analyse&nbsp;», «&nbsp;Modifier le compte…&nbsp;».</li>
+      <li><strong>Les icônes décoratives se taisent</strong> au lieu de répéter le texte à côté d'elles.</li>
+    </ul>
+
+    <h3>Texte plus grand (Dynamic Type)</h3>
+    <ul>
+      <li><strong>Plus aucune taille de texte figée.</strong> Le solde total, les illustrations des écrans d'accueil, le badge de partage, la pastille de comptage et la coche du sélecteur de couleur suivent désormais le réglage de taille du texte.</li>
+      <li><strong>Les lignes se réorganisent</strong> aux tailles d'accessibilité : le montant passe sous la description au lieu d'être écrasé contre le bord droit.</li>
+      <li><strong>Les noms et descriptions ne sont plus tronqués</strong> à une seule ligne : ils passent sur deux lignes plutôt que de disparaître.</li>
+    </ul>
+
+    <h3>Contraste des couleurs</h3>
+    <p>Les verts, rouges et oranges d'Apple sont conçus pour être <em>vus</em>, pas forcément pour être <em>lus</em> : mesurés sur fond blanc, ils atteignent 2,2 à 3,6 fois le contraste du fond, là où un texte en demande 4,5.</p>
+    <ul>
+      <li><strong>En mode clair</strong>, les montants et les états colorés utilisent désormais des teintes assombries qui dépassent 5,4 fois le contraste. La couleur reste reconnaissable — un montant négatif est toujours rouge — mais devient lisible au soleil, sur un écran fatigué, ou avec une vue diminuée.</li>
+      <li><strong>En mode sombre</strong>, rien ne change : les couleurs d'Apple y étaient déjà largement au-dessus du seuil.</li>
+      <li>Les grandes illustrations décoratives (écrans d'accueil, écran de partage) gardent leurs couleurs d'origine : elles ne portent aucune information.</li>
+    </ul>
+
+    <h3>Réduire la transparence, réduire les animations</h3>
+    <ul>
+      <li><strong>Réglages › Accessibilité › Affichage › Réduire la transparence</strong> — les cartes du tableau de bord passent d'un fond translucide à un fond opaque. Le contenu qui défile derrière ne vient plus perturber la lecture des montants.</li>
+      <li><strong>Réglages › Accessibilité › Mouvement › Réduire les animations</strong> — les messages de confirmation apparaissent en fondu au lieu d'être poussés depuis le bas.</li>
+    </ul>
+
+    <h3>Toucher</h3>
+    <p>Les petits boutons icône — la coche d'import bancaire, le sélecteur de couleur, l'icône d'un compte, le bouton de relance de l'analyse — ont une zone tapable d'au moins 44 × 44 points, même quand le glyphe est plus petit.</p>
+
+    <h3>Deux gestes qui changent</h3>
+    <ul>
+      <li><strong>Supprimer un objectif d'épargne</strong> se fait maintenant par un <strong>appui long</strong> sur l'objectif (menu contextuel), et non plus par un balayage — le balayage n'avait en réalité aucun effet à cet endroit.</li>
+      <li><strong>Filtrer le graphique «&nbsp;Réel vs Planifié&nbsp;» sur un mois</strong> ne se fait plus seulement en touchant une barre : un bouton de filtre dans l'en-tête de la section liste les mois. Utile si viser une barre étroite est difficile, et c'est le seul chemin praticable avec VoiceOver.</li>
+    </ul>
+  </div>
+
   <!-- ── FAQ ──────────────────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">❓</span> Questions fréquentes</h2>
@@ -675,7 +733,7 @@
   <!-- ── Budget Pro ──────────────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">⭐</span> Budget Pro</h2>
-    <p>Budget App is <strong>free</strong>, with an optional one-time purchase of <strong>"Budget Pro"</strong> (~$15 CAD, no subscription, Family Sharing included).</p>
+    <p>Budget App is <strong>free</strong>, with an optional one-time purchase of <strong>"Budget Pro"</strong> — no subscription, Family Sharing included. The exact price, which varies by region, is shown in the purchase sheet inside the app.</p>
     <h3>Always Free</h3>
     <ul>
       <li>Unlimited recurring expenses, income, and quick transactions</li>
@@ -1086,11 +1144,21 @@
   <!-- ── Shared Budget ────────────────────────────────────────── -->
   <div class="section">
     <h2><span class="emoji">👥</span> Shared Budget <small>(Budget Pro to share)</small></h2>
-    <p>The <strong>Shared Budget</strong> feature lets you share your budget in real time with a family member or close one — partner, roommate, spouse — directly via iCloud. Each transaction added by a participant shows their initials, making it easy to see who added what.</p>
+    <p>The <strong>Shared Budget</strong> feature lets you share your budget in real time with a family member or close one — partner, roommate, spouse — directly via iCloud. Every shared transaction shows an initials badge, making it easy to see who added what.</p>
     <p>Access the sharing menu from the <strong>Dashboard</strong> by tapping the <strong>person&nbsp;+</strong> icon in the top left.</p>
 
     <h3>Display Name</h3>
-    <p>Before enabling sharing, enter your <strong>initials or nickname</strong> in the <strong>"Display Name"</strong> field. This name appears as a badge on every transaction you add, visible to all participants.</p>
+    <p>Before enabling sharing, enter your <strong>initials or nickname</strong> in the <strong>"Display Name"</strong> field. This name appears as a badge on shared transactions, visible to all participants.</p>
+
+    <h3>The initials badge: what it means</h3>
+    <p>The badge marks the transactions that are <strong>actually part of the shared budget</strong>. So it also appears on expenses and income you entered <em>before</em> turning sharing on: enabling sharing brings your whole budget in, not just what you add afterwards. The first time the app detects an active share, it stamps your initials on those older transactions, once and for all.</p>
+    <p>A transaction already signed by someone else is never reassigned: the app only writes your initials where no name is recorded yet.</p>
+    <p>If sharing is active but no <strong>Display Name</strong> has been entered, the badge shows a two-person icon instead of letters. It still tells you the transaction is shared, without claiming to know who added it. Enter your display name to see your initials instead.</p>
+    <p>With no active share, no badge appears: nothing is shared, so there is nothing to flag.</p>
+
+    <h3>Changing your initials</h3>
+    <p>Editing the <strong>"Display Name"</strong> field updates your initials on <strong>all of your past transactions</strong>, not just the next ones. The update runs when you leave the field, and a message confirms how many transactions were affected.</p>
+    <p>Only <em>your</em> transactions are touched: the app recognises them by an internal identifier set when they are created, never by the initials themselves. If the other participant picked the same initials as you, their transactions stay theirs.</p>
 
     <h3>Enable Sharing and Invite Someone</h3>
     <ol>
@@ -1119,12 +1187,13 @@
     <p>If the status changes to <strong>Incomplete share</strong>, iCloud never managed to create that link: sending via Messages and "Copy Link" then fail with "No link could be created for sharing". In that case:</p>
     <ol>
       <li>Tap <strong>"Remove this share"</strong>, then confirm.</li>
-      <li>If the app answers <em>"Share deleted on iCloud. Tap a second time to finish removing it from this device."</em>, tap again. That second tap is not a failure of the first: it means iCloud still knew about this share, and the app would rather be certain before erasing anything from your device.</li>
       <li>Turn sharing back on.</li>
     </ol>
+    <p>Removal completes in a single step. If the app shows an error instead, nothing was erased: the message says what to do, and the button stays available.</p>
     <p>The removal happens entirely inside the app — no detour through Apple's iCloud screen, and no need to relaunch. Your expenses, income, accounts and categories are kept: an incomplete share was never visible to anyone else, so there is no access to revoke.</p>
     <p>If the share turns out to be <strong>active</strong> — it has a link, and possibly participants — the app refuses to remove it this way and points you to "Invite or Manage Participants" instead. That is deliberate: this button must never cut off someone's access.</p>
-    <div class="highlight">Check the <strong>Sync</strong> section in Settings first: as long as it reports an error, sharing cannot complete — that error is what needs fixing first, otherwise the new share will get stuck in the same place.</div>
+    <div class="highlight">Check the <strong>Sync</strong> section in Settings first: as long as it reports an error, sharing cannot complete — that error is what needs fixing first, otherwise the new share will get stuck in the same place. A green screen is not enough to conclude: expand <strong>"Last recorded failures"</strong>, which keeps past errors even after a successful pass.</div>
+    <p>After a failed activation, the sharing screen shows a <strong>"Last attempt"</strong> line with the reason — the code in parentheses identifies the precise cause — and a collapsible <strong>"Attempt log"</strong> that timestamps each step. If you report an issue, copy both: they show where preparation stopped.</p>
 
     <h3>If turning sharing on fails</h3>
     <p>When the preparation does not complete, the waiting screen <strong>stays open</strong> and shows the reason in place of the timer — it never closes on its own. Depending on the case, it offers to simply close, or to remove an earlier share that got stuck.</p>
@@ -1214,6 +1283,53 @@
     </ol>
 
     <div class="highlight">Voice shortcuts also work with Action buttons (iPhone 15 Pro and later) and Shortcuts app automations.</div>
+  </div>
+
+  <!-- ── Accessibility ────────────────────────────────────────── -->
+  <div class="section">
+    <h2><span class="emoji">♿</span> Accessibility</h2>
+    <p>Budget App follows your iOS accessibility settings. There is nothing to turn on inside the app: everything is configured in <strong>Settings › Accessibility</strong> on your iPhone.</p>
+
+    <h3>VoiceOver</h3>
+    <p>Every screen is designed to be navigated by voice, without looking at it:</p>
+    <ul>
+      <li><strong>One transaction = one swipe.</strong> An expense or income row is announced as a single block — kind, description, frequency, date, category, account — with its amount as a separate <em>value</em>. When the amount changes, VoiceOver re-announces only the amount.</li>
+      <li><strong>What colour alone used to say is now spoken.</strong> A negative balance, an exceeded budget, a reached goal, a past due date, the direction of a transaction: each is stated in words rather than by a green or red tint.</li>
+      <li><strong>Warnings are spoken</strong> — an expense whose category or account no longer exists says so, where only an orange triangle used to flag it.</li>
+      <li><strong>Charts can be explored.</strong> Category breakdown, 6-month projection, 12-month trend, actual vs planned: every bar and every point announces its month and amount. A text summary (total, projected balance, low point) accompanies the charts.</li>
+      <li><strong>Every icon button has a name</strong> — “Share budget”, “Customize dashboard”, “Refresh analysis”, “Edit account…”.</li>
+      <li><strong>Decorative icons stay silent</strong> instead of repeating the text beside them.</li>
+    </ul>
+
+    <h3>Larger text (Dynamic Type)</h3>
+    <ul>
+      <li><strong>No more fixed text sizes.</strong> The total balance, the onboarding illustrations, the sharing badge, the count pill and the colour picker checkmark now follow your text size setting.</li>
+      <li><strong>Rows reflow</strong> at accessibility text sizes: the amount moves below the description instead of being squeezed against the right edge.</li>
+      <li><strong>Names and descriptions are no longer clipped</strong> to a single line: they wrap onto two lines rather than disappearing.</li>
+    </ul>
+
+    <h3>Colour contrast</h3>
+    <p>Apple's greens, reds and oranges are designed to be <em>seen</em>, not necessarily to be <em>read</em>: measured against a white background they reach 2.2 to 3.6 times the background's contrast, where text calls for 4.5.</p>
+    <ul>
+      <li><strong>In light mode</strong>, amounts and coloured states now use darker shades that exceed 5.4 times the contrast. The colour stays recognisable — a negative amount is still red — but becomes readable in sunlight, on a tired screen, or with reduced vision.</li>
+      <li><strong>In dark mode</strong>, nothing changes: Apple's colours were already well above the threshold there.</li>
+      <li>Large decorative illustrations (onboarding, sharing screen) keep their original colours: they carry no information.</li>
+    </ul>
+
+    <h3>Reduce Transparency, Reduce Motion</h3>
+    <ul>
+      <li><strong>Settings › Accessibility › Display › Reduce Transparency</strong> — dashboard cards switch from a translucent to an opaque background. Content scrolling behind them no longer interferes with reading amounts.</li>
+      <li><strong>Settings › Accessibility › Motion › Reduce Motion</strong> — confirmation messages fade in instead of being pushed up from the bottom.</li>
+    </ul>
+
+    <h3>Touch</h3>
+    <p>Small icon buttons — the bank import checkbox, the colour picker, an account icon, the analysis refresh button — now have a tappable area of at least 44 × 44 points, even when the glyph itself is smaller.</p>
+
+    <h3>Two gestures that changed</h3>
+    <ul>
+      <li><strong>Deleting a savings goal</strong> is now done with a <strong>long press</strong> on the goal (context menu) instead of a swipe — the swipe actually had no effect there.</li>
+      <li><strong>Filtering the “Actual vs Planned” chart to one month</strong> is no longer done only by tapping a bar: a filter button in the section header lists the months. Useful if aiming at a narrow bar is hard, and it is the only workable path with VoiceOver.</li>
+    </ul>
   </div>
 
   <!-- ── FAQ ──────────────────────────────────────────────────── -->

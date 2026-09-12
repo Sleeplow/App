@@ -150,7 +150,7 @@
       <li>Une <strong>barre de progression</strong> se remplit automatiquement selon le solde actuel du compte suivi par rapport à la cible, avec le pourcentage atteint.</li>
       <li>La couleur reflète l'état : <strong>bleu</strong> (en cours), <strong>vert</strong> (objectif atteint) et <strong>rouge</strong> (échéance dépassée avant d'avoir atteint la cible).</li>
       <li>Sous la barre : le solde actuel sur la cible (ex. : 1 200 $ / 5 000 $) et, si une échéance est définie, le nombre de jours restants («&nbsp;Échéance dans 90 jour(s)&nbsp;», «&nbsp;Échéance aujourd'hui&nbsp;» ou «&nbsp;Échéance dépassée&nbsp;»).</li>
-      <li>Appuyez sur un objectif pour le <strong>modifier</strong> ; balayez vers la gauche pour le <strong>supprimer</strong> (une confirmation est demandée).</li>
+      <li>Appuyez sur un objectif pour le <strong>modifier</strong>. Pour le <strong>supprimer</strong>, faites un <strong>appui long</strong> (menu contextuel) — et, sous <strong>iOS&nbsp;27</strong>, également un <strong>balayage vers la gauche</strong>. Une confirmation est demandée dans les deux cas.</li>
     </ul>
     <div class="highlight">La progression se met à jour toute seule : il suffit d'ajuster le solde du compte suivi dans l'onglet Transactions. Comme les autres cartes, «&nbsp;Objectifs d'épargne&nbsp;» peut être réordonnée ou masquée via <strong>Personnaliser</strong>.</div>
 
@@ -431,6 +431,23 @@
     <h3>Verrouillage Face ID / Touch ID</h3>
     <p>Activez le verrou depuis <strong>Paramètres › Sécurité</strong>. À chaque ouverture, l'app demande votre Face ID, Touch ID ou le code de l'appareil avant d'afficher vos données.</p>
     <p>Un écran de confidentialité masque automatiquement le contenu de l'app lorsque vous consultez le sélecteur d'applications.</p>
+
+    <h3>Diagnostic système&nbsp;: pourquoi une fonction n'apparaît pas</h3>
+    <p><strong>Paramètres › Diagnostic système</strong> répond à une question précise&nbsp;: quand une fonction annoncée n'est pas là, <em>qu'est-ce qui manque</em>. Trois causes se ressemblent à l'écran et n'ont rien à voir entre elles.</p>
+    <ul>
+      <li><strong>Palier iOS</strong> — la version que votre iPhone sait exécuter&nbsp;: 18+, 26+ ou 27+.</li>
+      <li><strong>Apple Intelligence</strong> — «&nbsp;Disponible&nbsp;», «&nbsp;Désactivé dans les Réglages&nbsp;» (vous pouvez l'activer), «&nbsp;En préparation&nbsp;» (le modèle se télécharge) ou «&nbsp;Indisponible sur cet appareil&nbsp;». Ce dernier cas est <strong>matériel</strong>&nbsp;: il concerne tout iPhone antérieur au 15&nbsp;Pro, même sous iOS&nbsp;26 ou 27, et aucun réglage ne le change.</li>
+      <li><strong>Fonctions iOS 27</strong> — quatre réponses possibles&nbsp;:
+        <ul>
+          <li><em>Aucune dans cette version</em> — cette version de l'app n'en contient aucune. Ni votre iPhone ni sa version d'iOS n'y sont pour quelque chose.</li>
+          <li><em>Absentes de cette build</em> — elles existent, mais cette build a été compilée avec un outil antérieur. C'est la seule des quatre qui se corrige côté développeur.</li>
+          <li><em>Dans la build, requiert iOS&nbsp;27</em> — elles sont là, votre iPhone n'est pas encore en iOS&nbsp;27.</li>
+          <li><em>Actives</em> — suivies de la <strong>liste des fonctions concernées</strong>, pour que vous puissiez aller les essayer plutôt que de nous croire sur parole.</li>
+        </ul>
+      </li>
+      <li><strong>Configuration</strong> — «&nbsp;Release&nbsp;» pour une build TestFlight ou App&nbsp;Store, «&nbsp;Debug&nbsp;» pour une build de développement.</li>
+    </ul>
+    <div class="highlight">Si vous nous signalez un problème, la capture de cet écran est ce qui aide le plus&nbsp;: elle distingue d'un coup d'œil un appareil trop ancien, un réglage éteint et une fonction absente de la build.</div>
 
     <h3>Import / Export CSV <small>(Budget Pro)</small></h3>
     <p>Accédez à <strong>Paramètres › Données › Import / Export CSV</strong>.</p>
@@ -831,7 +848,7 @@
       <li>A <strong>progress bar</strong> fills automatically based on the tracked account's current balance relative to the target, with the percentage reached.</li>
       <li>The colour reflects the status: <strong>blue</strong> (in progress), <strong>green</strong> (goal reached), and <strong>red</strong> (due date passed before reaching the target).</li>
       <li>Below the bar: the current balance out of the target (e.g. $1,200 / $5,000) and, if a due date is set, the days remaining ("Due in 90 day(s)", "Due Today", or "Deadline Passed").</li>
-      <li>Tap a goal to <strong>edit</strong> it; swipe left to <strong>delete</strong> it (a confirmation is required).</li>
+      <li>Tap a goal to <strong>edit</strong> it. To <strong>delete</strong> it, use a <strong>long press</strong> (context menu) — and, on <strong>iOS&nbsp;27</strong>, a <strong>left swipe</strong> as well. A confirmation is required either way.</li>
     </ul>
     <div class="highlight">Progress updates on its own — just adjust the tracked account's balance in the Transactions tab. Like the other cards, "Savings Goals" can be reordered or hidden via <strong>Customize</strong>.</div>
 
@@ -1112,6 +1129,23 @@
     <h3>Face ID / Touch ID Lock</h3>
     <p>Enable the lock from <strong>Settings › Security</strong>. Each time the app opens, it will request your Face ID, Touch ID, or device passcode before displaying your data.</p>
     <p>A privacy screen automatically hides your financial data when you view the app switcher.</p>
+
+    <h3>System Diagnostics: why a feature isn't showing up</h3>
+    <p><strong>Settings › System Diagnostics</strong> answers one precise question: when an advertised feature isn't there, <em>what exactly is missing</em>. Three causes look alike on screen and have nothing to do with one another.</p>
+    <ul>
+      <li><strong>iOS tier</strong> — the version your iPhone can run: 18+, 26+ or 27+.</li>
+      <li><strong>Apple Intelligence</strong> — "Available", "Disabled in Settings" (you can turn it on), "Preparing" (the model is downloading) or "Unavailable on this device". That last one is <strong>hardware</strong>: it applies to every iPhone older than the 15&nbsp;Pro, even on iOS&nbsp;26 or 27, and no setting changes it.</li>
+      <li><strong>iOS 27 features</strong> — four possible answers:
+        <ul>
+          <li><em>None in this version</em> — this version of the app contains none. Neither your iPhone nor its iOS version has anything to do with it.</li>
+          <li><em>Not in this build</em> — they exist, but this build was compiled with an older toolchain. This is the only one of the four that is fixed on the developer's side.</li>
+          <li><em>In the build, requires iOS&nbsp;27</em> — they're there; your iPhone isn't on iOS&nbsp;27 yet.</li>
+          <li><em>Active</em> — followed by the <strong>list of features concerned</strong>, so you can go try them rather than take our word for it.</li>
+        </ul>
+      </li>
+      <li><strong>Configuration</strong> — "Release" for a TestFlight or App&nbsp;Store build, "Debug" for a development build.</li>
+    </ul>
+    <div class="highlight">If you report a problem to us, a screenshot of this screen helps most: it tells apart, at a glance, a device that's too old, a setting that's off, and a feature missing from the build.</div>
 
     <h3>CSV Import / Export <small>(Budget Pro)</small></h3>
     <p>Go to <strong>Settings › Data › Import / Export CSV</strong>.</p>

@@ -193,15 +193,19 @@
       <li>Patientez quelques secondes pendant l'analyse (<em>Analyse du document…</em>).</li>
       <li>Le formulaire s'ouvre pré-rempli. Vérifiez les informations, choisissez le <strong>compte</strong> et la <strong>fréquence</strong>, puis appuyez sur <strong>«&nbsp;Enregistrer&nbsp;»</strong>.</li>
     </ol>
-    <div class="highlight"><strong>Confidentialité :</strong> toute l'analyse — reconnaissance de texte (Vision) et intelligence artificielle (Apple Intelligence) — s'effectue entièrement sur votre appareil. Aucune image ni donnée n'est transmise à un serveur externe.</div>
+    <div class="highlight"><strong>Confidentialité :</strong> toute l'analyse — reconnaissance de texte (Vision) et intelligence artificielle (Apple Intelligence) — s'effectue entièrement sur votre appareil. Aucune image ni donnée n'est transmise à un serveur externe. <strong>Cela reste vrai sur iOS 27</strong>, où l'image elle-même est confiée au modèle : elle ne quitte pas plus l'appareil que le texte ne le faisait.</div>
+    <div class="highlight"><strong>Sur iOS 27, l'analyse lit la mise en page.</strong> Jusqu'ici, le document passait d'abord par la reconnaissance de texte, qui met tout à plat : sur un reçu, le total, les taxes et les sous-totaux sont des <em>colonnes</em>, et une colonne ne survit pas à une ligne de texte. Sur iOS 27, l'image est transmise telle quelle au modèle, qui voit la disposition. Vous n'avez rien à activer, et rien ne change si votre iPhone est en iOS 26 : la reconnaissance de texte reste le chemin, et elle reprend aussi la main si la nouvelle analyse échoue.</div>
 
     <h4>Disponibilité selon l'état d'Apple Intelligence</h4>
     <ul>
       <li><strong>Disponible</strong> — le bouton scanner est pleinement fonctionnel.</li>
       <li><strong>Apple Intelligence désactivé</strong> — le bouton affiche un badge <strong>⚠️</strong> orange. Appuyez dessus pour voir les instructions pas à pas et le lien vers les Réglages.</li>
       <li><strong>Modèle en téléchargement</strong> — le bouton affiche un indicateur de chargement. Réessayez dans quelques minutes, le téléchargement se fait automatiquement en arrière-plan.</li>
-      <li><strong>Appareil ou système non compatible</strong> — le bouton est masqué ; la fonctionnalité requiert <strong>iOS 26</strong> ou plus récent et un appareil compatible Apple Intelligence (puce A17 Pro, A18 ou série M). Sur iOS 18-25, le bouton n'apparaît pas.</li>
+      <li><strong>Système trop ancien</strong> — le bouton reste visible, en gris. Appuyez dessus : l'écran indique que la fonctionnalité requiert <strong>iOS 26</strong> ou plus récent. C'est une situation qui se règle par une mise à jour d'iOS.</li>
+      <li><strong>Appareil non éligible</strong> — le bouton reste visible, en gris, et l'écran nomme la cause : Apple Intelligence exige une puce <strong>A17 Pro, A18 ou série M</strong>. Contrairement au cas précédent, aucune mise à jour n'y changera rien, et l'écran le dit plutôt que de laisser chercher.</li>
     </ul>
+    <div class="highlight"><strong>Le bouton n'est plus jamais masqué.</strong> Il l'était auparavant dès que l'analyse était impossible — et un bouton absent ne dit pas qu'il manque quelque chose, donc encore moins pourquoi. Le cas le plus courant était justement le plus mal servi : tout iPhone antérieur au 15 Pro, où la fonctionnalité disparaissait sans un mot. Il est désormais toujours là, et toujours accompagné de sa raison.</div>
+    <div class="highlight"><strong>Sur un appareil qui ne peut pas scanner, Budget App ne vous propose pas Budget Pro.</strong> Le scanner est une fonctionnalité Pro, mais l'achat n'est proposé que là où il débloque réellement quelque chose : si votre appareil ou votre version d'iOS ne permet pas l'analyse, vous lisez l'explication, pas la feuille d'achat.</div>
 
     <h3>Fréquences disponibles</h3>
     <ul>
@@ -891,15 +895,19 @@
       <li>Wait a few seconds while the app analyses the document (<em>Analysing document…</em>).</li>
       <li>The form opens pre-filled. Review the information, choose the <strong>account</strong> and <strong>frequency</strong>, then tap <strong>"Save"</strong>.</li>
     </ol>
-    <div class="highlight"><strong>Privacy:</strong> all analysis — text recognition (Vision) and artificial intelligence (Apple Intelligence) — runs entirely on your device. No image or data is sent to any external server.</div>
+    <div class="highlight"><strong>Privacy:</strong> all analysis — text recognition (Vision) and artificial intelligence (Apple Intelligence) — runs entirely on your device. No image or data is sent to any external server. <strong>This still holds on iOS 27</strong>, where the image itself is handed to the model: it leaves your device no more than the text did.</div>
+    <div class="highlight"><strong>On iOS 27, the analysis reads the layout.</strong> Until now the document went through text recognition first, which flattens everything: on a receipt, the total, the taxes, and the subtotals are <em>columns</em>, and a column does not survive being turned into a line of text. On iOS 27 the image is passed to the model as-is, so it sees the layout. There is nothing to turn on, and nothing changes if your iPhone runs iOS 26: text recognition remains the path, and it also takes over if the new analysis fails.</div>
 
     <h4>Availability based on Apple Intelligence status</h4>
     <ul>
       <li><strong>Available</strong> — the scan button is fully functional.</li>
       <li><strong>Apple Intelligence disabled</strong> — the button shows an orange <strong>⚠️</strong> badge. Tap it for step-by-step activation instructions and a link to Settings.</li>
       <li><strong>Model downloading</strong> — the button shows a loading indicator. Try again in a few minutes; the download happens automatically in the background.</li>
-      <li><strong>Incompatible device or system</strong> — the button is hidden; the feature requires <strong>iOS 26</strong> or later and an Apple Intelligence-compatible device (A17 Pro, A18, or M-series chip). On iOS 18–25, the button does not appear.</li>
+      <li><strong>System too old</strong> — the button stays visible, greyed out. Tap it: the screen explains that the feature requires <strong>iOS 26</strong> or later. This is a situation an iOS update resolves.</li>
+      <li><strong>Device not eligible</strong> — the button stays visible, greyed out, and the screen names the cause: Apple Intelligence requires an <strong>A17 Pro, A18, or M-series</strong> chip. Unlike the previous case, no update will change this, and the screen says so rather than leaving you to guess.</li>
     </ul>
+    <div class="highlight"><strong>The button is never hidden any more.</strong> It used to disappear whenever analysis was impossible — and a missing button doesn't tell you something is missing, let alone why. The most common case was the worst served: every iPhone older than the 15 Pro, where the feature vanished without a word. It is now always there, and always accompanied by its reason.</div>
+    <div class="highlight"><strong>On a device that cannot scan, Budget App does not offer you Budget Pro.</strong> Scanning is a Pro feature, but the purchase is only offered where it actually unlocks something: if your device or iOS version can't run the analysis, you get the explanation, not the purchase sheet.</div>
 
     <h3>Available Frequencies</h3>
     <ul>

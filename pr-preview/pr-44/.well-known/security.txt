@@ -1,6 +1,0 @@
-# Security policy for app.sleeplow.ca
-# https://securitytxt.org/  (RFC 9116)
-Contact: mailto:privacy@sleeplow.ca
-Expires: 2027-06-29T00:00:00.000Z
-Preferred-Languages: fr, en
-Canonical: https://app.sleeplow.ca/.well-known/security.txt
